@@ -7,4 +7,4 @@ eleventyNavigation:
   order: 3
 ---
 
-I am a person that writes stuff.
+I'm Mike. I founded [Newbuild Studio](https://newbuild.studio/). I'm on [Twitter](https://twitter.com/mrmikefallows).
