@@ -12,7 +12,7 @@ The main roadblock to having my own site over the years has been a mixture of an
 
 I'm not a great writer, nor prolific, but I do document a lot of thoughts in email. Email can be a great resource to dig into, but I hope a personal site of writing will serve as a way to distil those thoughts that are more important to me. I also want somewhere I can experiment freely, without the commercial considerations of professional work.
 
-Left to my own devices, I'm pretty sure I would have put it off indefinitely. But as is so often the way, a casual conversation with a friend turned out to be the motivation I needed.
+Left to my own devices, I'm pretty sure I would have put it off indefinitely. But as is so often the way, a casual conversation with [a friend](https://kierankelly.net/) turned out to be the motivation I needed.
 
 By thinking about what would be the best solution for my friend, it helped me better consider what _I_ would want. I wanted something that would be:
 
