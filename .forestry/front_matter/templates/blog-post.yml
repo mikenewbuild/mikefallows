@@ -25,3 +25,5 @@ fields:
   name: layout
   label: layout
   default: layouts/post.njk
+pages:
+- posts/quickly-export-shopify-data-to-a-csv.md
