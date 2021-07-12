@@ -5,15 +5,23 @@ fields:
 - type: text
   name: title
   label: title
+  config:
+    required: true
 - type: text
   name: description
   label: description
 - type: datetime
   name: date
   label: date
+  default: now
+  config:
+    export_format: YYYY-MM-DD
+    date_format: DD/MM/YYYY
+    required: true
 - type: list
   name: tags
   label: tags
 - type: text
   name: layout
   label: layout
+  default: layouts/post.njk
