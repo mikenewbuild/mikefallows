@@ -5,12 +5,14 @@ fields:
 - type: text
   name: layout
   label: layout
+  default: layouts/post.njk
 - type: text
   name: title
   label: title
 - type: text
   name: templateClass
   label: templateClass
+  default: tmpl-post
 - type: field_group
   name: eleventyNavigation
   label: eleventyNavigation
