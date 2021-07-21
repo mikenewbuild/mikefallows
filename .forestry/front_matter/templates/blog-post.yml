@@ -27,3 +27,4 @@ fields:
   default: layouts/post.njk
 pages:
 - posts/quickly-export-shopify-data-to-a-csv.md
+- posts/shopify-theme-development-with-esbuild.md
