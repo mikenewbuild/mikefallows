@@ -4,7 +4,8 @@
     "watch": "eleventy --watch",
     "serve": "eleventy --serve",
     "start": "eleventy --serve",
-    "debug": "DEBUG=* eleventy"
+    "debug": "DEBUG=* eleventy",
+    "forestry:preview": "eleventy --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
