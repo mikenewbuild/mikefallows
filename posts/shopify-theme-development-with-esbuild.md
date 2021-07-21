@@ -9,9 +9,9 @@ tags:
 - shopify
 
 ---
-Shopify recently released a new CLI that amongst other things makes it easier to develop themes locally. 
+Shopify recently released a new CLI that amongst other things makes it easier to develop themes locally.
 
-## The old way: Theme Kit + CodeKit 
+## The old way: Theme Kit + CodeKit
 
 Previously I had developed a workflow using Bryan Jones' [CodeKit](https://codekitapp.com/) app and Shopify's old [Theme Kit](https://github.com/Shopify/themekit) tool. Codekit provides a GUI for bundling assets with great defaults without having to set up a complex [webpack](https://webpack.js.org/) config like Shopify's [Slate Theme](https://github.com/Shopify/slate). It also allowed me to set up a local server that could proxy to a specific development theme on the store.
 
@@ -37,12 +37,12 @@ Fortunately [esbuild](https://esbuild.github.io/) is perfect for the task. It's 
 
 My esbuild setup needed to:
 
-* bundle js imports for browsers (and support some older browsers) 
+* bundle js imports for browsers (and support some older browsers)
 * bundle scss files to a css file
 * minify the output
 * watch and bundle files on change
 
-For the simplest set up you can just run esbuild from the command line without the need for a `node_modules` folder, but to handle `.scss` files and support older browsers requires a build config. 
+For the simplest set up you can just run esbuild from the command line without the need for a `node_modules` folder, but to handle `.scss` files and support older browsers requires a build config.
 
 ### Set up
 
@@ -57,9 +57,8 @@ Here's a typical set up when converting a theme from CodeKit. My file structure 
     ├─ styles/
     │  ├─ modules/
     │  ├─ theme.scss
-    
 
-The only thing I need to change is to import styles at the top of  `src/scripts/theme.js` 
+The only thing I need to change is to import styles at the top of  `src/scripts/theme.js`
 
     import '../scss/theme.scss';
 
@@ -73,24 +72,41 @@ Make sure to add `"type": "module"` to your `package.json` as esbuild relies on 
 
 ### Build config
 
-Set up a build file as `esbuild.config.js` that takes the `theme.js` file as the entry point, and compiles the minified output to the `assets` directory in a format for browsers that support the es2018 syntax. this allows for some older versions of modern browsers to be supported, but not legacy versions like IE11 which I no longer actively support. 
+Set up a build file as `esbuild.config.js` that takes the `theme.js` file as the entry point, and compiles the minified output to the `assets` directory in a format for browsers that support the es2018 syntax. this allows for some older versions of modern browsers to be supported, but not legacy versions like IE11 which I no longer actively support.
 
-    import esbuild from 'esbuild'
-    import { sassPlugin } from 'esbuild-sass-plugin'
-    
-    esbuild.build({
-      entryPoints: {
-        theme: 'src/scripts/theme.js',
-      },
-      bundle: true,
-      outdir: 'assets',
-      target: ['es2018'],
-      plugins: [sassPlugin()],
-      minify: true,
-      watch: true,
-    }).then(() => {
-      console.log('Watching files...')
-    }).catch((e) => console.error(e.message))
+\`\`\`js
+
+import esbuild from 'esbuild'
+
+import { sassPlugin } from 'esbuild-sass-plugin'
+
+esbuild.build({
+
+  entryPoints: {
+
+    theme: 'src/scripts/theme.js',
+
+  },
+
+  bundle: true,
+
+  outdir: 'assets',
+
+  target: \['es2018'\],
+
+  plugins: \[sassPlugin()\],
+
+  minify: true,
+
+  watch: true,
+
+}).then(() => {
+
+  console.log('Watching files...')
+
+}).catch((e) => console.error(e.message))
+
+\`\`\`
 
 Run `node esbuild.config.js` to bundle the files to the assets folder and watch for any changes to imported files. I usually add that to a start script so a boilerplate `package.json` might look like this.
 
@@ -107,8 +123,6 @@ Run `node esbuild.config.js` to bundle the files to the assets folder and watch 
 
 ### Next steps
 
-This allows me to organise my code in a way that suits me best and leverage the features of SASS and npm with instant browser updates and minified assets that has made working on Shopify Themes much easier. My workflow also feels much lighter now. 
+This allows me to organise my code in a way that suits me best and leverage the features of SASS and npm with instant browser updates and minified assets that has made working on Shopify Themes much easier. My workflow also feels much lighter now.
 
 I'm still looking at ways to improve my process by introducing things like type safety and automated testing and linting to my custom theme development. I hope that this paves the way towards that!
-
- 
