@@ -26,5 +26,6 @@ fields:
   label: layout
   default: layouts/post.njk
 pages:
+- posts/an-interview-by-sam-waller-for-nativve.md
 - posts/quickly-export-shopify-data-to-a-csv.md
 - posts/shopify-theme-development-with-esbuild.md
