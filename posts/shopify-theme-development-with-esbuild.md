@@ -74,39 +74,22 @@ Make sure to add `"type": "module"` to your `package.json` as esbuild relies on 
 
 Set up a build file as `esbuild.config.js` that takes the `theme.js` file as the entry point, and compiles the minified output to the `assets` directory in a format for browsers that support the es2018 syntax. this allows for some older versions of modern browsers to be supported, but not legacy versions like IE11 which I no longer actively support.
 
-\`\`\`js
-
-import esbuild from 'esbuild'
-
-import { sassPlugin } from 'esbuild-sass-plugin'
-
-esbuild.build({
-
-  entryPoints: {
-
-    theme: 'src/scripts/theme.js',
-
-  },
-
-  bundle: true,
-
-  outdir: 'assets',
-
-  target: \['es2018'\],
-
-  plugins: \[sassPlugin()\],
-
-  minify: true,
-
-  watch: true,
-
-}).then(() => {
-
-  console.log('Watching files...')
-
-}).catch((e) => console.error(e.message))
-
-\`\`\`
+    import esbuild from 'esbuild'
+    import { sassPlugin } from 'esbuild-sass-plugin'
+    
+    esbuild.build({
+      entryPoints: {
+        theme: 'src/scripts/theme.js',
+      },
+      bundle: true,
+      outdir: 'assets',
+      target: ['es2018'],
+      plugins: [sassPlugin()],
+      minify: true,
+      watch: true,
+    }).then(() => {
+      console.log('Watching files...')
+    }).catch((e) => console.error(e.message))
 
 Run `node esbuild.config.js` to bundle the files to the assets folder and watch for any changes to imported files. I usually add that to a start script so a boilerplate `package.json` might look like this.
 
