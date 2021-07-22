@@ -7,15 +7,15 @@ tags:
   - web
 layout: layouts/post.njk
 ---
-I have planned to have a personal site for a long time, so I felt it was about time I scratched that itch. In this post I'm going to cover how I selected the technology used to build this site and why.
+I have planned to have a personal site for a long time and in this (my first!) post I'm going to cover how I selected the technology used to build this site and why.
 
-The main roadblock to having my own site over the years has been a mixture of analysis paralysis, the commitment of maintaining my own website (cobbler's shoes) and for a large part the fear of it being - well - a bit rubbish.
+The main roadblock to having my own site over the years has been a mixture of "analysis paralysis", the commitment of maintaining my own website (cobbler's shoes) and for a large part the fear of it being - well - a bit rubbish.
 
 I'm not a great writer, nor prolific, but I do document a lot of thoughts in email. Email can be a great resource to dig into, but I hope a personal site of writing will serve as a way to distil those thoughts that are more important to me. I also want somewhere I can experiment freely, without the commercial considerations of professional work.
 
 Left to my own devices, I'm pretty sure I would have put it off indefinitely. But as is so often the way, a casual conversation with [a friend](https://kierankelly.net/) turned out to be the motivation I needed.
 
-By thinking about what would be the best solution for my friend, it helped me better consider what _I_ would want. I wanted something that would be:
+By thinking about what would be the best solution for him, it helped me better consider what _I_ would want. I wanted something that would be:
 
 - [low friction to update](#low-friction-to-update)
 - [low cost](#low-cost)
@@ -25,7 +25,7 @@ By thinking about what would be the best solution for my friend, it helped me be
 
 ### Low friction to update
 
-I don't have a habit of writing a blog, and I know enough about myself that any substantial barrier to publishing new content will result in failure. I want it to be as easy as copy-pasting an email I've written. I want to be able to format in [Markdown](https://en.wikipedia.org/wiki/Markdown), and I don't want an editor that's going to start injecting cruft into the document. I want to be able to write directly in my code editor if it suits me and other times be able to use a GUI if I want too, and still have version control.
+I don't have a habit of writing a blog, and I know enough about myself that any substantial barrier to publishing new content will result in failure. I want it to be as easy as copy-pasting an email I've written. I want to be able to write in [Markdown](https://en.wikipedia.org/wiki/Markdown), and I don't want an editor that's going to start injecting cruft into the document. I want to be able to write directly in my code editor if it suits me and other times be able to use a GUI if I want too, and still have version control.
 
 ### Low cost
 
