@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Making this website.
 description: The process and decisions behind this site.
 date: 2021-07-11

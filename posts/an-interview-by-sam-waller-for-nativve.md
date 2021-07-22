@@ -1,4 +1,5 @@
 ---
+draft: false
 date: 2021-07-15
 layout: layouts/post.njk
 title: An interview by Sam Waller for Nativve
@@ -16,6 +17,6 @@ tags:
 >
 > We met up with him in the physical world to discuss the place they call cyberspace.
 
-Read the [full interview on nativve.com](https://www.nativve.com/people/an-interview-with-web-designer-mike-fallows/). 
+Read the [full interview on nativve.com](https://www.nativve.com/people/an-interview-with-web-designer-mike-fallows/).
 
 Photos and words by [Sam Waller](https://blog.thecentrallibrary.com/).

@@ -57,6 +57,20 @@ module.exports = function(eleventyConfig) {
     return filterTagList([...tagSet]);
   });
 
+  const now = new Date();
+
+  const publishedPosts = (post) => post.date <= now && !post.data.draft;
+
+  // Create an array of all posts
+  eleventyConfig.addCollection("posts", (collection) => {
+    // Hide unpublished posts in production
+    if (process.env.ELEVENTY_ENV === 'production') {
+      return collection.getFilteredByGlob("posts/**/*.md").filter(publishedPosts);
+    }
+
+    return collection.getFilteredByGlob("posts/**/*.md");
+  });
+
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");

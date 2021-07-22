@@ -1,4 +1,5 @@
 ---
+draft: false
 date: 2021-07-21
 layout: layouts/post.njk
 title: Shopify theme development with esbuild
@@ -76,7 +77,7 @@ Set up a build file as `esbuild.config.js` that takes the `theme.js` file as the
 
     import esbuild from 'esbuild'
     import { sassPlugin } from 'esbuild-sass-plugin'
-    
+
     esbuild.build({
       entryPoints: {
         theme: 'src/scripts/theme.js',
@@ -97,7 +98,7 @@ Run `node esbuild.config.js` to bundle the files to the assets folder and watch 
       "devDependencies": {
         "esbuild": "^0.12.15",
         "esbuild-sass-plugin": "^1.4.8"
-      }, 
+      },
       "scripts": {
         "start": "node esbuild.config.js"
       },
