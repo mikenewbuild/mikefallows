@@ -33,3 +33,4 @@ pages:
 - posts/an-interview-by-sam-waller-for-nativve.md
 - posts/quickly-export-shopify-data-to-a-csv.md
 - posts/shopify-theme-development-with-esbuild.md
+- posts/using-jest-tests-to-replace-jquery-in-a-shopify-theme.md
