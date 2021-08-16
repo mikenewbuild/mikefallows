@@ -1,0 +1,92 @@
+---
+draft: false
+date: 2021-08-16
+layout: layouts/post.njk
+title: Installing Perch Runway via Composer
+description: How to manage Perch CMS as a Composer dependency
+tags:
+- PHP
+- composer
+
+---
+When I've needed to provide a CMS for brochure sites, my first port of call has been [Perch CMS](https://grabaperch.com/). I've been using it since v1 as a great solution to adapt static sites to be updated by a client (eg. adding a news section), or building out a highly customised views. Being PHP and MySQL based it was familiar and as easy to set up and host on a budget. 
+
+### The Problem
+
+As some of the sites grew in volume of content and feature complexity, I upgraded them to Perch's more advanced developer version, [Perch Runway](https://perchrunway.com/). Runway has features like collections and dynamic routes making it more akin to popular MVC frameworks like [Laravel](https://laravel.com/), and the types of dynamic regions you get in [Craft](https://craftcms.com/). Unlike Laravel and Craft it didn't have the convenience of [Composer](https://getcomposer.org/) to pull in useful packages and facilitate the types of deploy pipelines I had become accustomed to. 
+
+It's expected with Perch that to upgrade to new versions you would replace the `core` folder with new files downloaded from source and then manually uploaded to the client's server. TO use a deployment pipeline this meant either committing all of Perch's core files to version control (yuk), or manually updating multiple sites and local development machines with each release, which even with a small number of projects quickly becomes onerous and error prone.
+
+### The ideal
+
+What I wanted to be able to do is pull in specific versions of Perch, or easily update to the latest version consistently across projects and machines. Because Perch doesn't provide this feature I decided to roll my own. To do this I realised I could host my own private repository of Perch with versioned releases in one place. The issue was that because Perch's files need to be accessible in a publicly accessible directory, I would need to figure out how to set up Composer to install the files outside the `/vendor` folder.
+
+### Installers
+
+Fortunately there's a [Composer tool](https://github.com/composer/installers) designed just for this purpose. It enables the package to be installed outside the `/vendor` directory. The issue is that although Perch is typically installed in a  `/perch` directory, it doesn't have to be and for some projects I have it installed in `/cms` for example. For this reason I prefer the client `composer.json` file to define where the Perch core files should be installed to.
+
+Fortunately, [Installers Extender](https://github.com/oomphinc/composer-installers-extender) allows you to do just that.
+
+### Setting up Perch as a package
+
+In this case I created a private repository on Github called `perch-core` and committed the latest version of Perch's core files. To set up Installers I first needed to add a `composer.json` to the project which I did by running: `composer init` and following the instructions. 
+
+Next I installed the two packages I needed: 
+
+     composer require composer/installers
+     composer require oomphinc/composer-installers-extender
+
+Then I committed the changes to `composer.json`, pushed those changes to Github and I was now ready to tag the repo with the current release of Perch (at the time v3.1.5). This would allow me to specify the version of Perch I required in my client projects.
+
+### Installing on a Perch project
+
+Now I'm able to install Perch as well as any other composer dependencies in my project. It's important to make sure that the `/vendor` directory is not publicly accessible on the web server, so my Perch projects are typically set up with the following structure:
+
+    public/
+    ├─ perch/
+    │  ├─ core/
+    ├─ favicon.png
+    ├─ .htaccess
+    vendor/
+    composer.json
+
+To use my private `perch-core` repository and have the contents be installed to `/public/perch/core` I need to add the following to my `composer.json` file: 
+
+    {
+      ...
+      "require": {
+        "mikenewbuild/perch-core": "^3.1"
+      },
+      "repositories": [
+        {
+          "type": "vcs",
+          "url": "git@github.com:mikenewbuild/perch-core.git"
+        }
+      ],
+      "extra": {
+        "installer-types": [
+          "perch-core"
+        ],
+        "installer-paths": {
+          "public/perch/core/": [
+            "mikenewbuild/perch-core"
+          ]
+        }
+      }
+    }
+
+In the `repositories` I've defined the location of my private repo on Github, and in `extra` I define the package that should be "installed" and the directory the package can be installed. It's possible to define multiple packages and locations, which is useful for applying the same technique to  eg. Perch Apps.
+
+I also needed to set up a [Personal Access Token](https://github.com/settings/tokens) in Github to grant access to the private repository, this can be done with either an SSH key or by adding an `auth.json` file to the root of the project with the generated token:
+
+    {
+        "github-oauth": {
+            "github.com": "github-token-here"
+        }
+    }
+
+Needless to say, this file should not be committed to the repo as it includes sensitive information. 
+
+Running `composer install` will now replace the `/public/perch/core` folder with the contents of my `perch-core` repository and the version will be stored in the `composer.lock` file so I quickly replicate my project in any environment.
+
+This small addition has made my development workflow much more robust and enables me to leverage Composer in my Perch projects.
