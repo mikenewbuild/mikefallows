@@ -51,11 +51,11 @@ The first snag I hit was using import statements in my tests. I wanted to use im
 }
 ```
 
-Module imports are automatically supported when I run `npm test`
+Module imports are now automatically supported when I run `npm test`
 
 ### Testing the DOM
 
-Pretty much all of the work I'm doing with js is to do with DOM manipulation, certainly the code I had written with jQuery. Jest has some features that make it easy to test the basic DOM manipulation which I was performing. I struggled a bit when it came to things like using `setTimeout` so I decided to dig into that another day and focus on the simple stuff and test anything more complicated manually.
+Pretty much all of the work I'm doing with JS is to do with DOM manipulation, certainly the code I had written with jQuery. Jest has some features that make it easy to test the basic DOM manipulation which I was performing. I struggled a bit when it came to things like using `setTimeout` so I decided to dig into that another day and focus on the simple stuff and test anything more complicated manually.
 
 There is one thing you need to do to allow your tests to use the DOM, and that is to include a doc block at the beginning of your tests.
 
@@ -68,7 +68,7 @@ There is one thing you need to do to allow your tests to use the DOM, and that i
  })
 ```
 
-Here's a full example of a test for a component dynamic gallery component. It's a quick test that given the right HTML structure, clicking a thumbnail will update the main image with the relevant `src` attribute and apply an `active` class to the corresponding thumbnail.
+Here's a full example of a test for a dynamic gallery component. It's a quick test that given the right HTML structure, clicking a thumbnail will update the main image with the relevant `src` attribute and apply an `active` class to the corresponding thumbnail.
 
 ```js
 /**
@@ -104,7 +104,7 @@ test('it can dynamically update a main image by clicking thumbnails', () => {
 })
 ```
 
-This allowed me to refactor away jQuery from the implementation of the `dynamicGalleries()` function with instant feedback form a test that gives me the confidence I haven't broken anything, without having to wait for files to bundle and sync with Shopify and a browser refresh. 🔥
+This allowed me to refactor away jQuery from the implementation of the `dynamicGalleries()` function using the instant feedback from a test and giving me the confidence that I haven't broken anything. All this without having to wait for files to bundle and sync with Shopify and a browser refresh. 🔥
 
 ### Helpful utilities
 
@@ -142,8 +142,12 @@ test('_$ can select an element', () => {
 })
 ```
 
-As I worked my way through the code I was able to find other opportunities to add utilities for frequently used jQuery features like toggling classes, or wrapping elements in another element. With the tests as backup it greatly reduced the amount of time to replace jQuery, and in many cases allowed me to significantly improved the simplicity and readability of the code. I often find that making code easier to test, improves the code itself.
+As I worked my way through the code I was able to find other opportunities to add utilities for frequently used jQuery features like toggling classes, or wrapping elements in another element. With the tests as backup it greatly reduced the amount of time it took to replace jQuery, and in many cases allowed me to significantly improve the simplicity and readability of the code I was refactoring.
+
+I often find that making code easier to test improves the code itself.
 
 ### Next steps
 
-With these tests in place I can now take steps towards a CI/CD pipeline which will allow me to run tests automatically when merging new features or fixes which will reduce the chances of regressions being introduced as well as time spent testing manually. But for now I'm just happy to be able to write tests easily and get quick feedback.
+With these tests in place I can now take steps towards a CI/CD pipeline which will allow me to run tests automatically when merging new features or fixes. This will reduce both the chances of regressions being introduced, as well as the time spent testing manually. 
+
+For now, I'm just happy to be able to write tests easily and get super quick feedback.
