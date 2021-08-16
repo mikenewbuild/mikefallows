@@ -9,13 +9,13 @@ tags:
 - composer
 
 ---
-When I've needed to provide a CMS for brochure sites, my first port of call has been [Perch CMS](https://grabaperch.com/). I've been using it since v1 as a great solution to adapt static sites to be updated by a client (eg. adding a news section), or building out a highly customised views. Being PHP and MySQL based it was familiar and as easy to set up and host on a budget. 
+When I've needed to provide a CMS for brochure sites, my first port of call has been [Perch CMS](https://grabaperch.com/). I've been using it since 2010 (when it was still v1.2!) as a great solution to adapt static sites to be updated by a client (eg. adding a news section), or building out highly customised views. Perch uses PHP and MySQL so it was familiar and easy to set up locally and host on a budget.
 
 ### The Problem
 
-As some of the sites grew in volume of content and feature complexity, I upgraded them to Perch's more advanced developer version, [Perch Runway](https://perchrunway.com/). Runway has features like collections and dynamic routes making it more akin to popular MVC frameworks like [Laravel](https://laravel.com/), and the types of dynamic regions you get in [Craft](https://craftcms.com/). Unlike Laravel and Craft it didn't have the convenience of [Composer](https://getcomposer.org/) to pull in useful packages and facilitate the types of deploy pipelines I had become accustomed to. 
+As some of the sites grew in volume of content and feature complexity, I upgraded them to Perch's more advanced developer version, [Perch Runway](https://perchrunway.com/) (released 2014). Runway has features like collections and dynamic routes making it more akin to popular MVC frameworks like [Laravel](https://laravel.com/), and the types of dynamic regions you get in [Craft](https://craftcms.com/). Unlike Laravel and Craft it didn't have the convenience of [Composer](https://getcomposer.org/) to pull in useful packages and facilitate the types of deploy pipelines I had become accustomed to.
 
-It's expected with Perch that to upgrade to new versions you would replace the `core` folder with new files downloaded from source and then manually uploaded to the client's server. TO use a deployment pipeline this meant either committing all of Perch's core files to version control (yuk), or manually updating multiple sites and local development machines with each release, which even with a small number of projects quickly becomes onerous and error prone.
+It's expected with Perch that to upgrade to new versions you would replace the `core` folder with new files downloaded from source and then manually uploaded to the client's server. To use a deployment pipeline this meant either committing all of Perch's core files to version control (yuk), or manually updating multiple sites and local development machines with each release, which even with a small number of projects quickly becomes onerous and error prone.
 
 ### The ideal
 
@@ -29,9 +29,9 @@ Fortunately, [Installers Extender](https://github.com/oomphinc/composer-installe
 
 ### Setting up Perch as a package
 
-In this case I created a private repository on Github called `perch-core` and committed the latest version of Perch's core files. To set up Installers I first needed to add a `composer.json` to the project which I did by running: `composer init` and following the instructions. 
+In this case I created a private repository on Github called `perch-core` and committed the latest version of Perch's core files. To set up Installers I first needed to add a `composer.json` to the project which I did by running: `composer init` and following the instructions.
 
-Next I installed the two packages I needed: 
+Next I installed the two packages I needed:
 
      composer require composer/installers
      composer require oomphinc/composer-installers-extender
@@ -50,7 +50,7 @@ Now I'm able to install Perch as well as any other composer dependencies in my p
     vendor/
     composer.json
 
-To use my private `perch-core` repository and have the contents be installed to `/public/perch/core` I need to add the following to my `composer.json` file: 
+To use my private `perch-core` repository and have the contents be installed to `/public/perch/core` I need to add the following to my `composer.json` file:
 
     {
       ...
@@ -85,7 +85,7 @@ I also needed to set up a [Personal Access Token](https://github.com/settings/to
         }
     }
 
-Needless to say, this file should not be committed to the repo as it includes sensitive information. 
+Needless to say, this file should not be committed to the repo as it includes sensitive information.
 
 Running `composer install` will now replace the `/public/perch/core` folder with the contents of my `perch-core` repository and the version will be stored in the `composer.lock` file so I quickly replicate my project in any environment.
 
