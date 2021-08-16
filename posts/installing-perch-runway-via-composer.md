@@ -23,24 +23,24 @@ What I wanted to be able to do is pull in specific versions of Perch, or easily 
 
 ### Installers
 
-Fortunately there's a [Composer tool](https://github.com/composer/installers) designed just for this purpose. It enables the package to be installed outside the `/vendor` directory. The issue is that although Perch is typically installed in a  `/perch` directory, it doesn't have to be and for some projects I have it installed in `/cms` for example. For this reason I prefer the client `composer.json` file to define where the Perch core files should be installed to.
-
-Fortunately, [Installers Extender](https://github.com/oomphinc/composer-installers-extender) allows you to do just that.
+Fortunately there's a [Composer tool](https://github.com/composer/installers) designed just for this purpose. It's specifically designed to allow packages to be installed outside the `/vendor` directory (useful for things like Wordpress). Normally you would define within the package where the files would be installed, and although Perch is typically installed in a  `/perch` directory, it doesn't have to be and for some projects I have it installed in `/cms` for example. That's okay, because the [Installers Extender](https://github.com/oomphinc/composer-installers-extender) allows the client `composer.json` file to define where the Perch core files should be installed to.
 
 ### Setting up Perch as a package
 
-In this case I created a private repository on Github called `perch-core` and committed the latest version of Perch's core files. To set up Installers I first needed to add a `composer.json` to the project which I did by running: `composer init` and following the instructions.
+In my case I created a private repository on Github called `perch-core` - but it could be called anything - and committed the latest version of Perch's core files. 
+
+To set up the repository as an installer, I first needed to add a `composer.json` to the project which I did by running: `composer init` and following the instructions.
 
 Next I installed the two packages I needed:
 
      composer require composer/installers
      composer require oomphinc/composer-installers-extender
 
-Then I committed the changes to `composer.json`, pushed those changes to Github and I was now ready to tag the repo with the current release of Perch (at the time v3.1.5). This would allow me to specify the version of Perch I required in my client projects.
+After committing the changes to `composer.json`, I pushed them to Github and was now ready to tag the repo with the current release of Perch (at the time v3.1.5). This would allow me to specify the version of Perch I required in my client projects.
 
 ### Installing on a Perch project
 
-Now I'm able to install Perch as well as any other composer dependencies in my project. It's important to make sure that the `/vendor` directory is not publicly accessible on the web server, so my Perch projects are typically set up with the following structure:
+Now I'm able to install Perch as well as any other composer dependencies in my project such as a helper file, or a package to support the use of `.env` files. It's important to make sure that the `/vendor` directory is not publicly accessible on the web server, so my Perch projects are typically set up with the following structure:
 
     public/
     ├─ perch/
@@ -75,9 +75,13 @@ To use my private `perch-core` repository and have the contents be installed to 
       }
     }
 
-In the `repositories` I've defined the location of my private repo on Github, and in `extra` I define the package that should be "installed" and the directory the package can be installed. It's possible to define multiple packages and locations, which is useful for applying the same technique to  eg. Perch Apps.
+In the `repositories` section I've defined the location of my private repo on Github, and in `extra` I define the package that should be "installed" and the directory where the package should be installed. 
 
-I also needed to set up a [Personal Access Token](https://github.com/settings/tokens) in Github to grant access to the private repository, this can be done with either an SSH key or by adding an `auth.json` file to the root of the project with the generated token:
+It's possible to define multiple packages and locations, which is useful for applying the same technique to eg. [Perch Add Ons](https://addons.perchcms.com/).
+
+### One last thing
+
+Because I don't want to make the Perch core files public I also needed to set up a [Personal Access Token](https://github.com/settings/tokens) in Github to grant access to the private repository. This can be done with either an SSH key or by adding an `auth.json` file to the root of the project with the generated token:
 
     {
         "github-oauth": {
@@ -87,6 +91,6 @@ I also needed to set up a [Personal Access Token](https://github.com/settings/to
 
 Needless to say, this file should not be committed to the repo as it includes sensitive information.
 
-Running `composer install` will now replace the `/public/perch/core` folder with the contents of my `perch-core` repository and the version will be stored in the `composer.lock` file so I quickly replicate my project in any environment.
+Running `composer install` in my client project will now replace the `/public/perch/core` folder with the contents of my `perch-core` repository, and other packages in the vendor directory. The version will be stored in the `composer.lock` file so I can quickly replicate my project in any environment.
 
-This small addition has made my development workflow much more robust and enables me to leverage Composer in my Perch projects.
+This small addition has made my development workflow much more robust and enables me to leverage Composer in my Perch projects. I can also track the changes to Perch core, and if necessary apply my own patches to enable support for newer version of PHP before an official version of Perch is released.
