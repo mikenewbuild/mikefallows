@@ -12,7 +12,7 @@ I started working with the [London Short Film Festival](https://www.shortfilms.o
 
 After getting that first brochure singed off and delivered to the printers just before Christmas, I quickly put together a website with Wordpress that was little more than a glorified page of the event listings.
 
-### 12 years of growth
+### 12 years of Perch
 
 The following year I used the relatively new [Perch CMS](https://grabaperch.com/) that I found much more developer friendly than Wordpress, but could still be hosted cheaply and familiarly. The site would always get a lot of traffic in the short period of time up to and during the festival, but much less outside of it, so keeping annual hosting costs low in the days before autoscaling was a big bonus.
 
@@ -24,7 +24,7 @@ The (generally) annual cadence of the work on the site meant there would always 
 
 In 2020 the festival took on a new director and due to the pandemic took place online and employed a new technical team, so with a little sadness and relief I'm no longer spending my Decembers scrambling to put the site together. I still had (felt?) the responsibility to archive the existing content. Initially that was just a case of swapping to an archive subdomain, but I knew that keeping the site on the LAMP stack would not make sense permanently.
 
-### Old LAMP sites
+### Legacy LAMP sites
 
 Anyone who's spent time as a general web developer in the 2000s has probably stood up a few PHP sites that are still ticking along on an old shared server running on some now obsolete version of PHP. They're probably running fine (and I'm sure a lot are still generating a good profit!) but as always there are potential security risks running on versions of software that no longer receive security fixes, and the chances of being able to fix something on an a site rutting on some crusty version of PHP5 doesn't sound very appetising.
 
@@ -44,7 +44,9 @@ I decided to use [Wget](https://www.gnu.org/software/wget/) to clone the locally
 
 I ended up with something like this:
 
-    wget -mpckEnH -P ./public https://lsff.test
+```bash
+wget -mpckEnH -P ./public https://lsff.test
+```
 
 * `-m` creates a mirror of the site
 * `-p` get all images, etc. needed to display HTML page
@@ -58,7 +60,9 @@ This worked a treat, and the only issue was that absolute urls would refer to th
 
 On Mac OS you need to create backup files when you run `sed` to preserve the integrity of the filesystem or something. Eventually I got the following to work.
 
-    find ./public -name "*.html" -type f -exec sed -i '.bak' 's/lsff\.test/archive\.shortfilms\.org\.uk/gI' {} \;
+```bash
+find ./public -name "*.html" -type f -exec sed -i '.bak' 's/lsff\.test/archive\.shortfilms\.org\.uk/gI' {} \;
+```
 
 Great! I could now generate a fully working static reproduction of the site 🙌
 
@@ -66,10 +70,12 @@ The interesting outcome was that now the generated files were being stored in a 
 
 I noticed a couple of oversights, like needing to empty the `/public` directory before running `wget` so that pages I wanted removed didn't remain. Although I could add the `.bak` files I was generating to `.gitignore` it added a lot of noise to the file explorer so I decided to clean those up on each run too. In the end I had a `build.sh` file I could run that looked like this:
 
-    rm -rf ./public
-    wget -mpckEnH -P ./public https://lsff.test
-    find ./public -name "*.html" -type f -exec sed -i '.bak' 's/lsff\.test/archive\.shortfilms\.org\.uk/gI' {} \;
-    find ./public -name "*.bak" -type f -delete
+```bash
+rm -rf ./public
+wget -mpckEnH -P ./public https://lsff.test
+find ./public -name "*.html" -type f -exec sed -i '.bak' 's/lsff\.test/archive\.shortfilms\.org\.uk/gI' {} \;
+find ./public -name "*.bak" -type f -delete
+```
 
 ### Deploying to Netlify
 

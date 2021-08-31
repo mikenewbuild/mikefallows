@@ -47,7 +47,7 @@ I use [Adobe](https://adobe.com/) CS for the bulk of my design work. InDesign an
 - [FontExplorer X](https://www.fontexplorerx.com/) for font management
 - [Homebrew](https://brew.sh/) for mac installs
 - [Mimestream](https://mimestream.com/) for email
-- [NordVPN](https://nordvpn.com/) for geoloction spoofing
+- [NordVPN](https://nordvpn.com/) for geolocation spoofing
 - [Notion](https://www.notion.so/) for note taking
 - [Rocket](https://matthewpalmer.net/rocket/) for emojis
 - [Sizzy](https://sizzy.co/) for responsive design

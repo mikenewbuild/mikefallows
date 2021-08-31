@@ -49,25 +49,31 @@ For the simplest set up you can just run esbuild from the command line without t
 
 Here's a typical set up when converting a theme from CodeKit. My file structure typically looks like this:
 
-    assets/
-    ...
-    src/
-    ├─ scripts/
-    │  ├─ modules/
-    │  ├─ theme.js
-    ├─ styles/
-    │  ├─ modules/
-    │  ├─ theme.scss
+```text
+assets/
+...
+src/
+├─ scripts/
+│  ├─ modules/
+│  ├─ theme.js
+├─ styles/
+│  ├─ modules/
+│  ├─ theme.scss
+```
 
 The only thing I would need to change is to import styles at the top of  `src/scripts/theme.js`
 
-    import '../scss/theme.scss';
+```js
+import '../scss/theme.scss';
+```
 
 ### Install
 
 I can install esbuild and a plugin to compile `.scss` files as npm packages via the command:
 
-`npm i esbuild esbuild-sass-plugin --save-dev`
+```bash
+$ npm i esbuild esbuild-sass-plugin --save-dev
+```
 
 As esbuild relies on module imports `"type": "module"` needs to be present in the `package.json` file.
 
@@ -75,35 +81,39 @@ As esbuild relies on module imports `"type": "module"` needs to be present in th
 
 Teh convention is to set up a build file as `esbuild.config.js`. The example below takes the `theme.js` file as the entry point, and compiles the minified output to the `assets` directory in a format for browsers that support the es2018 syntax. This allows for some sloghtly older versions of browsers to be supported, but not legacy versions like IE11 which I no longer actively support.
 
-    import esbuild from 'esbuild'
-    import { sassPlugin } from 'esbuild-sass-plugin'
+```js
+import esbuild from 'esbuild'
+import { sassPlugin } from 'esbuild-sass-plugin'
 
-    esbuild.build({
-      entryPoints: {
-        theme: 'src/scripts/theme.js',
-      },
-      bundle: true,
-      outdir: 'assets',
-      target: ['es2018'],
-      plugins: [sassPlugin()],
-      minify: true,
-      watch: true,
-    }).then(() => {
-      console.log('Watching files...')
-    }).catch((e) => console.error(e.message))
+esbuild.build({
+  entryPoints: {
+    theme: 'src/scripts/theme.js',
+  },
+  bundle: true,
+  outdir: 'assets',
+  target: ['es2018'],
+  plugins: [sassPlugin()],
+  minify: true,
+  watch: true,
+}).then(() => {
+  console.log('Watching files...')
+}).catch((e) => console.error(e.message))
+```
 
 Running `node esbuild.config.js` will bundle the files to the assets folder and watch for any changes to imported files. I usually add that to a "start" script so a boilerplate `package.json` might look like this.
 
-    {
-      "devDependencies": {
-        "esbuild": "^0.12.15",
-        "esbuild-sass-plugin": "^1.4.8"
-      },
-      "scripts": {
-        "start": "node esbuild.config.js"
-      },
-      "type": "module"
-    }
+```json
+{
+  "devDependencies": {
+    "esbuild": "^0.12.15",
+    "esbuild-sass-plugin": "^1.4.8"
+  },
+  "scripts": {
+    "start": "node esbuild.config.js"
+  },
+  "type": "module"
+}
+```
 
 ### Next steps
 

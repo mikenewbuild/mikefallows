@@ -32,7 +32,9 @@ This was my first experience setting up Jest in a project and credit to the main
 
 I installed Jest with the command:
 
-`npm install --save-dev jest`
+```bash
+$ npm i jest --save-dev
+```
 
 Now any files ending `.test.js` will be treated as a test when running `jest` from the root of the project.
 
@@ -42,7 +44,7 @@ You can also keep all your files in a dedicated test folder, which I would typic
 
 The first snag I hit was using import statements in my tests. I wanted to use imports as I'm [in the future](/posts/shopify-theme-development-with-esbuild/) now. At the time of writing this is only supported as an [experimental feature in Jest,](https://jestjs.io/docs/ecmascript-modules) but as I'm not planning to do anything crazy in my tests it has worked fine for me. It does mean adding a flag to the command, so it's easier to add to an npm script:
 
-```js
+```json
 {
   scripts: {
     "test": "node --experimental-vm-modules node_modules/.bin/jest"
@@ -124,7 +126,7 @@ function _$$(selector, scope = document) {
 }
 ```
 
-Of course, with Jest it's east to test this functionality too!
+Of course, with Jest it's easy to test this functionality too!
 
 ```js
 test('_$ can select an element', () => {
@@ -148,6 +150,6 @@ I often find that making code easier to test improves the code itself.
 
 ### Next steps
 
-With these tests in place I can now take steps towards a CI/CD pipeline which will allow me to run tests automatically when merging new features or fixes. This will reduce both the chances of regressions being introduced, as well as the time spent testing manually. 
+With these tests in place I can now take steps towards a CI/CD pipeline which will allow me to run tests automatically when merging new features or fixes. This will reduce both the chances of regressions being introduced, as well as the time spent testing manually.
 
 For now, I'm just happy to be able to write tests easily and get super quick feedback.
