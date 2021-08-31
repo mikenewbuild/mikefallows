@@ -6,6 +6,7 @@
   --navy: #17050F;
   --blue: #082840;
   --white: #fff;
+  --font-mono: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
 }
 
 /* Global stylesheet */
@@ -18,8 +19,6 @@ body {
   padding: 0;
   margin: 0 auto;
   font-family: -apple-system, system-ui, sans-serif;
-  color: var(--darkgray);
-  background-color: var(--white);
 }
 
 p:last-child {
@@ -38,12 +37,7 @@ p,
 }
 
 a[href] {
-  color: var(--blue);
   text-decoration: underline;
-}
-
-a[href]:visited {
-  color: var(--navy);
 }
 
 main {
@@ -75,38 +69,20 @@ table th {
 
 pre,
 code {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-  line-height: 1.5;
-}
-
-pre {
-  font-size: 14px;
-  line-height: 1.375;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
-  tab-size: 2;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-  padding: 1em;
-  margin: .5em 0;
-  background-color: #f6f6f6;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
 }
 
 code {
   word-break: break-word;
-  font-size: 0.8125em;
+  font-size: 0.8125rem;
 }
+
 code[class*="language-"],
 pre[class*="language-"] {
   font-size: 0.8125rem;
 }
+
 .highlight-line {
   display: block;
   padding: 0.125em 1em;
@@ -149,9 +125,7 @@ pre[class*="language-"] {
   padding: 0 1rem;
   float: left;
   margin: 1rem 0;
-  /* 16px /16 */
   font-size: 1em;
-  /* 16px /16 */
 }
 
 .home :link:not(:hover) {
@@ -204,9 +178,7 @@ pre[class*="language-"] {
 
 .postlist-date,
 .postlist-item:before {
-  font-size: 0.8125em;
-  /* 13px /16 */
-  color: var(--darkgray);
+  font-size: 0.8125rem;
 }
 
 .postlist-date {
@@ -227,7 +199,6 @@ pre[class*="language-"] {
 
 .tmpl-home .postlist-link {
   font-size: 1.1875em;
-  /* 19px /16 */
   font-weight: 700;
 }
 
@@ -244,7 +215,6 @@ pre[class*="language-"] {
   /* 1px 4px /11 */
   margin-left: 0.8em;
   /* 8px /10 */
-  color: var(--darkgray);
   border: 1px solid var(--gray);
   border-radius: 0.25em;
   /* 3px /12 */
@@ -270,8 +240,8 @@ a[href].post-tag:focus {
 /* Warning */
 .warning {
   background-color: #ffc;
+  color: #669;
   padding: 1em 0.625em;
-  /* 16px 10px /16 */
 }
 
 .warning ol:only-child {
