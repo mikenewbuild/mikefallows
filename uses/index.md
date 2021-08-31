@@ -1,7 +1,7 @@
 ---
-layout: layouts/post.njk
+layout: layouts/page.njk
 title: Uses
-templateClass: tmpl-post
+templateClass: tmpl-page
 eleventyNavigation:
   key: Uses
   order: 4

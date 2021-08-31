@@ -1,13 +1,13 @@
 ---
-layout: layouts/post.njk
-title: About Me
-templateClass: tmpl-post
+layout: layouts/page.njk
+title: About
+templateClass: tmpl-page
 eleventyNavigation:
-  key: About Me
+  key: About
   order: 3
 
 ---
-I'm Mike. I like websites and I think the internet is magic. 
+I'm Mike. I like websites and I think the internet is magic.
 
 I founded [Newbuild Studio](https://newbuild.studio/) as a practice for my technical e-commerce consulting. It grew out of nearly 20 years of working as a designer and web developer for the retail, music and fashion industry.
 
