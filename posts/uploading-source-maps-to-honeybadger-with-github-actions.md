@@ -38,6 +38,8 @@ I clumsily added the Action via Github's web interface, and after a couple of fa
 
 The final action looked like this:
 
+{% raw %}
+
 ```yaml
 on:
   push:
@@ -60,11 +62,13 @@ jobs:
     - name: Upload source maps to Honeybadger
       uses: honeybadger-io/github-upload-sourcemap-action@master
       with:
-        api_key: $\{\{ secrets.HONEYBADGER_API_KEY \}\}
-        minified_url: $\{\{ secrets.PRODUCTION_URL \}\}/js/app.js
+        api_key: ${{ secrets.HONEYBADGER_API_KEY }}
+        minified_url: ${{ secrets.PRODUCTION_URL }}/js/app.js
         minified_file: public/js/app.js
         source_map: public/js/app.js.map
 ```
+{% endraw %}
+
 
 I stored the API key for the project as a Github Secret to keep it secure, and I also stored the URL of the production site to make this action more portable. This works for me as I try to enforce building my apps in a consistent way.
 
