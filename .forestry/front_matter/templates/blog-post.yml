@@ -35,4 +35,5 @@ pages:
 - posts/installing-perch-runway-via-composer.md
 - posts/quickly-export-shopify-data-to-a-csv.md
 - posts/shopify-theme-development-with-esbuild.md
+- posts/uploading-source-maps-to-honeybadger-with-github-actions.md
 - posts/using-jest-tests-to-replace-jquery-in-a-shopify-theme.md
