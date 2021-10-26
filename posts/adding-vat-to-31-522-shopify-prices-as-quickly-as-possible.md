@@ -34,7 +34,7 @@ However, some of my clients have been on Shopify for years, consistently publish
 
 Running that amount of data through a spreadsheet risked being slow and extremely error prone. Some prices needed to be preserved because they're not subject to VAT like books and magazines. A slight mistake could overwrite the data on over 8,000 products.
 
-I realised I could use my Shopify CSV Exporter app to optimise the process. I set up a development store and imported the existing catalogue to safely test against (it took over 12 hours for the initial import to complete!). This doubled to test any theme updates against too, so I could be confident that prices would be displayed properly after the switch - some of the code in that theme hadn't been touched for years.
+I realised I could use my [Shopify CSV Export](https://github.com/mikenewbuild/shopify-csv-export) app to optimise the process. I set up a development store and imported the existing catalogue to safely test against (it took over 12 hours for the initial import to complete!). This doubled to test any theme updates against too, so I could be confident that prices would be displayed properly after the switch - some of the code in that theme hadn't been touched for years.
 
 I then set about writing a script that would create an optimised CSV of just the minimal data needed to modify prices. Then I allowed for it to split the export into a backup of the existing prices (so I could reset if anything went wrong) and the new modified prices that we would want to import.
 
