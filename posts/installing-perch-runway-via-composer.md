@@ -5,7 +5,7 @@ layout: layouts/post.njk
 title: Installing Perch Runway via Composer
 description: How to manage Perch CMS as a Composer dependency
 tags:
-- PHP
+- php
 - composer
 
 ---

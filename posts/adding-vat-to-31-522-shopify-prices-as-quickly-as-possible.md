@@ -5,10 +5,10 @@ layout: layouts/post.njk
 title: Adding VAT to 31,522 Shopify prices as quickly as possible
 description: Yay! Shopify finally handles tax in a way that's useful for Europeans.
 tags:
-- Shopify
+- shopify
 
 ---
-I built my first Shopify theme in 2012, and after years of custom built PHP carts, and third party self-hosted products, Shopify was a breath of fresh air. No servers to worry about, a pleasant templating language in Liquid, great support and an API that gave you advanced capabilities when you needed it. 
+I built my first Shopify theme in 2012, and after years of custom built PHP carts, and third party self-hosted products, Shopify was a breath of fresh air. No servers to worry about, a pleasant templating language in Liquid, great support and an API that gave you advanced capabilities when you needed it.
 
 ## Shopify and the VAT problem
 
@@ -16,7 +16,7 @@ I really only had one major gripe: VAT support. Shopify took a very North Americ
 
 ## The hack
 
-The solution for years was to store all prices as their net value and customise themes to display a VAT calculated price. This is essentially a simple solution, but caused no amount of headaches when integrating Shopify with third parties or trying to build complex functionality, not to mention odd penny rounding issues. 
+The solution for years was to store all prices as their net value and customise themes to display a VAT calculated price. This is essentially a simple solution, but caused no amount of headaches when integrating Shopify with third parties or trying to build complex functionality, not to mention odd penny rounding issues.
 
  It meant I became quite the expert on all the ways that this approach could break, and spent a huge amount of my professional time working around these limitations.
 
@@ -34,7 +34,7 @@ However, some of my clients have been on Shopify for years, consistently publish
 
 Running that amount of data through a spreadsheet risked being slow and extremely error prone. Some prices needed to be preserved because they're not subject to VAT like books and magazines. A slight mistake could overwrite the data on over 8,000 products.
 
-I realised I could use my Shopify CSV Exporter app to optimise the process. I set up a development store and imported the existing catalogue to safely test against (it took over 12 hours for the initial import to complete!). This doubled to test any theme updates against too, so I could be confident that prices would be displayed properly after the switch - some of the code in that theme hadn't been touched for years. 
+I realised I could use my Shopify CSV Exporter app to optimise the process. I set up a development store and imported the existing catalogue to safely test against (it took over 12 hours for the initial import to complete!). This doubled to test any theme updates against too, so I could be confident that prices would be displayed properly after the switch - some of the code in that theme hadn't been touched for years.
 
 I then set about writing a script that would create an optimised CSV of just the minimal data needed to modify prices. Then I allowed for it to split the export into a backup of the existing prices (so I could reset if anything went wrong) and the new modified prices that we would want to import.
 
@@ -55,4 +55,4 @@ In the end, even with manual acceptance testing and some last minute decisions, 
 
 ## It pays to test
 
-Taking the time to set up the development store and run the tests may have saved hours of problems, and possibly even some disastrous outcomes. It gave me the chance to test some hypotheses, measure real-word examples and safely experiment with solutions without impacting the day-to-day business. Changing prices, and updating the entire catalogue has such a high risk of going wrong that perhaps the biggest benefit of tests is providing the confidence to be able to safely make the switch when the time came. 
+Taking the time to set up the development store and run the tests may have saved hours of problems, and possibly even some disastrous outcomes. It gave me the chance to test some hypotheses, measure real-word examples and safely experiment with solutions without impacting the day-to-day business. Changing prices, and updating the entire catalogue has such a high risk of going wrong that perhaps the biggest benefit of tests is providing the confidence to be able to safely make the switch when the time came.

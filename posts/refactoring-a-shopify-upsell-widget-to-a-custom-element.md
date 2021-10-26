@@ -6,8 +6,8 @@ title: Refactoring a Shopify upsell widget to a Custom Element
 description: Often shop owners want the ability to offer a small upsell that can be
   easily added to an order.
 tags:
-- Web Components
-- Shopify
+- web components
+- shopify
 
 ---
 Clients often ask me for a good way to upsell a product at the point of purchase. A good example might be a florist wanting to sell a vase with a bouquet. The main product they're selling is the bouquet, but it's probable that the customer may also like to add a vase to their order at the same time.
@@ -113,7 +113,7 @@ class CustomUpsellProduct extends HTMLElement {
     .catch(err => console.error(err))
     .finally(() => this.disableLoading());
   }
-  
+
   handleChange() {
     // set button state, etc
   }

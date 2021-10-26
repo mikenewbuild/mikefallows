@@ -6,8 +6,8 @@ title: Uploading Source Maps to Honeybadger with Github Actions
 description: Using Github Actions to update Honeybadger with the lates source maps
   for more useful error reporting.
 tags:
-- CI
-- Github Actions
+- ci
+- github actions
 
 ---
 I've been a happy user of [Honeybadger](https://www.honeybadger.io/) for well over a year now. For the small apps I've built it has often been enough to rely on users reporting bugs, as I usually have a direct line of contact with the user (AKA the client).
@@ -58,7 +58,7 @@ jobs:
 
     - name: Build production assets
       run: npm run production
-    
+
     - name: Upload source maps to Honeybadger
       uses: honeybadger-io/github-upload-sourcemap-action@master
       with:

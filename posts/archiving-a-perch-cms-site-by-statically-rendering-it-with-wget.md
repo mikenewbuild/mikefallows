@@ -5,7 +5,7 @@ layout: layouts/post.njk
 title: Archiving a Perch CMS site by statically rendering it with Wget
 description: Converting a LAMP site to statically hosted files with Wget.
 tags:
-- PHP
+- php
 
 ---
 I started working with the [London Short Film Festival](https://www.shortfilms.org.uk/) in 2007, creating the brochure and website for the 2008 festival that takes place in early January. If you've ever been involved in the organisation of festivals you'll know that due to the sheer number of parties involved that no amount of preparation can entirely prevent information arriving at the last minute.
