@@ -30,6 +30,7 @@ fields:
   label: layout
   default: layouts/post.njk
 pages:
+- posts/adding-vat-to-31-522-shopify-prices-as-quickly-as-possible.md
 - posts/an-interview-by-sam-waller-for-nativve.md
 - posts/archiving-a-perch-cms-site-by-statically-rendering-it-with-wget.md
 - posts/installing-perch-runway-via-composer.md
