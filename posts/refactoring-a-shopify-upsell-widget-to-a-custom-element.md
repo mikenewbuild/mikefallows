@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 date: 2021-10-26
 layout: layouts/post.njk
 title: Refactoring a Shopify upsell widget to a Custom Element
