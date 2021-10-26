@@ -135,8 +135,10 @@ class CustomUpsellProduct extends HTMLElement {
 customElements.define('custom-upsell-product', CustomUpsellProduct);
 ```
 
-There is so much complexity from the implementation that has now been removed. Each product has its own internal state eliminating the need to filter through elements, pass around ids, or traverse the DOM. In this case I've used accessors (`get`/`set`) to simplify the code further, and easily been able to use a more generic `updateCart` method but these are really just implementation details (although they were certainly easier to reach for in this version). 
+There is so much complexity from the implementation that has now been removed. Each product has its own internal state eliminating the need to filter through elements, pass around ids, or traverse the DOM. In this case I've used accessors (`get`/`set`) to simplify the code further, and easily been able to use a more generic `updateCart` method but these are really just implementation details (although they were certainly easier to reach for in this version).
 
 Just the fact that the line lengths are shorter, and a huge amount of visual noise has been removed form both the Javascript and the HTML makes it much easier to reason about. I'm confident that returning to this code 12 months from now to add a feature would be much less onerous than the original implementation too.
 
 I'm pretty pleased to discover how well Custom HTML Elements solve common problems with adding features to Shopify themes, and I'm looking forward to being able to use them more in future and even refactor older code towards a simpler – and ultimately more portable – implementation.
+
+Check out [my starter gist of a full implementation](https://gist.github.com/mikenewbuild/797eeb136b762ebc4a935d87bcfedf31) that can be modified and integrated into any Shopify theme.
