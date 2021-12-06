@@ -1,19 +1,23 @@
 {
   "scripts": {
-    "build": "eleventy",
-    "watch": "eleventy --watch",
+    "build": "ELEVENTY_PRODUCTION=true eleventy & npm run tailwind:build",
+    "watch": "eleventy --watch & npm run tailwind:watch",
     "serve": "eleventy --serve",
-    "start": "eleventy --serve",
+    "start": "eleventy --serve & npm run tailwind:watch",
     "debug": "DEBUG=* eleventy",
-    "forestry:preview": "eleventy --serve"
+    "forestry:preview": "eleventy --serve",
+    "tailwind:build": "NODE_ENV=production npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _site/css/styles.css --minify",
+    "tailwind:watch": "npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _site/css/styles.css --watch"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-navigation": "^0.1.6",
     "@11ty/eleventy-plugin-rss": "^1.1.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.0",
+    "@tailwindcss/typography": "^0.4.1",
     "luxon": "^1.26.0",
     "markdown-it": "^12.0.4",
-    "markdown-it-anchor": "^7.1.0"
+    "markdown-it-anchor": "^7.1.0",
+    "tailwindcss": "^2.2.19"
   }
 }

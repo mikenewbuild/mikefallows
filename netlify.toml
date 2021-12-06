@@ -1,5 +1,5 @@
 [build]
   publish = "_site"
-  command = "DEBUG=* eleventy"
+  command = "npm run build"
 [context.production.environment]
   ELEVENTY_ENV = "production" # excludes Forestry drafts from production build
