@@ -8,17 +8,31 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥶</text></svg>">
     <link rel="stylesheet" href="{{ '/css/styles.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/prism.css' | url }}">
+    <script defer src="https://unpkg.com/alpinejs@3.7.0/dist/cdn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+    <script>
+    window.toggleDarkMode = (value) => {
+      if (value) {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark'
+      } else {
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = ''
+      }
+    }
+
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        window.toggleDarkMode(true)
+      } else {
+        window.toggleDarkMode(false)
+      }
+    </script>
   </head>
   <body class="bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
-
-    <div class="p-4 text-xs text-center border-b-[1px]">
-      ⚠️ This site is a work in progress.
-    </div>
 
     <header class="flex justify-between px-3 py-6 text-sm font-medium">
       <div>
@@ -38,6 +52,28 @@
         </li>
       {%- endfor %}
       </ul>
+
+      <div
+        x-data="{ darkMode: localStorage.theme === 'dark' }"
+        x-init="$watch('darkMode', value => window.toggleDarkMode(value))">
+        <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
+        <button
+          type="button"
+          class="bg-gray-200 relative inline-flex flex-shrink-0 h-4 w-7 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          :class="{ 'bg-gray-800': darkMode }"
+          role="switch"
+          aria-checked="false"
+          @click="darkMode = !darkMode"
+        >
+          <span class="sr-only">Use setting</span>
+          <span
+            aria-hidden="true"
+            class="translate-x-0 pointer-events-none inline-block h-3 w-3 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+            :class="{ 'translate-x-3': darkMode, 'translate-x-0': !darkMode }"
+          ></span>
+        </button>
+      </div>
+
     </header>
 
     <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
