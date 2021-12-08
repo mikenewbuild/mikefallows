@@ -3,8 +3,7 @@ draft: false
 date: 2021-09-08
 layout: layouts/post.njk
 title: Uploading Source Maps to Honeybadger with Github Actions
-description: Using Github Actions to update Honeybadger with the lates source maps
-  for more useful error reporting.
+description: Using Github Actions for more useful error reporting.
 tags:
 - ci
 - github actions

@@ -3,7 +3,7 @@ draft: false
 date: 2021-08-16
 layout: layouts/post.njk
 title: Installing Perch Runway via Composer
-description: How to manage Perch CMS as a Composer dependency
+description: How to manage Perch CMS as a Composer dependency.
 tags:
 - php
 - composer
