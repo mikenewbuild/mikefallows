@@ -6,28 +6,48 @@
     <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ description or metadata.description }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥶</text></svg>">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-    <link rel="stylesheet" href="https://unpkg.com/prismjs@1.24.1/themes/prism.css">
-    <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/styles.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/prism.css' | url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
   </head>
-  <body>
-    <header>
-      <h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
+  <body class="bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
 
-      <ul class="nav">
+    <div class="p-4 text-xs text-center border-b-[1px]">
+      ⚠️ This site is a work in progress.
+    </div>
+
+    <header class="flex justify-between px-3 py-6 text-sm font-medium">
+      <div>
+        <h1 class="hidden"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
+        <p class="px-2 pb-1 leading-tight font-body italic bg-red-600 rounded-sm text-lg hover:bg-red-500">
+          <a class="text-gray-50" href="{{ '/' | url }}">mf</a>
+        </p>
+      </div>
+
+      <ul class="flex">
       {%- for entry in collections.all | eleventyNavigation %}
-        <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
+        <li class="mr-3">
+          <a
+            class="inline-block p-1 border-b-2 border-opacity-0 hover:border-opacity-100 {% if entry.url == page.url %} border-opacity-50{% endif %}"
+            href="{{ entry.url | url }}"
+          >{{ entry.title }}</a>
+        </li>
       {%- endfor %}
       </ul>
     </header>
 
     <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
-      <div class="warning">⚠️ This site is a work in progress.</div>
-      {{ content | safe }}
+      <div class="p-3 max-w-3xl mx-auto mt-12 min-h-screen">
+        {{ content | safe }}
+      </div>
     </main>
 
-    <footer></footer>
+    <footer class="px-3 py-6 mt-24 border-t-2 border-red-600">
+      <p class="py-1 px-2 text-xs">© 2021</p>
+    </footer>
   </body>
 </html>

@@ -2,6 +2,8 @@
 layout: layouts/base.njk
 templateClass: tmpl-page
 ---
-<h1>{{ title }}</h1>
+<h1 class="mb-12 font-medium">{{ title }}</h1>
 
-{{ content | safe }}
+<div class="prose dark:prose-dark mx-auto max-w-3xl mb-16 font-body">
+  {{ content | safe }}
+</div>

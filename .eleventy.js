@@ -19,7 +19,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
   eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy");
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("cccc, d LLLL yyyy");
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
@@ -71,15 +71,24 @@ module.exports = function(eleventyConfig) {
     return collection.getFilteredByGlob("posts/**/*.md");
   });
 
-  // Copy the `img` and `css` folders to the output
+  // Copy the `img` folder to the output
   eleventyConfig.addPassthroughCopy("img");
-  eleventyConfig.addPassthroughCopy("css");
+
+  // Copy the root css file to the output
+  eleventyConfig.addPassthroughCopy("css/index.css");
+  eleventyConfig.addPassthroughCopy({ './node_modules/prismjs/themes/prism.css': './css/prism.css' });
+
+  // Handle Tailwind files
+  eleventyConfig.addWatchTarget('./tailwind.config.js')
+  eleventyConfig.addWatchTarget('./css/tailwind.css')
+  eleventyConfig.addPassthroughCopy({ './_tmp/css/styles.css': './css/styles.css' })
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
     html: true,
     breaks: true,
-    linkify: true
+    linkify: true,
+    typographer:  true,
   }).use(markdownItAnchor, {
     permalink: true,
     permalinkClass: "direct-link",

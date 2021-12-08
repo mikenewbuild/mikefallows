@@ -1,12 +1,12 @@
-<ol reversed class="postlist" style="counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }}">
+<ol reversed class="my-4 font-medium">
 {% for post in postslist | reverse %}
-  <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-    <a href="{{ post.url | url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-    <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-    {% for tag in post.data.tags | filterTagList %}
-      {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-      <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-    {% endfor %}
+  <li class="mb-8{% if post.url == url %}{% endif %}">
+    <a class="block text-lg leading-tight max-w-sm mb-1" href="{{ post.url | url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+    <time class="block text-sm leading-tight opacity-70" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+    <div class="leading-tight text-sm opacity-70">
+      {% set tagslist = post.data.tags %}
+      {% include "tagslist.njk" %}
+    </div>
   </li>
 {% endfor %}
 </ol>

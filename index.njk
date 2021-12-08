@@ -1,14 +1,23 @@
 ---
 layout: layouts/home.njk
-eleventyNavigation:
-  key: Home
-  order: 1
 ---
-{% set maxPosts = collections.posts.length | min(5) %}
-<h1>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1>
 
-{% set postslist = collections.posts | head(-5) %}
+<div class="prose dark:prose-dark font-body mb-16">
+  <h2>Well, you’re here now</h2>
+  <p>Assorted notes on the internet about
+    {% for tag in collections.tagList -%}
+      {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+      <a href="{{ tagUrl | url }}">{{ tag }}</a>
+      {%- if loop.last !== true %}, {% endif -%}
+    {% endfor %}.
+  </p>
+  <hr>
+</div>
+
+<p class="mb-8 font-medium">Latest writing</p>
+
+{% set postslist = collections.posts | head(-6) %}
 {% set postslistCounter = collections.posts | length %}
 {% include "postslist.njk" %}
 
-<p>More posts can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>
+<p>More in <a class="underline" href="{{ '/posts/' | url }}">the archive</a>.</p>

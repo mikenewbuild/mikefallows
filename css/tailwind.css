@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  a.direct-link {
+    @apply opacity-50 no-underline text-lg font-medium;
+  }
+
+  .prose pre code {
+    font-size: 13px;
+    text-shadow: none;
+  }
+
+  .prose pre code .token {
+    background: none;
+  }
+}
