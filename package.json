@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "ELEVENTY_PRODUCTION=true eleventy & npm run tailwind:build",
+    "build": "ELEVENTY_PRODUCTION=true eleventy && npm run tailwind:build",
     "watch": "eleventy --watch & npm run tailwind:watch",
     "serve": "eleventy --serve",
     "start": "eleventy --serve & npm run tailwind:watch",
