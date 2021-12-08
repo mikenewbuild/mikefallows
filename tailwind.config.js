@@ -9,7 +9,7 @@ module.exports = {
       safelist: [],
     },
   },
-  darkMode: 'media',
+  darkMode: 'class',
   theme: {
     colors: {
       gray: colors.warmGray,
