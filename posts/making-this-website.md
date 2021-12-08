@@ -1,6 +1,6 @@
 ---
 draft: false
-title: Making this website.
+title: Making this website
 description: The process and decisions behind this site.
 date: 2021-07-11
 tags:
@@ -53,6 +53,8 @@ So this steered me towards static site generators. I already had some experience
 
 I had been aware of Eleventy being a relative newcomer and had read some glowing reviews, but still wasn't sure I "got it". Then I watched the creator, [Zach Leatherman](https://www.zachleat.com/), demo it and its simplicity frankly blew me away. It felt easy to grasp, very flexible and lightweight and I was excited to try it out. You could literally start your site from a single file with zero config. It also supported Liquid syntax which I use regularly on Shopify themes so the learning curve was much less steep.
 
-I could see that it was simple to deploy to Netlify (and others) via Git, and had support for Netlify CMS (which I'd used) as well as Forestry which I was interested to try out.
+I could see that it was simple to deploy to Netlify (and others) via Git, and had support for Netlify CMS (which I'd used) as well as Forestry which I was interested to try out.[^1]
 
 So [Eleventy](https://www.11ty.dev/) it is, with [Github](https://github.com/) and [Netlify](https://www.netlify.com/).
+
+[^1]: Update: I went with [Forestry](https://forestry.io/) and I can recommend it.
