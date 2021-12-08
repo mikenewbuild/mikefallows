@@ -5,6 +5,7 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const markdownItFootnote = require("markdown-it-footnote");
 
 module.exports = function(eleventyConfig) {
   // Add plugins
@@ -88,12 +89,25 @@ module.exports = function(eleventyConfig) {
     html: true,
     breaks: true,
     linkify: true,
-    typographer:  true,
+    typographer: true,
   }).use(markdownItAnchor, {
     permalink: true,
     permalinkClass: "direct-link",
     permalinkSymbol: "#"
-  });
+  }).use(markdownItFootnote);
+
+  // Customise footnotes
+  markdownLibrary.renderer.rules.footnote_ref = (tokens, idx, options, env, slf) => {
+    const id = slf.rules.footnote_anchor_name(tokens, idx, options, env, slf);
+    let refid = id;
+
+    if (tokens[idx].meta.subId > 0) {
+      refid += ':' + tokens[idx].meta.subId;
+    }
+
+    return `<sup class="footnote-ref"><a href="#fn${id}" id="fnref${refid}">${id}</a></sup>`;
+  }
+
   eleventyConfig.setLibrary("md", markdownLibrary);
 
   // Override Browsersync defaults (used only with --serve)

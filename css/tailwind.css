@@ -15,4 +15,24 @@
   .prose pre code .token {
     background: none;
   }
+
+  .prose .footnote-ref a {
+    @apply no-underline font-medium font-sans opacity-70;
+  }
+
+  .prose .footnote-ref a:hover {
+    @apply opacity-100;
+  }
+
+  .prose .footnote-item {
+    @apply font-sans text-sm opacity-70;
+  }
+
+  .prose .footnote-item:target {
+    @apply opacity-100;
+  }
+
+  .prose .footnote-item a.footnote-backref {
+    @apply font-body no-underline inline-block ml-2;
+  }
 }
