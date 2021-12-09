@@ -1,5 +1,5 @@
-const colors = require('tailwindcss/colors')
-const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   mode: 'jit',
@@ -13,7 +13,7 @@ module.exports = {
   theme: {
     colors: {
       gray: colors.warmGray,
-      ...colors
+      ...colors,
     },
     fontFamily: {
       sans: [defaultTheme.fontFamily.sans],
@@ -33,10 +33,10 @@ module.exports = {
               color: 'inherit',
             },
             'code::before': {
-              content: '""'
+              content: '""',
             },
             'code::after': {
-              content: '""'
+              content: '""',
             },
             code: {
               display: 'inline-block',
@@ -79,16 +79,16 @@ module.exports = {
               fontWeight: 400,
               fontSize: '1.25rem',
             },
-          }
+          },
         },
         dark: {
           css: {
             color: theme('colors.gray.200'),
             'code::before': {
-              content: '""'
+              content: '""',
             },
             'code::after': {
-              content: '""'
+              content: '""',
             },
             code: {
               backgroundColor: theme('colors.gray.700'),
@@ -97,18 +97,16 @@ module.exports = {
             pre: {
               backgroundColor: theme('colors.gray.700'),
               color: theme('colors.gray.200'),
-            }
-          }
-        }
-      })
+            },
+          },
+        },
+      }),
     },
   },
   variants: {
     extend: {
-      typography: ['dark']
-    }
+      typography: ['dark'],
+    },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-}
+  plugins: [require('@tailwindcss/typography')],
+};
