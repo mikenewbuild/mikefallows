@@ -26,7 +26,7 @@ In 2020 the festival took on a new director and due to the pandemic took place o
 
 ### Legacy LAMP sites
 
-Anyone who's spent time as a general web developer in the 2000s has probably stood up a few PHP sites that are still ticking along on an old shared server running on some now obsolete version of PHP. They're probably running fine (and I'm sure a lot are still generating a good profit!) but as always there are potential security risks running on versions of software that no longer receive security fixes, and the chances of being able to fix something on an a site rutting on some crusty version of PHP5 doesn't sound very appetising.
+Anyone who's spent time as a general web developer in the 2000s has probably stood up a few PHP sites that are still ticking along on an old shared server running on some now obsolete version of PHP. They're probably running fine (and I'm sure a lot are still generating a good profit!) but as always there are potential security risks running on versions of software that no longer receive security fixes, and the chances of being able to fix something on a site rotting on some crusty version of PHP5 doesn't sound very appetising.
 
 Even the site was running on PHP 7.4 (the latest at the time) I don't want the technical burden of having to maintain and pay for a server or applying security updates to the CMS software for a site that doesn't need to be dynamically rendered or even updated. By taking a static snapshot of the site and hosting the files (effectively for free) on a CDN, it would mean reducing the technical burden to essentially zero. It also means a lot less energy and overhead to run the site - it seemed like the responsible thing to do.
 
