@@ -1,31 +1,28 @@
 const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
+const fontSans = defaultTheme.fontFamily.sans.join(',');
+const fontSerif = `"Crimson Pro", ${defaultTheme.fontFamily.mono.join(',')}`;
+const fontMono = `${defaultTheme.fontFamily.mono.join(',')}`;
 
 module.exports = {
-  mode: 'jit',
-  purge: {
-    content: ['_site/**/*.html'],
-    options: {
-      safelist: [],
-    },
-  },
+  content: ['_site/**/*.html'],
   darkMode: 'class',
   theme: {
     colors: {
-      gray: colors.warmGray,
-      ...colors,
+      white: colors.white,
+      gray: colors.stone,
+      accent: colors.red,
     },
     fontFamily: {
-      sans: [defaultTheme.fontFamily.sans],
-      body: ['"Crimson Pro"', 'sans-serif'],
-      mono: [defaultTheme.fontFamily.mono],
+      sans: fontSans,
+      body: fontSerif,
+      mono: fontMono,
     },
     extend: {
-      typography: (theme) => ({
+      typography: {
         DEFAULT: {
           css: {
-            fontSize: '1.25rem',
-            color: theme('colors.gray.700'),
+            color: colors.stone[700],
             a: {
               color: 'inherit',
             },
@@ -42,48 +39,44 @@ module.exports = {
               display: 'inline-block',
               padding: '0 0.25em',
               fontWeight: 400,
-              backgroundColor: theme('colors.gray.200'),
-              fontSize: '0.625em',
+              backgroundColor: colors.stone[100],
             },
             pre: {
-              backgroundColor: theme('colors.gray.200'),
-              color: theme('colors.gray.800'),
+              backgroundColor: colors.stone[200],
+              color: colors.stone[700],
             },
             h1: {
               color: 'inherit',
-              fontFamily: theme('fontFamily.sans'),
+              fontFamily: fontSans,
               fontWeight: 500,
-              fontSize: '1.75rem',
             },
             h2: {
               color: 'inherit',
-              fontFamily: theme('fontFamily.sans'),
+              fontFamily: fontSans,
               fontWeight: 500,
-              fontSize: '1.5rem',
             },
             h3: {
               color: 'inherit',
-              fontFamily: theme('fontFamily.sans'),
+              fontFamily: fontSans,
               fontWeight: 400,
-              fontSize: '1.5rem',
             },
             h4: {
               color: 'inherit',
-              fontFamily: theme('fontFamily.sans'),
+              fontFamily: fontSans,
               fontWeight: 500,
-              fontSize: '1.25rem',
+              fontSize: '1.125em',
             },
             h5: {
               color: 'inherit',
-              fontFamily: theme('fontFamily.sans'),
+              fontFamily: fontSans,
               fontWeight: 400,
-              fontSize: '1.25rem',
+              fontSize: '1.125em',
             },
           },
         },
         dark: {
           css: {
-            color: theme('colors.gray.200'),
+            color: colors.stone[200],
             'code::before': {
               content: '""',
             },
@@ -91,16 +84,16 @@ module.exports = {
               content: '""',
             },
             code: {
-              backgroundColor: theme('colors.gray.700'),
-              color: theme('colors.gray.200'),
+              backgroundColor: colors.stone[800],
+              color: colors.stone[200],
             },
             pre: {
-              backgroundColor: theme('colors.gray.700'),
-              color: theme('colors.gray.200'),
+              backgroundColor: colors.stone[800],
+              color: colors.stone[200],
             },
           },
         },
-      }),
+      },
     },
   },
   variants: {

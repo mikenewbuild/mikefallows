@@ -84,7 +84,7 @@ module.exports = function (eleventyConfig) {
   // Copy the root css file to the output
   eleventyConfig.addPassthroughCopy('css/index.css');
   eleventyConfig.addPassthroughCopy({
-    './node_modules/prismjs/themes/prism.css': './css/prism.css',
+    './node_modules/prismjs/themes/prism-tomorrow.css': './css/prism.css',
   });
 
   // Handle Tailwind files

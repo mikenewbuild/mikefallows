@@ -7,7 +7,15 @@
     @apply opacity-50 no-underline text-lg font-medium;
   }
 
-  .prose pre code {
+  .prose code {
+    font-size: 0.75em;
+  }
+
+  .prose > pre {
+    @apply rounded-sm;
+  }
+
+  .prose > pre code {
     font-size: 13px;
     text-shadow: none;
   }
