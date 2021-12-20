@@ -14,9 +14,8 @@ templateClass: tmpl-post
   </div>
 </div>
 
-<div class="prose dark:prose-dark prose-lg lg:prose-xl mx-auto max-w-3xl py-16 font-body">
-  {{ content | safe }}
-</div>
+{% set content = content %}
+{% include "markdown.njk" %}
 
 {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
