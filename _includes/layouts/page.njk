@@ -4,6 +4,5 @@ templateClass: tmpl-page
 ---
 <h1 class="mb-12 font-medium">{{ title }}</h1>
 
-<div class="prose dark:prose-dark mx-auto max-w-3xl mb-16 font-body">
-  {{ content | safe }}
-</div>
+{% set content = content %}
+{% include "markdown.njk" %}

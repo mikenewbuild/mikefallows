@@ -6,7 +6,7 @@ title: An interview by Sam Waller for Nativve
 description: Long time collaborators, Nativve, interviewed me about websites for their
   blog.
 tags:
-- web
+- the web
 
 ---
 ## Building the information super-highway
