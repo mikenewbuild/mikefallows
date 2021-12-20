@@ -4,7 +4,7 @@ title: Making this website
 description: The process and decisions behind this site.
 date: 2021-07-11
 tags:
-  - web
+  - the web
 layout: layouts/post.njk
 ---
 I have planned to have a personal site for a long time and in this (my first!) post I'm going to cover how I selected the technology used to build this site and why.
