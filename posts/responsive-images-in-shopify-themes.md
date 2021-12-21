@@ -13,7 +13,7 @@ Performance is a useful metric for most cases on the web. None more so than in e
 
 One of the benefits of using a platform like Shopify is that you can leverage there scale and technical knowledge to access high-scale global performance for a fraction of the cost you would need in order to do it yourself. Although the operating costs of servers have been reducing in previous years, the complexity and pace of change has increased. As someone that would just about describe themselves as a full-stack[^1] developer, I feel like I offer my clients more value with my frontend expertise than backend.
 
-This post covers best practices for handling responsive images when you have access to the `image` object in the theme. In some cases you may only have the url of the image on Shopify's CDN (typically if you're adding images into the body of the rich text editor). In those cases, things get a bit hairier, but I hope to cover that in a later post. 
+This post covers best practices for handling responsive images when you have access to the `image` object in the theme. In some cases you may only have the url of the image on Shopify's CDN (typically if you're adding images into the body of the rich text editor). In those cases, things get a bit hairier, but I hope to cover that in a later post.
 
 ## Legacy solution
 
@@ -100,7 +100,7 @@ Output:
 
 The genrated image tag includes some good defaults for sizing the image based on the original image size. These can be overriden if you need to fine tune the output.
 
-You can also pass other attributes to the `img_tag` filter, such as `alt` tags, `class` contents or maybe hooks like `data` attributes for scripts. You would pass an `alt` tag like this: 
+You can also pass other attributes to the `img_tag` filter, such as `alt` tags, `class` contents or maybe hooks like `data` attributes for scripts. You would pass an `alt` tag like this:
 
 {% raw %}
 ```liquid
@@ -108,7 +108,7 @@ You can also pass other attributes to the `img_tag` filter, such as `alt` tags, 
 ```
 {% endraw %}
 
-## Good perfromance optimisations
+## Good performance optimisations
 
 You're already getting some good performance benefits from using `srcset` on large images, but what if you wanted to add that snazzy lazy loading feature? Easy:
 
@@ -118,7 +118,7 @@ You're already getting some good performance benefits from using `srcset` on lar
 ```
 {% endraw %}
 
-There is apparently a caveat to using the `loading="lazy"` attribute, in that it can potentially have a _negative_ performance impact if it is used on images that are already within the browser viewport on load. Therefore it's advised that you only use it on images lower down on the page. 
+There is apparently a caveat to using the `loading="lazy"` attribute, in that it can potentially have a _negative_ performance impact if it is used on images that are already within the browser viewport on load. Therefore it's advised that you only use it on images lower down on the page.
 
 However, for key images it may also be useful to prioritise the loading of those images to reduce layout shift, and display content to the visitor faster. You can do that by settinga `preload` attribute on the `img_tag` filter with a value of `true`. Behind the scenes, Shopify will send a `Link` header in the response to the browser with a `rel` attribute of `preload` that contains the relevant `srcset` and `sizes` values. That case would look something like this:
 
