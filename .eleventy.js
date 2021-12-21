@@ -64,19 +64,23 @@ module.exports = function (eleventyConfig) {
 
   const now = new Date();
 
-  const publishedPosts = (post) => post.date <= now && !post.data.draft;
+  const publishedPost = (post) => post.date <= now && !post.data.draft;
+
+  function publishedPosts(posts) {
+    // Hide unpublished posts in production
+    if (process.env.ELEVENTY_ENV === 'production') {
+      return posts.filter(publishedPost);
+    }
+    return posts;
+  }
 
   // Create an array of all posts
   eleventyConfig.addCollection('posts', (collection) => {
-    // Hide unpublished posts in production
-    if (process.env.ELEVENTY_ENV === 'production') {
-      return collection
-        .getFilteredByGlob('posts/**/*.md')
-        .filter(publishedPosts);
-    }
-
-    return collection.getFilteredByGlob('posts/**/*.md');
+    const posts = collection.getFilteredByGlob('posts/**/*.md');
+    return publishedPosts(posts);
   });
+
+  eleventyConfig.addFilter('publishedPosts', publishedPosts);
 
   // Copy the `img` folder to the output
   eleventyConfig.addPassthroughCopy('img');
