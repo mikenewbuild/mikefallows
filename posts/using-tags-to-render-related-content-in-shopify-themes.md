@@ -14,7 +14,7 @@ This latest combination has opened up a native way to build rich templates witho
 
 ## Benefits of tags
 
-The big benefit I see of using tags is how well they are already supported in Shopify's admin. They are exposed in the admin when editing resources, it's easy to group resources by tag and either add or remove tags in bulk. It's very easy for a store owner to manipulate tags, or find and change resources with a given tag.
+The big benefit I see of using tags is how well they are already supported in Shopify's admin. They are already exposed in the admin when editing resources, it's possible to group resources by tag and either add or remove tags in bulk making it easy for a store owner to manipulate tags, or find and change resources with a given tag.
 
 The only real downsides are the lack of tags on resources like collections or pages. But most use cases I've encountered have applied to products and articles anyway.
 
@@ -22,7 +22,7 @@ The only real downsides are the lack of tags on resources like collections or pa
 
 By defining a structure for your tags, it's possible to use them as a type of key-value store. I tend do this by defining a separator for namespace, key and value. eg. if the separator was `:` then a tag might follow the format `namespace:key:value`.
 
-Using that structure means that within liquid we can look for tags with the given namespace, or namespace and key, then extract the value. Let's say we want to be able to associate a related collection with a product. If our namespace is `theme` and our `key` were `related-collection` and our value was the handle of the collection we wanted to identify, then a tag might look like `theme:related-collection:bestsellers`.
+Using that structure means that within liquid we can look for tags with the given namespace, or namespace and key, then extract the value. Let's say we want to be able to associate a related collection with a product. If our namespace were `theme` and our `key` were `related-collection` and the value could be the handle of the collection we wanted to identify, then a tag might look like `theme:related-collection:bestsellers`.
 
 If that tag was assigned to an article then in a template with access to the `article` object we could acccess the collection like this:
 
@@ -67,8 +67,8 @@ Here's a simple example of excluding tags by detecting the presence of the names
 
 ## Use cases
 
-As well as the aforementioned feature of allowing shop owners to associate a group of products with an article. Other use cases have included storing rich content in a single blog post or page, and then associating that with several products. This could be videos, animation or a gallery of images that can then be displayed on multiple product pages, without the need to duplicate the content, or update it on each individual product.
+As well as the ability to associate a group of products with an article, other use cases Ive found have included storing rich content in a single blog post or page, and then associating that with several products. This could be videos, animation or a gallery of images that can then be displayed on multiple product pages, without the need to duplicate the content, or update it on each individual product.
 
 The value doesn't need to be a handle either, it can be used to store meaningful strings like a colour, or a date that can be used in the layout. You could then use those to define the colour of elements on the page, or a countdown timer.
 
-While OS2 only natively supports metafield management on products, but not articles it's still a handy trick for managing dynamic content in a layout.
+While OS2 only natively supports metafield management on products, but not articles it's still a handy trick for managing dynamic content in a layout without having to reach for a third-party app.
