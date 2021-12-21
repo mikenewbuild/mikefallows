@@ -19,19 +19,23 @@ Before the `picture` element, `srcset` and `loading="lazy"` attibutes had enough
 
 This was possible due to Shopify's CDN that allowed you to store a large image and fetch the same image at a given size by appending certain values to the filename. For example a large image (2000&multi;2000px) `arthur.jpg` could be scaled down to 100&multi;100px by requesting `arthur_100x.jpg` or in liquid:
 
+{% raw %}
 ```liquid
 {{ settings.banner | image_url: '100x' }}
 // https://cdn.shopify.com/full/path/to/arthur_100x.jpg
 ```
+{% endraw %}
 
-This meant that even with significant design changes, there was no need to worry about replacing existing images (as long as the originals were stored at a large enough size). Later Shopify added options that added more features to the CDN like the ability to `crop` images or convert images to the progressive jpeg format (`pjpg`), which was superceded by more modern formats like `webp`. 
+This meant that even with significant design changes, there was no need to worry about replacing existing images (as long as the originals were stored at a large enough size). Later Shopify added options that added more features to the CDN like the ability to `crop` images or convert images to the progressive jpeg format (`pjpg`), which was superceded by more modern formats like `webp`.
 
 Later Shopify made it possible to request image transformations by appending query parameters rather than by mutating the filename itself. For example `arthur_100x.jpg` could be requested instead with `arthur.jpg?width=100`.
 
+{% raw %}
 ```liquid
 {{ settings.banner | image_url: width: 100 }}
 // Outputs: //cdn.shopify.com/full/path/to/arthur.jpg?width=100
 ```
+{% endraw %}
 
 This makes programmatically generating image urls (for example in JavaScript) easier, because it doesn't rely on a regular expression to check whether the passed filename already includes an image transformation eg. `arthur_480x.jpg` that needs to be accounted for.
 
@@ -48,8 +52,9 @@ Two things have largely removed the need for javascript solutions at all. The fi
 
 In a template, a responsive image might be constructed like this:
 
+{% raw %}
 ```liquid
-<img 
+<img
     src="{{ settings.banner | image_url: width: 2000 }}"
     srcset="{{ settings.banner | image_url: width: 320 }} 320w,
       		{{ settings.banner | image_url: width: 640 }} 640w,
@@ -60,17 +65,19 @@ In a template, a responsive image might be constructed like this:
     loading="lazy"
 />
 ```
+{% endraw %}
 
 There are suprisingly few places that you need to define image outputs in a theme, but I would avoid some duplication by creating a generic snippet for images and passing the image object into it.
-
 
 ## The new `img_tag` filter
 
 Even more recently Shopify has introduced the `img_tag` filter which cleans up a lot of boilerplate and provides a consistent way to generate responsive images in theme code. Effectively you can generate the same thing with just the filter:
 
+{% raw %}
 ```liquid
-{{ settings.banner | img_url: width: 2000 | img_tag }} 
+{{ settings.banner | img_url: width: 2000 | img_tag }}
 ```
+{% endraw %}
 
 Output:
 
@@ -82,14 +89,12 @@ Output:
           //cdn.shopify.com/full/path/to/arthur.jpg?width=832 832w,
           //cdn.shopify.com/full/path/to/arthur.jpg?width=1200 1200w,
           //cdn.shopify.com/full/path/to/arthur.jpg?width=1920 1920w"
-  sizes="(min-width: 1100px) 535px, 
-         (min-width: 750px) calc((100vw - 130px) / 2), 
+  sizes="(min-width: 1100px) 535px,
+         (min-width: 750px) calc((100vw - 130px) / 2),
          calc((100vw - 50px) / 2)"
   width="2000"
   height="2007">
-
 ```
-
 
 The [new filter](https://shopify.dev/api/liquid/filters/html-filters#image_tag) in the docs
 

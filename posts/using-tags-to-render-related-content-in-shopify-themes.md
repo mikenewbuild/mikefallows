@@ -24,8 +24,9 @@ By defining a structure for your tags, it's possible to use them as a type of ke
 
 Using that structure means that within liquid we can look for tags with the given namespace, or namespace and key, then extract the value. Let's say we want to be able to associate a related collection with a product. If our namespace is `theme` and our `key` were `related-collection` and our value was the handle of the collection we wanted to identify, then a tag might look like `theme:related-collection:bestsellers`.
 
-If that tag was assigned to an article then in a template with access to the `article` object we could acccess the collection like this: 
+If that tag was assigned to an article then in a template with access to the `article` object we could acccess the collection like this:
 
+{% raw %}
 ```liquid
 {% liquid
 
@@ -42,6 +43,7 @@ assign related_collection = collections[handle]
 
 %}
 ```
+{% endraw %}
 
 You can then, for example, display the products from that collection below the article.
 
@@ -51,6 +53,7 @@ Although it's not necessary to use the namespace in the example above, in practi
 
 Here's a simple example of excluding tags by detecting the presence of the namespace:
 
+{% raw %}
 ```liquid
 <ul class="tags">
 {%- for tag in product.tags %}
@@ -60,6 +63,7 @@ Here's a simple example of excluding tags by detecting the presence of the names
 {% endfor %}
 </ul>
 ```
+{% endraw %}
 
 ## Use cases
 
