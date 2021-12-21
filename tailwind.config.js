@@ -1,6 +1,6 @@
 const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
-const fontSans = defaultTheme.fontFamily.sans.join(',');
+const fontSans = `"Mukta", ${defaultTheme.fontFamily.sans.join(',')}`;
 const fontSerif = `"Crimson Pro", ${defaultTheme.fontFamily.mono.join(',')}`;
 const fontMono = `${defaultTheme.fontFamily.mono.join(',')}`;
 
