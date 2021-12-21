@@ -13,7 +13,7 @@ tags:
 
 Shopify has a defined url structure, for example all product urls include `/products/`. If you're used to having complete control over your url structure, this can feel quite restrictive at first. I tend to quite like working within constraints and the consistent and immutable nature of the url structure can actually be a benefit.
 
-Besides anything else, it reduces the surface area for potential bikeshedding\[^1\] opportunities.
+Besides anything else, it reduces the surface area for potential bikeshedding[^1] opportunities.
 
 ## Reasons for hiding content
 
@@ -56,4 +56,4 @@ Another solution which can work when you have a simple on/off state is to rely o
 
 As with most solutions to tricky problems with a platform like Shopify, there are trade offs. Often it's a case of trying to predict which solution will be the least likely to fail, have the lowest maintenance burden and is within a client's technical abilities to manage. This tends to come down to experience, but I often look for options that will be the easiest to change in future, as with the introduction of the ability to customise the `robots.txt` file (like so many improvements) previously difficult to achieve features become much easier.
 
-\[^1\]: A metaphor to illuminate [Parkinson’s Law of Triviality](https://en.wikipedia.org/wiki/Parkinson%27s_Law_of_Triviality "w:Parkinson's Law of Triviality"). It describes the act of spending a majority of a project's time on trivial but easier-to-grasp details rather than more important and difficult to criticise tasks. The original example was focussing on the materials used to build the bike shed of a nuclear power plant.
+[^1]: A metaphor to illuminate [Parkinson’s Law of Triviality](https://en.wikipedia.org/wiki/Parkinson%27s_Law_of_Triviality "w:Parkinson's Law of Triviality"). It describes the act of spending a majority of a project's time on trivial but easier-to-grasp details rather than more important and difficult to criticise tasks. The original example was focussing on the materials used to build the bike shed of a nuclear power plant.
