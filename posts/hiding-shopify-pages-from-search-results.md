@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 date: 2021-12-20
 layout: layouts/post.njk
 title: 'Hiding Shopify pages from search results '
