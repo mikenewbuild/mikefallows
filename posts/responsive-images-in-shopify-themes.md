@@ -24,9 +24,13 @@ This was possible due to Shopify's CDN that allowed you to store a single large 
 {% raw %}
 ```liquid
 {{ settings.banner | image_url: '100x' }}
-// https://cdn.shopify.com/full/path/to/arthur_100x.jpg
+// Outputs: //cdn.shopify.com/full/path/to/arthur_100x.jpg
 ```
 {% endraw %}
+
+<figcaption>
+  Please note: I'm excluding the cache busting part of the query strings in my examples for simplicity's sake.
+</figcaption>
 
 This meant that even with significant design changes, there was no need to worry about replacing existing images (as long as the originals were already stored at a large enough size). Later Shopify introduced more features to the CDN like the ability to `crop` images or convert images to the progressive jpeg format (`pjpg`), which was then superceded by more modern formats like `webp`.
 
@@ -38,10 +42,6 @@ Later Shopify made it possible to request image transformations by appending que
 // Outputs: //cdn.shopify.com/full/path/to/arthur.jpg?width=100
 ```
 {% endraw %}
-
-<figcaption>
-  Please note: I'm excluding the cache busting part of the query strings in my examples for simplicity's sake.
-</figcaption>
 
 This also makes programmatically generating image urls (for example in JavaScript) easier, because it doesn't rely on a regular expression to check whether the passed filename already includes an image transformation eg. `arthur_480x.jpg` that needs to be accounted for. But we're not covering that here.
 
