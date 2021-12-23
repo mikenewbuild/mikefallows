@@ -5,6 +5,7 @@ templateClass: tmpl-page
 eleventyNavigation:
   key: Uses
   order: 4
+
 ---
 For posterity, a rundown of my setup and the current apps that I use in 2021.
 
@@ -36,22 +37,23 @@ I use [Adobe](https://adobe.com/) CS for the bulk of my design work. InDesign an
 
 ### Misc
 
-- [1Password](https://1password.com/) for password management
-- [Alfred](https://www.alfredapp.com/) for app switching
-- [Backblaze](https://www.backblaze.com/) for remote backups
-- [Brave](https://brave.com/) for my default browser
-- [Cushion](https://cushionapp.com/) for time tracking
-- [DBngin](https://dbngin.com/) for local database management
-- [Dropbox](https://www.dropbox.com/) for file storage
-- [Feedly](https://feedly.com/) for RSS
-- [FontExplorer X](https://www.fontexplorerx.com/) for font management
-- [Homebrew](https://brew.sh/) for mac installs
-- [Mimestream](https://mimestream.com/) for email
-- [NordVPN](https://nordvpn.com/) for geolocation spoofing
-- [Notion](https://www.notion.so/) for note taking
-- [Rocket](https://matthewpalmer.net/rocket/) for emojis
-- [Sizzy](https://sizzy.co/) for responsive design
-- [TablePlus](https://tableplus.com/) for database access
-- [Transmit](https://panic.com/transmit/) for S3 / SFTP
-- [Trello](https://trello.com/) for project management
-- [Vanilla](https://matthewpalmer.net/vanilla/) for taskbar management
+* [1Password](https://1password.com/) for password management
+* [Alfred](https://www.alfredapp.com/) for app switching
+* [Backblaze](https://www.backblaze.com/) for remote backups
+* [Brave](https://brave.com/) for my default browser
+* [Cushion](https://cushionapp.com/) for time tracking
+* [DBngin](https://dbngin.com/) for local database management
+* [Dropbox](https://www.dropbox.com/) for file storage
+* [Feedly](https://feedly.com/) for RSS
+* [FontExplorer X](https://www.fontexplorerx.com/) for font management
+* [Homebrew](https://brew.sh/) for mac installs
+* [Mimestream](https://mimestream.com/) for email
+* [NordVPN](https://nordvpn.com/) for geolocation spoofing
+* [Notion](https://www.notion.so/) for note taking
+* [Rocket](https://matthewpalmer.net/rocket/) for emojis
+* [Sizzy](https://sizzy.co/) for responsive design
+* [TablePlus](https://tableplus.com/) for database access
+* [Transmit](https://panic.com/transmit/) for S3 / SFTP
+* [Trello](https://trello.com/) for project management
+* [Vanilla](https://matthewpalmer.net/vanilla/) for taskbar management
+* [Xero](https://www.xero.com/) for financial accounting
