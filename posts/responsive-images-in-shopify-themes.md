@@ -17,7 +17,7 @@ Outside of video, images are likely to be the heaviest assets on a web page in t
 
 ## Legacy solution
 
-Before the `picture` element, `srcset` and `loading="lazy"` attibutes had enough cross browser support, detecting which images to load – and when – relied on using JavaScript. The technique I used allowed me to effectively query whether an image was within the browser's viewport, and based on the containing element, identify the most appropriate size of image to load in.
+Before the `picture` element, `srcset` and `loading="lazy"` attributes had enough cross browser support, detecting which images to load – and when – relied on using JavaScript. The technique I used allowed me to effectively query whether an image was within the browser's viewport, and based on the containing element, identify the most appropriate size of image to load in.
 
 This was possible due to Shopify's CDN that allowed you to store a single large image, but also fetch differnet versions of the image by adjusting certain values in the filename. For example a large (2000&times;2000px) image named `arthur.jpg` could be scaled down to 100&times;100px by requesting `arthur_100x.jpg`. In Liquid that could be acchieved with the `img_url` filter like so:
 
