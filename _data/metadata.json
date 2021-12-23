@@ -2,9 +2,9 @@
   "title": "Mike Fallows",
   "url": "https://mikefallows.com/",
   "language": "en-GB",
-  "description": "Personal blog.",
+  "description": "The personal website of a designer slash developer.",
   "feed": {
-    "subtitle": "Personal blog.",
+    "subtitle": "Full feed of posts on mikefallows.com",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "id": "https://mikefallows.com/"
