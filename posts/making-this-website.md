@@ -55,6 +55,6 @@ I had been aware of Eleventy being a relative newcomer and had read some glowing
 
 I could see that it was simple to deploy to Netlify (and others) via Git, and had support for Netlify CMS (which I'd used) as well as Forestry which I was interested to try out.[^1]
 
-So [Eleventy](https://www.11ty.dev/) it is, with [Github](https://github.com/) and [Netlify](https://www.netlify.com/).
+So [Eleventy](https://www.11ty.dev/) it is, with [GitHub](https://github.com/) and [Netlify](https://www.netlify.com/).
 
 [^1]: Update: I went with [Forestry](https://forestry.io/) and I can recommend it.

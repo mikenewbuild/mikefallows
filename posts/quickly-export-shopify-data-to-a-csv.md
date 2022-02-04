@@ -21,4 +21,4 @@ My end goal was to have a script where I could just set up some API access crede
 
 It made me realise how easy and accessible using Node is for running small tasks locally where previously I might have used a shell script or full blown app.
 
-You can check out and use my simple [Shopify CSV Exports](https://github.com/mikenewbuild/shopify-csv-export) script on Github.
+You can check out and use my simple [Shopify CSV Exports](https://github.com/mikenewbuild/shopify-csv-export) script on GitHub.

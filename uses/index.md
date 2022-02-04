@@ -25,7 +25,7 @@ I tend to use VS Code's integrated terminal most often, but for tasks not relate
 
 ### Git
 
-Most of my project's code is hosted on [Github](https://github.com/) and I use the [Github Desktop](https://desktop.github.com/) app for most tasks as it's still much quicker and less error prone for me to switch between projects and make commits than on the command line.
+Most of my project's code is hosted on [GitHub](https://github.com/) and I use the [GitHub Desktop](https://desktop.github.com/) app for most tasks as it's still much quicker and less error prone for me to switch between projects and make commits than on the command line.
 
 ### Adobe
 
