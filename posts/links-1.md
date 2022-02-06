@@ -5,7 +5,7 @@ layout: layouts/post.njk
 title: 'Links #1'
 description: Things I've recently enjoyed around the web.
 tags:
-- web
+- the web
 
 ---
 I've never really been good at keeping bookmarks, so I'm going to try tracking interesting things I've found on the web in posts for future me. I'm hoping this also provides some lower effort content that I can publish more easily, and get less hung up about writing "proper" posts. Not entirely uninspired by [Bruce Lawson's Reading Lists](https://brucelawson.co.uk/category/accessibility-web-standards/reading-list/).
