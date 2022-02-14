@@ -79,7 +79,7 @@ As esbuild relies on module imports `"type": "module"` needs to be present in th
 
 ### Build config
 
-Teh convention is to set up a build file as `esbuild.config.js`. The example below takes the `theme.js` file as the entry point, and compiles the minified output to the `assets` directory in a format for browsers that support the es2018 syntax. This allows for some sloghtly older versions of browsers to be supported, but not legacy versions like IE11 which I no longer actively support.
+The convention is to set up a build file as `esbuild.config.js`. The example below takes the `theme.js` file as the entry point, and compiles the minified output to the `assets` directory in a format for browsers that support the es2018 syntax. This allows for some slightly older versions of browsers to be supported, but not legacy versions like IE11 which I no longer actively support.
 
 ```js
 import esbuild from 'esbuild'
