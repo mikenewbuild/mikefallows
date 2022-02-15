@@ -23,7 +23,7 @@ With the features of modern CSS I probably wouldn't start a new project with Sas
 
 I previously used CodeKit to handle bundling across most projects, but I don't need the local server since Shopify introduced their CLI. The CLI provides a local server with HMR (Hot Module Replacement) but due to the nature of Shopify themes it relies on sending files to Shopify's servers, so it's worthwhile to optimise for bundle speed, and esbuild is _fast_.
 
-### Adding PostCSS and autoprefixer
+### Adding PostCSS and Autoprefixer
 
 Fortunately the [esbuild-sass-plugin](https://github.com/glromeo/esbuild-sass-plugin) package by Gianluca Romeo I was using makes integrating PostCSS super easy and [documents a simple example](https://github.com/glromeo/esbuild-sass-plugin#--postcss) that includes Autoprefixer.
 
