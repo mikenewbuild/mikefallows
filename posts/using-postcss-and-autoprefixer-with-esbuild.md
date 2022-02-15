@@ -61,7 +61,7 @@ I ended up adding `{from: undefined}` to the `process` config, just to quieten a
 
 The last part is specifying which browsers you want to support in order to define which vendor prefixes are required. There's a couple of ways to handle this, but I prefer to add a `browserslist` property to my `package.json` as it's pretty universally supported, and fairly explicit.
 
-The current default is to specify that usage is greater than 0.5% and at least the last 2 versions which makes sure most commonly used browser versions are included.
+The current default is to specify that usage is greater than 0.5% and at least the last two versions which makes sure most commonly used browser versions are included.
 
 ```json
 {
