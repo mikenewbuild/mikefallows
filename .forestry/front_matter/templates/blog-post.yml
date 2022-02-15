@@ -42,4 +42,5 @@ pages:
 - posts/shopify-theme-development-with-esbuild.md
 - posts/uploading-source-maps-to-honeybadger-with-github-actions.md
 - posts/using-jest-tests-to-replace-jquery-in-a-shopify-theme.md
+- posts/using-postcss-and-autoprefixer-with-esbuild.md
 - posts/using-tags-to-render-related-content-in-shopify-themes.md
