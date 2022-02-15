@@ -27,6 +27,7 @@ Using that structure means that within liquid we can look for tags with the give
 If that tag was assigned to an article then in a template with access to the `article` object we could acccess the collection like this:
 
 {% raw %}
+
 ```liquid
 {% liquid
 
@@ -43,6 +44,7 @@ assign related_collection = collections[handle]
 
 %}
 ```
+
 {% endraw %}
 
 You can then, for example, display the products from that collection below the article.
@@ -54,6 +56,7 @@ Although it's not necessary to use the namespace in the example above, in practi
 Here's a simple example of excluding tags by detecting the presence of the namespace:
 
 {% raw %}
+
 ```liquid
 <ul class="tags">
 {%- for tag in product.tags %}
@@ -63,11 +66,12 @@ Here's a simple example of excluding tags by detecting the presence of the names
 {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
 ## Use cases
 
-As well as the ability to associate a group of products with an article, other use cases Ive found have included storing rich content in a single blog post or page, and then associating that with several products. This could be videos, animation or a gallery of images that can then be displayed on multiple product pages, without the need to duplicate the content, or update it on each individual product.
+As well as the ability to associate a group of products with an article, other use cases I've found have included storing rich content in a single blog post or page, and then associating that with several products. This could be videos, animation or a gallery of images that can then be displayed on multiple product pages, without the need to duplicate the content, or update it on each individual product.
 
 The value doesn't need to be a handle either, it can be used to store meaningful strings like a colour, or a date that can be used in the layout. You could then use those to define the colour of elements on the page, or a countdown timer.
 
