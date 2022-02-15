@@ -8,7 +8,7 @@
     "eleventy:debug": "DEBUG=* eleventy",
     "eleventy:serve": "eleventy --serve",
     "eleventy:watch": "eleventy --watch",
-    "forestry:preview": "npm-run-all eleventy:build tailwind:build eleventy:serve",
+    "forestry:preview": "npm-run-all eleventy:build tailwind:build --parallel eleventy:serve tailwind:watch",
     "tailwind:build": "NODE_ENV=production npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _site/css/styles.css --minify",
     "tailwind:watch": "npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _site/css/styles.css --watch"
   },
