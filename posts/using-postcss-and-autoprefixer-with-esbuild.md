@@ -11,11 +11,11 @@ tags:
 ---
 In [a previous post](/posts/shopify-theme-development-with-esbuild/) I described how to use [esbuild](https://esbuild.github.io/) as a bundler for Shopify themes.
 
-In this post I want to document an additional step to use a tool called autoprefixer (a PostCSS plugin) which will automatically add browser vendor prefixes to your compiled CSS so that features are supported in older browsers.
+In this post I want to document an additional step to use a tool called [Autoprefixer](https://github.com/postcss/autoprefixer) (a [PostCSS plugin](https://github.com/postcss/postcss)) which will automatically add browser vendor prefixes to your compiled CSS so that features are supported in older browsers.
 
 ### Why vendor prefixes?
 
-Even in the days of modern "evergreen" browsers, users don't always upgrade in a timely fashion, or are on older versions of operating systems which, particularly in the case of Apple, mean they will be stuck on older versions of Safari. Vendor prefixes where initially a way of browsers shipping their own implementations of features which you could opt into before standards had been agreed. It's largely abandoned as an approach now. So, as well as being a good web citizen and making sites as accessible as possible, when it comes to ecommerce a broken looking site can reduce credibility, and ultimately sales.
+Even in the days of modern "evergreen" browsers, users don't always upgrade in a timely fashion, or are on older versions of operating systems which, particularly in the case of Apple, mean they will be stuck on older versions of Safari. [Vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) where initially a way of browsers shipping their own implementations of features which you could opt into before standards had been agreed. It's largely abandoned as an approach now. So, as well as being a good web citizen and making sites as accessible as possible, when it comes to ecommerce a broken looking site can reduce credibility, and ultimately sales.
 
 ### Why esbuild?
 
@@ -25,15 +25,13 @@ I previously used CodeKit to handle bundling across most projects, but I don't n
 
 ### Adding PostCSS and autoprefixer
 
-Fortunately the [esbuild-sass-plugin](https://github.com/glromeo/esbuild-sass-plugin) package by Gianluca Romeo I was using makes integrating PostCSS super easy and [documents a simple example](https://github.com/glromeo/esbuild-sass-plugin#--postcss) that includes autoprefixer.
+Fortunately the [esbuild-sass-plugin](https://github.com/glromeo/esbuild-sass-plugin) package by Gianluca Romeo I was using makes integrating PostCSS super easy and [documents a simple example](https://github.com/glromeo/esbuild-sass-plugin#--postcss) that includes Autoprefixer.
 
 First, install the necessary packages from the command line.
 
-```
-npm i -D postcss autoprefixer postcss-preset-env
-```
+    npm i -D postcss autoprefixer postcss-preset-env
 
-Then we can update our `esbuild.config.js` to use these plugins. 
+Then we can update our `esbuild.config.js` to use these plugins.
 
 ```js
 import esbuild from 'esbuild';
@@ -55,10 +53,9 @@ esbuild.build({
   ],
   //...
 });
-
 ```
 
-I ended up adding `{from: undefined}` to the `process` config, just to quieten a warning about the way the source maps are generated. It's true that with this config the source maps aren't really very useful, but I haven't taken the time to look into getting that set up correctly. For now, I'm just glad oto have the benefit of having the vendor prefixes added as part of the build.
+I ended up adding `{from: undefined}` to the `process` config, just to quieten a warning about the way the source maps are generated. It's true that with this config the source maps aren't really very useful, but I haven't taken the time to look into getting that set up correctly. For now, I'm just glad to have the benefit of having the vendor prefixes added as part of the build.
 
 ### Defining supported browsers
 
