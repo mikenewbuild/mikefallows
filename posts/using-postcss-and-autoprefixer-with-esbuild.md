@@ -72,4 +72,4 @@ The current default is to specify that usage is greater than 0.5% and at least t
 
 You can [learn more about Browserslist queries](https://github.com/browserslist/browserslist#queries).
 
-With that, my built CSS includes the necessary vendor prefixes. Plus I now also have a config that's easily portable between other Shopify themes where I'm bundling Sass and using the Shopify CLI.
+With that, my built CSS includes the necessary vendor prefixes. Plus I now also have a config that's easily portable between other Shopify themes ([Gist](https://gist.github.com/mikenewbuild/2eaddfb3f5bbca0d1d07908c61725daf)) where I'm bundling Sass and using the Shopify CLI.
