@@ -14,7 +14,7 @@ Shopify recently released a new CLI that makes it easier to develop themes local
 
 ## The old way: Theme Kit + CodeKit
 
-Previously I had developed a workflow using Bryan Jones' [CodeKit](https://codekitapp.com/) app and Shopify's old [Theme Kit](https://github.com/Shopify/themekit) tool. Codekit provides a GUI for bundling assets with great defaults without having to resort to using a complex [webpack](https://webpack.js.org/) config like Shopify's [Slate Theme](https://github.com/Shopify/slate). It also allowed me to set up a local server that could proxy to a specific development theme on the store.
+Previously I had developed a workflow using Bryan Jones' [CodeKit](https://codekitapp.com/) app and Shopify's old [Theme Kit](https://github.com/Shopify/themekit) tool. CodeKit provides a GUI for bundling assets with great defaults without having to resort to using a complex [webpack](https://webpack.js.org/) config like Shopify's [Slate Theme](https://github.com/Shopify/slate). It also allowed me to set up a local server that could proxy to a specific development theme on the store.
 
 Using Shopify's old Theme Kit tool, I could bundle and minify assets with CodeKit, have them synced to a development theme on Shopify and then CodeKit could refresh the page for me. This gave me the closest thing to an ideal local development setup. There were some niggles though – one drawback was that the bundling and syncing wasn't instant – so I would need to set a 2-3 second delay on the refresh to allow for the bundled files to be uploaded to Shopify. Kudos to CodeKit for including that functionality though.
 
@@ -117,6 +117,10 @@ Running `node esbuild.config.js` will bundle the files to the assets folder and 
 
 ### Next steps
 
-I now have a set up that allows me to organise my code in a way that suits me best. I can leverage the features of SASS and npm with instant browser updates, generate minified assets and see the results of my changes almost instantly in the browser.
+I now have a set up that allows me to organise my code in a way that suits me best. I can leverage the features of Sass and npm with instant browser updates, generate minified assets and see the results of my changes almost instantly in the browser.
 
-I'm still looking at ways to improve my process and I plan to introduce things like type safety, automated testing and code linting. I feel positive that this is all a step in the right direction 🚀.
+I'm still looking at ways to improve my process and I plan to introduce things like type safety, automated testing and code linting. I feel positive that this is all a step in the right direction.
+
+#### Update
+
+I have added a post on how to update your config to [automatically add vendor prefixes](/posts/using-postcss-and-autoprefixer-with-esbuild/) to the compiled CSS using PostCSS and the Autoprefixer plugin.
