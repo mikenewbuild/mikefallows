@@ -13,19 +13,15 @@ In [a previous post](/posts/shopify-theme-development-with-esbuild/) I described
 
 In this post I want to document an additional step to use a tool called [Autoprefixer](https://github.com/postcss/autoprefixer) (a [PostCSS plugin](https://github.com/postcss/postcss)) which will automatically add browser vendor prefixes to your compiled CSS so that features are supported in older browsers.
 
-### Why vendor prefixes?
+### Why add vendor prefixes?
 
-Even in the days of modern "evergreen" browsers, users don't always upgrade in a timely fashion, or are on older versions of operating systems which, particularly in the case of Apple, mean they will be stuck on older versions of Safari. [Vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) where initially a way of browsers shipping their own implementations of features which you could opt into before standards had been agreed. It's largely abandoned as an approach now. So, as well as being a good web citizen and making sites as accessible as possible, when it comes to ecommerce a broken looking site can reduce credibility, and ultimately sales.
+Even in the days of modern "evergreen" browsers, users don't always upgrade in a timely fashion, or are on older versions of operating systems which are limits certain versions of browsers (👋 Safari). [Vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) were initially a way for browsers to ship their own implementations of features which developers could opt into before standards had been agreed, but I think it's largely abandoned as an approach now. I don't want to keep track of which vendor prefixes I should include where but when it comes to e-commerce, a broken looking site can reduce credibility, and ultimately sales. 
 
-### Why esbuild?
-
-With the features of modern CSS I probably wouldn't start a new project with Sass, but I have a few existing projects that utilise it extensively. It would take a while to refactor away from Sass so I still need to convert my Sass to native CSS.
-
-I previously used CodeKit to handle bundling across most projects, but I don't need the local server since Shopify introduced their CLI. The CLI provides a local server with HMR (Hot Module Replacement) but due to the nature of Shopify themes it relies on sending files to Shopify's servers, so it's worthwhile to optimise for bundle speed, and esbuild is _fast_.
+Wouldn't it be nice if there was a tool that keeps track of which vendor prefixes I should still be including, and like, add them for me at build time. Could it please compile my old Sass files too? Really _fast_? Oh goody.
 
 ### Adding PostCSS and Autoprefixer
 
-Fortunately the [esbuild-sass-plugin](https://github.com/glromeo/esbuild-sass-plugin) package by Gianluca Romeo I was using makes integrating PostCSS super easy and [documents a simple example](https://github.com/glromeo/esbuild-sass-plugin#--postcss) that includes Autoprefixer.
+Fortunately, the [esbuild-sass-plugin](https://github.com/glromeo/esbuild-sass-plugin) package by Gianluca Romeo I was already using makes integrating PostCSS super easy and [documents a simple example](https://github.com/glromeo/esbuild-sass-plugin#--postcss) that includes Autoprefixer.
 
 First, install the necessary packages from the command line.
 
@@ -55,7 +51,9 @@ esbuild.build({
 });
 ```
 
-I ended up adding `{from: undefined}` to the `process` config, just to quieten a warning about the way the source maps are generated. It's true that with this config the source maps aren't really very useful, but I haven't taken the time to look into getting that set up correctly. For now, I'm just glad to have the benefit of having the vendor prefixes added as part of the build.
+I ended up adding `{from: undefined}` to the options of the `process` function, just to quieten a warning about the way the source maps are generated. It's true that with this config the source maps aren't really very useful, but I haven't taken the time to look into getting that set up correctly. For now, I'm just glad to have the benefit of having the vendor prefixes added as part of the build and a single entry point.
+
+I could probably improve this, if I felt the need/pain, by defining a separate config for CSS eg. an `esbuild.css.config.js` with just the rules for the CSS compilation and have the option to run those independently or in parallel. 
 
 ### Defining supported browsers
 
