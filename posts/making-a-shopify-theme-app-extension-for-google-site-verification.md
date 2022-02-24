@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 date: 2022-02-23
 layout: layouts/post.njk
 title: Making a Shopify Theme App Extension for Google Site Verification
@@ -11,7 +11,7 @@ tags:
 ---
 Given that I'm _all in_ on Shopify's OS2 themes, I've been looking for a way to experiment with building the recently introduced "app extensions" for themes. These extensions provide a way to add functionality to Shopify themes without the need to change the underlying theme code itself.
 
-Assuming you already have a Shopify Partner account and installed the [Shopify CLI](https://shopify.dev/apps/tools/cli) then it's incredibly simple to get started with theme app extensions. As a small project to get familiar with them, I set myself the task of creating an app that allows you to insert a tag to verify a site with Google. Although I tend to recommend verifying via DNS records, sometimes it's more suitable to include a meta tag in the `<head>` of the site. 
+Assuming you already have a Shopify Partner account and the [Shopify CLI](https://shopify.dev/apps/tools/cli) installed, then it's incredibly simple to get started with theme app extensions. As a small project to get familiar with them, I set myself the task of creating an app that allows you to insert a tag to verify a site with Google. Although I tend to recommend verifying via DNS records, sometimes it's more suitable to include a meta tag in the `<head>` of the site. 
 
 ## Theme app extension benefits
 
@@ -29,7 +29,7 @@ The tag in question is very simple and has the following format:
 
 I want to be able to have a theme block that allows adding the client's `UNIQUE_ID` as a setting in the theme's customisation UI, and once set rendering a valid tag in the `<head>` portion of the site.
 
-### Creating the app
+## Creating the app
 
 Extensions must be associated with an app so you need to create an app first if you don't have one set up already. The easiest way is to use the CLI:
 
