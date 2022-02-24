@@ -119,4 +119,4 @@ It’s worth mentioning that changing the filename of any of the extensions will
 
 You can only have one theme extension per app, but I'm not sure if there's a limit to the number of blocks it can have. I might want to be conservative with the number of blocks I created in a public app, but the blocks themselves might be more complex as a result. For custom extensions I might prefer to have more simpler blocks to make it easy to add new blocks, and make them more portable between clients too.
 
-Overall, I'm super impressed with the experience of creating my first app theme extension, and I intend to use it a lot as a tool to add theme customisations.
+Overall, I'm super impressed with the experience of creating my first theme app extension, and I intend to use it a lot as a tool to add theme customisations.
