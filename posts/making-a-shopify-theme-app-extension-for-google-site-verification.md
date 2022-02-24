@@ -3,8 +3,8 @@ draft: false
 date: 2022-02-23
 layout: layouts/post.njk
 title: Making a Shopify Theme App Extension for Google Site Verification
-description: Whipping up a quick Shopify app to take advantage of the new app theme
-  extension blocks.
+description: Whipping up a quick Shopify app to take advantage of the new theme app
+  extension feature.
 tags:
 - shopify
 
