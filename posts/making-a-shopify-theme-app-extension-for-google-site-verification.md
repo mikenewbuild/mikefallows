@@ -41,7 +41,7 @@ After running that command, you'll be asked to pick the type of app you want. I 
 
 That created an app and output a link to it in the Partner dashboard. It also provided a link to a page in the dashboard where I could install the theme in my chosen store. I didn’t do that though (yet).
 
-### Creating the extension
+## Creating the extension
 
 There are two types of [theme app extensions](https://shopify.dev/apps/online-store/theme-app-extensions/extensions-framework). Standard “App blocks” and “App embed blocks”. It’s the embed blocks that I’m interested in as they allow you to insert code into the `<head>` portion of the document. You can learn a bit more in Shopify's [Getting Started Guide](https://shopify.dev/apps/online-store/theme-app-extensions/getting-started). 
 
