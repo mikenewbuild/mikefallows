@@ -31,15 +31,15 @@ I want to be able to have a theme block that allows adding the client's `UNIQUE_
 
 ## Creating the app
 
-Extensions must be associated with an app so you need to create an app first if you don't have one set up already. The easiest way is to use the CLI:
+Extensions must be associated with an app so you need to create an app first if you don't have one set up already. The easiest way is to use the CLI's `app create` command. You can pick which starter template to work with, eg. Node, PHP, etc. I went for Node, but it's not particularly important because I'm not worried about creating any UI for the app right now.
 
 ```bash
-shopify app create
+shopify app create node
 ```
 
-After running that command, you'll be asked to pick the type of app you want. I went for Node, but it's not particularly important because I'm not worried about creating any UI for the app itself. Next I supplied a name for the app. I just picked something generic: 'Theme Blocks'. It will also ask you which type of app you want to create, for simplicity I picked 'Custom' which means it can only be installed on one specific store.
+Next I supplied a name for the app. I just picked something generic: 'Theme Blocks'. It will also ask you which type of app you want to create, for simplicity I picked 'Custom' which means it can only be installed on one specific store.
 
-That created an app and output a link to it in the Partner dashboard. It also provided a link to a page in the dashboard where I could install the theme in my chosen store. I didn’t do that though (yet).
+That created an app and output a link to it in the Partner dashboard. It also provided a link to a page in the dashboard where I could install the app in my chosen store. I didn’t do that though (yet).
 
 ## Creating the extension
 
