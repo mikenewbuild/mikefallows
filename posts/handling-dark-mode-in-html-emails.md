@@ -104,4 +104,4 @@ For this relatively simple template, I only had to generate one othe `mixin` fun
 
 Because the design was essentially black and white, it was easy to decide which colours needed swapping and what the alternative would be. Once you start getting into lighter colours the decision about the alternatives becomes a bit harder to decide, so testing and image generation can increase the workload, and accessibility concerns may require more attention.
 
-In the end I was pleased I managed to get an effective result with a relatively low number of lines of code. Better still, an appreciation of how much potential work would be involved in a more complicated design!
+In the end I was pleased I managed to get an effective result with a relatively low number of lines of code. Better still, I got an appreciation of how much potential work would be involved in a more complicated design!
