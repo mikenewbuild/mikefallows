@@ -10,11 +10,11 @@ tags:
 - email
 
 ---
-Recently I needed to customise a HTML email template written in [Pug](https://pugjs.org/). This was my first time using Pug and I was pleasantly surprised to find it intuitive and offering a few useful features to help organise some of your HTML into reusable components. Its terse syntax is also useful for email templates, as supporting current email clients (even in 2022!) means than you still need to work with deeply nested tables to achieve even the simplest of layouts.
+Recently I needed to customise a HTML email template written in [Pug](https://pugjs.org/). This was my first time using Pug and I was pleasantly surprised to find it intuitive and with a few useful features to help organise some reusable components. Its terse syntax is also handy for email templates, as supporting current email clients (even in 2022!) means than you still need to work with deeply nested tables to achieve even the simplest of layouts.
 
-Although CSS support in email is improving, you still need to account for a range of mail clients that are hard to test, so resources like [Can I email...](https://www.caniemail.com/) are invaluable to speed up the process of identifying which features are supported. For example, SVG support would make handling dark mode much easier by using a single image and defining the colours in CSS. Unfortunately, the support at this point is still lacking, so it does require creating multiple versions of images that you need inverting for your design.
+Although CSS support in email is improving, there are a range of mail clients that are hard to test, so resources like [Can I email...](https://www.caniemail.com/) are invaluable in helping identify which features are widely supported. For example, my first though was to use SVG and defining the colours in CSS. Unfortunately, the support at this point is still lacking, so it does require creating multiple versions of images that you need inverting for your design.
 
-I've noticed that some email clients (particulalry on mobile), will do their best to apply a dark theme to emails, and sometimes the results can be less than satisfactory. In this case, the company's branding was monochrome, so it afforded me an opportunity to easily adopt a dark mode alternative as the colour scheme was so simple. 
+I've noticed that some email clients (particularly on mobile), will do their best to apply a dark theme to emails, and sometimes the results can be less than satisfactory. In this case, the company's branding was monochrome, so it afforded me an opportunity to easily adopt a dark mode alternative as the colour scheme was so simple. 
 
 ## Declaring dark mode support
 
@@ -38,9 +38,11 @@ It's then possible to use a media query to detect the mode that the email is bei
 
 ## Providing alternative colours
 
-As a fallback for clients that may not support alternative colour schemes I set my light styles first, and then used the media query to override those styles for dark mode. Pug allows you to store values in a variable to be used later. Normally I would use CSS Variables (Custom Properties) but support for that is still patchy for emails. I created a set of variables for my default colours, and then a matching set of alternative inverted colours. This helped keep everything symmetrical and made it easier not to miss any elements that I needed to account for in dark mode.
+As a fallback for clients that may not support alternative colour schemes I set my light styles first, and then used the media query to override those styles for dark mode. Pug allows you to store values in a [variable](https://pugjs.org/language/interpolation.html) that can be interpolated into strings. Normally on the web I would use CSS Variables (Custom Properties) but support for that is still patchy for emails. 
 
-Here's a basic example declaring some default colours for the element with a class of `.document` that I used for the root of my email, and then decalring the inverted colours for dark mode.
+I created a set of variables for my "default" colours, and then a matching set of alternative "inverted" colours. This helped keep everything symmetrical and made it easier not to miss any elements that I needed to account for in dark mode.
+
+Here's a basic example declaring some default colours for the element with a class of `.document` that I used for the root of my email, and then declaring the inverted colours for dark mode.
 
 ```css
 .document {
