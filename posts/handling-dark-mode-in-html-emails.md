@@ -10,11 +10,11 @@ tags:
 - email
 
 ---
-Recently I needed to customise a HTML email template, written in [Pug](https://pugjs.org/). Although this was my first time using Pug, I was pleasantly surprised to find it quite intuitive, easy to read, and offering a few useful features to help organise some of your html into reusable components. Its terse syntax is also quite useful for email, as supporting current email clients mean than you still need to work with deeply nested tables to have any robust way of achieving even the simplest of layouts.
+Recently I needed to customise a HTML email template written in [Pug](https://pugjs.org/). This was my first time using Pug and I was pleasantly surprised to find it intuitive and offering a few useful features to help organise some of your HTML into reusable components. Its terse syntax is also useful for email templates, as supporting current email clients (even in 2022!) means than you still need to work with deeply nested tables to achieve even the simplest of layouts.
 
-Although CSS support in email is improving, you still need to account for a range of mail clients so resources like [Can I email...](https://www.caniemail.com/) are invaluable to speed up the process of identifying which features are supported. SVG support would make handling dark mode much easier, but alas the support at this point is still lacking, so it does require creating multiple versions of images that you need inverting for your design.
+Although CSS support in email is improving, you still need to account for a range of mail clients that are hard to test, so resources like [Can I email...](https://www.caniemail.com/) are invaluable to speed up the process of identifying which features are supported. For example, SVG support would make handling dark mode much easier by using a single image and defining the colours in CSS. Unfortunately, the support at this point is still lacking, so it does require creating multiple versions of images that you need inverting for your design.
 
-In this case, the company's branding was monochrome, so it afforded me an opportunity to easily adopt a dark mode alternative as the colour scheme was so simple. I've noticed that some email clients (particulalry on mobile), will do their best to apply a dark theme to emails, and sometimes the results can be less than satisfactory.
+I've noticed that some email clients (particulalry on mobile), will do their best to apply a dark theme to emails, and sometimes the results can be less than satisfactory. In this case, the company's branding was monochrome, so it afforded me an opportunity to easily adopt a dark mode alternative as the colour scheme was so simple. 
 
 ## Declaring dark mode support
 
@@ -32,7 +32,7 @@ It's then possible to use a media query to detect the mode that the email is bei
 
 ```css
 @media (prefers-color-scheme: dark) {
-  /* styles... */
+  /* styles for dark mode... */
 }
 ```
 
