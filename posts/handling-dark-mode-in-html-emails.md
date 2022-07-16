@@ -102,6 +102,6 @@ span.dark-mode-image {
 
 For this relatively simple template, I only had to generate one othe `mixin` function for a graphic element (an arrow) and handle some link colours. In this case the template was defaulting to system fonts. If it was using a custom font then it might be worth adjusting weights as light-on-dark text can often appear heavier than dark-on-light. 
 
-Because the design was essentially black and white, it was easy to decide which colours needed swapping and wht the alternative would be. Once you start getting into lighter colours the decision about what the alternative should be becomes a bit harder to decide, so testing and image generation can increase the workload, and accessibility concerns may require more attention.
+Because the design was essentially black and white, it was easy to decide which colours needed swapping and what the alternative would be. Once you start getting into lighter colours the decision about the alternatives becomes a bit harder to decide, so testing and image generation can increase the workload, and accessibility concerns may require more attention.
 
 In the end I was pleased I managed to get an effective result with a relatively low number of lines of code. Better still, an appreciation of how much potential work would be involved in a more complicated design!
