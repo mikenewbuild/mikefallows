@@ -1,6 +1,6 @@
 ---
 draft: false
-date: 2001-06-16
+date: 2022-07-16
 layout: layouts/post.njk
 title: Handling Dark Mode in HTML Emails
 description: Simple method to quickly handle switching colours and image in emails
