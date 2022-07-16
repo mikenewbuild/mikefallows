@@ -62,7 +62,7 @@ There are only some images that really needed to be switched for dark mode, and 
 
 The strategy I used to handle these was to wrap the light and dark versions of images in a `span` element with a class to identify which mode the image was supposed to appear in. I used the wrapping `span` to declare some width and height values which had the added bonus of keeping these graphic images sharp on high density screens.
 
-Using a Pug `mixin` you can create a function to return the HTML with both images - note the `span`with a class of `.light-mode-images` wraps `logo.png` and `.dark-mode-images` wraps `logo-inverted.png`. 
+Using a Pug [mixin](https://pugjs.org/language/mixins.html) you can create a function to return the HTML with both images - note the `span`with a class of `.light-mode-images` wraps `logo.png` and `.dark-mode-images` wraps `logo-inverted.png`. 
 
 
 ```js
