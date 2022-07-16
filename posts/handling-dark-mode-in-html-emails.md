@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 date: 2001-06-16
 layout: layouts/post.njk
 title: Handling Dark Mode in HTML Emails
@@ -43,7 +43,6 @@ As a fallback for clients that may not support alternative colour schemes I set 
 Here's a basic example declaring some default colours for the element with a class of `.document` that I used for the root of my email, and then decalring the inverted colours for dark mode.
 
 ```css
-
 .document {
   background-color: #{defaultBgColor};
   color: #{defaultTextColor};
@@ -55,7 +54,6 @@ Here's a basic example declaring some default colours for the element with a cla
     color: #{invertedTextColor} !important;
   }
 }
-
 ```
 
 ## Handling alternate images
@@ -67,15 +65,13 @@ The strategy I used to handle these was to wrap the light and dark versions of i
 Using a Pug `mixin` you can create a function to return the HTML with both images - note the `span`with a class of `.light-mode-images` wraps `logo.png` and `.dark-mode-images` wraps `logo-inverted.png`. 
 
 
-```pug
-
+```js
 mixin logo()
 
   span.light-mode-image(style='width:180px;height:64px;')
     img(src='#{assetUrl}/logo.png' alt='Acme' width='360' height='128')
   span.dark-mode-image(style='width:180px;height:64px;')
-    img(src='#{assetUrl}/logo-inverted.png' alt='Acme' width='360' height='128')
-    
+    img(src='#{assetUrl}/logo-inverted.png' alt='Acme' width='360' height='128')   
 ```
 
 Now we can use some generic CSS rules to handle the correct display of images by toggling between `display: block` and `display: none`.
