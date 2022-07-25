@@ -3,7 +3,7 @@ draft: false
 date: 2021-07-15
 layout: layouts/post.njk
 title: An interview by Sam Waller for Nativve
-description: Long time collaborators, Nativve, interviewed me about websites for their
+description: Long-time collaborators, Nativve, interviewed me about websites for their
   blog.
 tags:
 - the web

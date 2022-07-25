@@ -12,19 +12,19 @@ tags:
 ---
 I started building custom Shopify themes in 2015 when it was still quite painful dealing with different browsers and lots of elements of Shopify relied on jQuery by default. In 2020, the browser landscape is much less problematic and so I decided to stop supporting IE and only target modern browsers instead. Although most sites still get a tiny percentage of traffic from older browsers, the number is dwindling and actual sales are non-existent so the cost of extra development is no longer justified.
 
-This has given me the opportunity to do all new feature development with modern JavaScript techniques and using newer frameworks like [Alpine.js](https://alpinejs.dev/). Still, there is a lot of previous code knocking around that relies on jQuery, and a lot of it fundamental to the way the theme works. I'm generally fine with leaving working code alone, but jQuery is quite a heavy dependency, so there are definite performance gains from removing it.
+This has given me the opportunity to do all my new feature development with modern JavaScript techniques using newer frameworks like [Alpine.js](https://alpinejs.dev/). Still, there is a lot of previous code knocking around that relies on jQuery and a lot of it is fundamental to the way the theme works. I'm generally fine with leaving working code alone, but jQuery is quite a heavy dependency, so there are definite performance gains from removing it.
 
-Also, it should go without saying that the code I wrote in 2015 is much more _naïve_ than code I would write today. Although I'm sure I will have a similar attitude in the future to the code I write now :)
+Also, it should go without saying, that the code I wrote in 2015 is much more _naïve_ than the code I would write today. Although I'm sure I will have a similar attitude in the future to the code I write now :)
 
 The difficulty is how to replace such a fundamental part of the codebase (relatively) painlessly without risking breaking something?
 
 ### Benefits of tests
 
-Something that I've come to rely on a lot in backend development is automated testing. Sadly I've struggled so far to develop a good testing workflow with JavaScript. So I wanted to take upgrading a legacy codebase as a good opportunity to work on that.
+Something that I've come to rely on a lot in backend development is automated testing. Sadly I've struggled so far to develop a good testing workflow with JavaScript. So I wanted to use upgrading a legacy codebase as a good opportunity to work on that.
 
-Ultimately I believe Shopify themes would benefit the most from end-to-end testing tools like [Cypress](https://www.cypress.io/), but due to the nature of theme development on Shopify this seems quite daunting. What I want primarily is to be able to quickly set up and run tests to give me a quick feedback loop so I can confidently refactor code.
+Ultimately I believe Shopify themes would benefit the most from end-to-end testing tools like [Cypress](https://www.cypress.io/), but due to the nature of theme development on Shopify, this seems quite daunting. What I want primarily is to be able to quickly set up and run tests to give me a quick feedback loop so I can confidently refactor code.
 
-Fortunately most of the code I would be updating is limited to DOM traversal, toggling a few classes and some very simple DOM insertion. More complex code (mainly around cart interaction) I would want to manually test anyway. I figured this simpler code might be a good candidate for a testing framework like [Jest](https://jestjs.io/).
+Fortunately, most of the code I would be updating is limited to DOM traversal, toggling a few classes and some very simple DOM insertion. More complex code (mainly around cart interaction) I would want to manually test anyway. I figured this simpler code might be a good candidate for a testing framework like [Jest](https://jestjs.io/).
 
 ### Install & set up
 
@@ -38,11 +38,11 @@ $ npm i jest --save-dev
 
 Now any files ending `.test.js` will be treated as a test when running `jest` from the root of the project.
 
-You can also keep all your files in a dedicated test folder, which I would typically do when using things like [Pest](https://pestphp.com/), but in this case I want the files to be easily transferrable between projects so I opted to colocate my tests with my implementation code.
+You can also keep all your files in a dedicated test folder, which I would typically do when using things like [Pest](https://pestphp.com/), but in this case, I want the files to be easily transferrable between projects so I opted to colocate my tests with my implementation code.
 
 ### Running tests
 
-The first snag I hit was using import statements in my tests. I wanted to use imports as I'm [in the future](/posts/shopify-theme-development-with-esbuild/) now. At the time of writing this is only supported as an [experimental feature in Jest,](https://jestjs.io/docs/ecmascript-modules) but as I'm not planning to do anything crazy in my tests it has worked fine for me. It does mean adding a flag to the command, so it's easier to add to an npm script:
+The first snag I hit was using import statements in my tests. I wanted to use imports as I'm [in the future](/posts/shopify-theme-development-with-esbuild/) now. At the time of writing, this is only supported as an [experimental feature in Jest,](https://jestjs.io/docs/ecmascript-modules) but as I'm not planning to do anything crazy in my tests it has worked fine for me. It does mean adding a flag to the command, so it's easier to add to an npm script:
 
 ```json
 {
@@ -110,9 +110,9 @@ This allowed me to refactor away jQuery from the implementation of the `dynamicG
 
 ### Helpful utilities
 
-As I mentioned earlier, I rarely do anything that complicated with jQuery anyway, but its killer feature has always been the elegance of accessing the power of the [Sizzle](https://github.com/jquery/sizzle) selector engine with the `$()` function. Thanks to jQuery a lot of the power of that engine is now available in the browser's native APIs with `querySelector`, `querySelectorAll`, `nextSibling`, `closest` , etc.
+As I mentioned earlier, I rarely do anything that complicated with jQuery anyway, but its killer feature has always been the elegance of accessing the power of the [Sizzle](https://github.com/jquery/sizzle) selector engine with the `$()` function. Thanks to jQuery a lot of the power of that engine is now available in the browser's native APIs with `querySelector`, `querySelectorAll`, `nextSibling`, `closest`, etc.
 
-However these aren't quite as terse and having code littered with `document.querySelectorAll('div').forEach()` isn't as nice as `$('div').each()` . Inspired by a great series of posts on taking a [JavaScript Framework Diet](https://sebastiandedeyne.com/javascript-framework-diet/) by [Sebastien De Dyne](https://sebastiandedeyne.com/), I've been able to replace a lot of my jQuery use with some simple utility functions.
+However, these aren't quite as terse, and having my code littered with `document.querySelectorAll('div').forEach()` isn't as nice as `$('div').each()` . Inspired by a great series of posts on taking a [JavaScript Framework Diet](https://sebastiandedeyne.com/javascript-framework-diet/) by [Sebastien De Dyne](https://sebastiandedeyne.com/), I've been able to replace a lot of my jQuery use with some simple utility functions.
 
 These two functions alone do most of the heavy lifting, which meant in most cases I could replace `$('div').each()`  with `_$$('div').forEach()` .
 
@@ -126,7 +126,7 @@ function _$$(selector, scope = document) {
 }
 ```
 
-Of course, with Jest it's easy to test this functionality too!
+Of course, with Jest, it's easy to test this functionality too!
 
 ```js
 test('_$ can select an element', () => {
@@ -144,12 +144,12 @@ test('_$ can select an element', () => {
 })
 ```
 
-As I worked my way through the code I was able to find other opportunities to add utilities for frequently used jQuery features like toggling classes, or wrapping elements in another element. With the tests as backup it greatly reduced the amount of time it took to replace jQuery, and in many cases allowed me to significantly improve the simplicity and readability of the code I was refactoring.
+As I worked my way through the code I was able to find other opportunities to add utilities for frequently used jQuery features like toggling classes, or wrapping elements in another element. With the tests as backup, it greatly reduced the amount of time it took to replace jQuery, and in many cases allowed me to significantly improve the simplicity and readability of the code I was refactoring.
 
 I often find that making code easier to test improves the code itself.
 
 ### Next steps
 
-With these tests in place I can now take steps towards a CI/CD pipeline which will allow me to run tests automatically when merging new features or fixes. This will reduce both the chances of regressions being introduced, as well as the time spent testing manually.
+With these tests in place, I can now take steps towards a CI/CD pipeline which will allow me to run tests automatically when merging new features or fixes. This will reduce both the chances of regressions being introduced, as well as the time spent testing manually.
 
 For now, I'm just happy to be able to write tests easily and get super quick feedback.

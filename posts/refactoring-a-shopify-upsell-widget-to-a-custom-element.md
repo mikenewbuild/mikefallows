@@ -71,9 +71,9 @@ increaseButtons.forEach(increaseButton => increaseButton.addEventListener('click
 );
 ```
 
-You don't have to particularly understand in detail what's going on in the example above, but you'll notice that there's a lot of occasions where the code needs to iterate over the DOM elements to get a reference to the relevant product. It's possible that it could be done with a different DOM traversal strategy, or maybe there's a better way to store references (quite possible!) that I'm not aware of. In this instance, the code needed to account for an unknown number of upsell products, so it has to rely on a lot of assumptions about how the code is set up too. There's a trade off between storing the `id` on a parent element (more complex traversing) or adding a reference to the `id` on all the interactive elements. It's much harder for me to feel confident about where the boundaries should be.
+You don't have to particularly understand in detail what's going on in the example above, but you'll notice that there's a lot of occasions where the code needs to iterate over the DOM elements to get a reference to the relevant product. It's possible that it could be done with a different DOM traversal strategy, or maybe there's a better way to store references (quite possible!) that I'm not aware of. In this instance, the code needed to account for an unknown number of upsell products, so it has to rely on a lot of assumptions about how the code is set up too. There's a trade-off between storing the `id` on a parent element (more complex traversing) or adding a reference to the `id` on all the interactive elements. It's much harder for me to feel confident about where the boundaries should be.
 
-I often have to write code like this for Shopify themes, and I know it's a smell when I have to start querying elements for their state, passing around references (elements, ids) and trying to make unique enough selectors to avoid leaking styles, etc. Traditionally, I would just suck it up and hope that I can still understand it if I ever have to come back to it to make changes.
+I often have to write code like this for Shopify themes, and I know it's a smell when I have to start querying elements for their state, passing around references (elements, ids) or trying to make unique-enough selectors to avoid leaking styles, etc. Traditionally, I would just suck it up and hope that I can still understand it if I ever have to come back to it to make changes.
 
 ## Enter Custom HTML Elements
 
@@ -137,8 +137,8 @@ customElements.define('custom-upsell-product', CustomUpsellProduct);
 
 There is so much complexity from the implementation that has now been removed. Each product has its own internal state eliminating the need to filter through elements, pass around ids, or traverse the DOM. In this case I've used accessors (`get`/`set`) to simplify the code further, and easily been able to use a more generic `updateCart` method but these are really just implementation details (although they were certainly easier to reach for in this version).
 
-Just the fact that the line lengths are shorter, and a huge amount of visual noise has been removed form both the Javascript and the HTML makes it much easier to reason about. I'm confident that returning to this code 12 months from now to add a feature would be much less onerous than the original implementation too.
+Just the fact that the line lengths are shorter and a huge amount of visual noise has been removed from both the Javascript and the HTML makes it much easier to reason about. I'm confident that returning to this code 12 months from now to add a feature would be much less onerous than the original implementation too.
 
-I'm pretty pleased to discover how well Custom HTML Elements solve common problems with adding features to Shopify themes, and I'm looking forward to being able to use them more in future and even refactor older code towards a simpler – and ultimately more portable – implementation.
+I'm pretty pleased to discover how well Custom HTML Elements solve common problems I've experienced when adding features to Shopify themes, and I'm looking forward to being able to use them more in future and even refactor older code towards a simpler – and ultimately more portable – implementation.
 
 Check out [my starter gist of a full implementation](https://gist.github.com/mikenewbuild/797eeb136b762ebc4a935d87bcfedf31) that can be modified and integrated into any Shopify theme.

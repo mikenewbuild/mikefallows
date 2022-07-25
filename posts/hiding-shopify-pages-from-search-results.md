@@ -11,21 +11,21 @@ tags:
 ---
 ## Url structure
 
-Shopify has a defined url structure, for example all product urls include `/products/`. If you're used to having complete control over your url structure, this can feel quite restrictive at first. I tend to quite like working within constraints and the consistent and immutable nature of the url structure can actually be a benefit.
+Shopify has a defined URL structure, for example, all product URLs include `/products/`. If you're used to having complete control over your URL structure, this can feel quite restrictive at first. I tend to quite like working within constraints and the consistent and immutable nature of the URL structure can be a benefit.
 
 Besides anything else, it reduces the surface area for potential bikeshedding[^1] opportunities.
 
 ## Reasons for hiding content
 
-Sometimes it's useful to create collections, or posts in Shopify that aren't really meant to be customer facing, at least on their own. In the past I've used the collections feature to group "sibling" products or to conform to certain tax overrides. I've used blog posts as a source of shared content to augment product descriptions.
+Sometimes it's useful to create collections, or posts in Shopify that aren't meant to be customer-facing, at least on their own. In the past, I've used the collections feature to group "sibling" products or to conform to certain tax overrides. I've used blog posts as a source of shared content to augment product descriptions.
 
-In these cases the collection or post was never meant to be crawled. In addition because the content is designed to be pulled through to different areas of the site, it can fall foul of duplicate content penalties from search engines.
+In these cases, the collection or post was never meant to be crawled. In addition, because the content is designed to be pulled through to different areas of the site, it can fall foul of duplicate content penalties from search engines.
 
 ## Using `robots.txt`
 
-Recently, Shopify has added the ability to customise a store's `robots.txt` file by adding a `robots.txt.liquid` [template](https://shopify.dev/themes/architecture/templates/robots-txt-liquid) to your theme. A `robots.txt` file is designed to provide instructions to a search engine's web crawler on how to crawl your site. It's mostly used to indicate which urls should not be indexed. Previously, you weren't able to do that as themes only shipped with a Shopify generated `robots.txt` file that you weren't able to influence as a theme developer (or shop owner).
+Recently, Shopify has added the ability to customise a store's `robots.txt` file by adding a `robots.txt.liquid` [template](https://shopify.dev/themes/architecture/templates/robots-txt-liquid) to your theme. A `robots.txt` file is designed to provide instructions to a search engine's web crawler on how to crawl your site. It's mostly used to indicate which URLs should not be indexed. Previously, you weren't able to do that as themes only shipped with a Shopify-generated `robots.txt` file that you weren't able to influence as a theme developer (or shop owner).
 
-The only reliable way I was able to prevent urls being indexed was by using a `robots` meta tag with a `content="noindex"`. This is a meta tag you can add to the `head` of the HTML document that tells web crawlers not to add the current page to the index. A full tag would be inserted between the `head` tags like so:
+The only reliable way I was able to prevent URLs from being indexed was by using a `robots` meta tag with a `content="noindex"`. This is a meta tag you can add to the `head` of the HTML document that tells web crawlers not to add the current page to the index. A full tag would be inserted between the `head` tags like so:
 
 ```html
 <head>
@@ -36,24 +36,24 @@ The only reliable way I was able to prevent urls being indexed was by using a `r
 
 ## Using the `seo.hidden` metafield
 
-There is an apparently undocumented feature that will add this meta tag to pages for you. To do so you need to add a metafield to a resource with a namespece of `seo`, a key of `hidden` and a truthy value, eg. `1`. At the time of writing Shopify has introduced a native way of adding metafields to products via the admin, but it's not available for other resources such as collections or articles (yet!).
+There is an, apparently, undocumented feature that will add this meta tag to pages for you. To do so you need to add a Metafield to a resource with a namespace of `seo`, a key of `hidden` and a truthy value, eg. `1`. At the time of writing Shopify has introduced a native way of adding Metafields to products via the admin, but it's not available for other resources such as collections, or articles (yet!).
 
-Metafields can be added to other resources via Shopify's API or through an app. But there is another way to edit metafields directly in Shopify's admin. You can create and modify metafields by appending values to the query string generated by the bulk editor. For example, you could begin bulk editing some collections and add `&edit=metafields.seo.hidden` to the address in the url bar, and it will expose a field you can populate with a `1` for collections you don't want to be indexed.
+Metafields can be added to other resources via Shopify's API or through an app. But there is another way to edit Metafields directly in Shopify's admin. You can create and modify Metafields by appending values to the query string generated by the bulk editor. For example, you could begin bulk editing some collections and add `&edit=metafields.seo.hidden` to the address in the URL bar, and it will expose a field you can populate with a `1` for collections you don't want to be indexed.
 
-## Using a custom metafield
+## Using a custom Metafield
 
-Before I discovered that Shopify had already defined a metafield for this purpose, I had used a similar approach of assigning a custom metafield and adding some logic to the theme code to determine whether the page should output a `noindex` meta tag. In fact, I also used a similar tag to output custom `canonical` urls and other data to the head.
+Before I discovered that Shopify had already defined a Metafield for this purpose, I had used a similar approach of assigning a custom Metafield and adding some logic to the theme code to determine whether the page should output a `noindex` meta tag. In fact, I also used a similar tag to output custom `canonical` URLs and other data to the head.
 
 ## Alternative solutions
 
-Quite often I resort to the presence of a tag to define some custom functionality, because they are exposed readily in the admin and easy to change. The issue is that unlike products and articles, resources like collections and pages can't be tagged.
+Quite often I resort to the presence of a tag to define some custom functionality because they are exposed readily in the admin and easy to change. The issue is that, unlike products and articles, resources like collections and pages can't be tagged.
 
-Normally I try to expose as many options as possible via the theme editor using section settings, but sections need an `id` in the html and are by default wrapped in a html tag. There are ways to circumvent that, but it feels less robust overall as a solution, because I find theme customisations are better for providing visual feedback rather than having hidden consequences.
+Normally I try to expose as many options as possible via the theme editor using section settings, but sections need an `id` in the HTML and are by default wrapped in an HTML tag. There are ways to circumvent that, but it feels less robust overall as a solution because I find theme customisations are better for providing visual feedback rather than having hidden consequences.
 
-Another solution which can work when you have a simple on/off state is to rely on a template, eg. applying a `collection.noindex.liquid` template to the relevant collections. This is relatively easy to implement and control in the admin. However if you're already using multiple templates, then creating additional `noindex` templates for each one becomes somewhat problematic to maintain.
+Another solution which can work when you have a simple on/off state is to rely on a template, eg. applying a `collection.noindex.liquid` template to the relevant collections. This is relatively easy to implement and control in the admin. However, if you're already using multiple templates, then creating additional `noindex` templates for each one becomes somewhat problematic to maintain.
 
 ## Trade-offs
 
-As with most solutions to tricky problems with a platform like Shopify, there are trade offs. Often it's a case of trying to predict which solution will be the least likely to fail, have the lowest maintenance burden and is within a client's technical abilities to manage. This tends to come down to experience, but I often look for options that will be the easiest to change in future, as with the introduction of the ability to customise the `robots.txt` file (like so many improvements) previously difficult to achieve features become much easier.
+As with most solutions to tricky problems with a platform like Shopify, there are trade-offs. Often it's a case of trying to predict which solution will be the least likely to fail, have the lowest maintenance burden and is within a client's technical abilities to manage. This tends to come down to experience, but I often look for options that will be the easiest to change in future, as with the introduction of the ability to customise the `robots.txt` file (like so many improvements) previously difficult to achieve features become much easier.
 
 [^1]: A metaphor to illuminate [Parkinson’s Law of Triviality](https://en.wikipedia.org/wiki/Parkinson%27s_Law_of_Triviality "w:Parkinson's Law of Triviality"). It describes the act of spending a majority of a project's time on trivial but easier-to-grasp details rather than more important and difficult to criticise tasks. The original example was focussing on the materials used to build the bike shed of a nuclear power plant.
