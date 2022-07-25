@@ -1,4 +1,54 @@
 @tailwind base;
+
+@font-face {
+  font-family: 'Crimson Pro';
+  src: url('/css/themes/fonts/CrimsonPro/CrimsonPro-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Crimson Pro';
+  src: url('/css/themes/fonts/CrimsonPro/CrimsonPro-VariableItalic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('/css/themes/fonts/PublicSans/PublicSans-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('/css/themes/fonts/PublicSans/PublicSans-VariableItalic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/css/themes/fonts/JetBrainsMono/JetBrainsMono-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/css/themes/fonts/JetBrainsMono/JetBrainsMono-VariableItalic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -11,11 +61,11 @@
     font-size: 0.75em;
   }
 
-  .prose > pre {
+  .prose>pre {
     @apply rounded-sm;
   }
 
-  .prose > pre code {
+  .prose>pre code {
     font-size: 13px;
     text-shadow: none;
   }
@@ -24,7 +74,7 @@
     background: none;
   }
 
-  .prose > figcaption {
+  .prose>figcaption {
     @apply text-sm;
   }
 

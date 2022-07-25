@@ -97,6 +97,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     './_tmp/css/styles.css': './css/styles.css',
   });
+  eleventyConfig.addPassthroughCopy('./css/**/*.woff2');
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({

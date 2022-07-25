@@ -1,8 +1,8 @@
 const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
-const fontSans = `"Mukta", ${defaultTheme.fontFamily.sans.join(',')}`;
-const fontSerif = `"Crimson Pro", ${defaultTheme.fontFamily.mono.join(',')}`;
-const fontMono = `${defaultTheme.fontFamily.mono.join(',')}`;
+const fontSans = `"Public Sans", ${defaultTheme.fontFamily.sans.join(',')}`;
+const fontSerif = `"Crimson Pro", ${defaultTheme.fontFamily.serif.join(',')}`;
+const fontMono = `"JetBrains Mono", ${defaultTheme.fontFamily.mono.join(',')}`;
 
 module.exports = {
   content: ['_site/**/*.html'],
@@ -40,10 +40,12 @@ module.exports = {
               padding: '0 0.25em',
               fontWeight: 400,
               backgroundColor: colors.stone[100],
+              fontFamily: fontMono,
             },
             pre: {
               backgroundColor: colors.stone[200],
               color: colors.stone[700],
+
             },
             h1: {
               color: 'inherit',
@@ -86,10 +88,12 @@ module.exports = {
             code: {
               backgroundColor: colors.stone[800],
               color: colors.stone[200],
+              fontFamily: fontMono,
             },
             pre: {
               backgroundColor: colors.stone[800],
               color: colors.stone[200],
+              fontFamily: fontMono,
             },
           },
         },
