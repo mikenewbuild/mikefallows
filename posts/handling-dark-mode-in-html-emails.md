@@ -2,7 +2,7 @@
 draft: false
 date: 2022-07-16
 layout: layouts/post.njk
-title: Handling Dark Mode in HTML Emails
+title: Handling dark mode in HTML emails
 description: A simple method to quickly handle switching colours and images in emails.
 tags:
 - pug

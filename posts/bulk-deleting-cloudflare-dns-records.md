@@ -2,7 +2,7 @@
 draft: false
 date: 2022-07-25
 layout: layouts/post.njk
-title: Bulk Deleting Cloudflare DNS Records
+title: Bulk deleting Cloudflare DNS records
 description: Using the Cloudflare API to remove incorrect DNS records via the API.
 tags:
 - dns
