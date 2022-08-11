@@ -7,6 +7,7 @@ description: Set up Sail and Vite to develop locally under HTTPS.
 tags:
 - php
 - caddy
+- laravel
 - vite
 
 ---

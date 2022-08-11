@@ -5,7 +5,6 @@ layout: layouts/post.njk
 title: Handling dark mode in HTML emails
 description: A simple method to quickly handle switching colours and images in emails.
 tags:
-- pug
 - css
 - email
 
