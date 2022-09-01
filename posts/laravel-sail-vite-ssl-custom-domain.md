@@ -3,7 +3,7 @@ draft: false
 date: 2022-07-29
 layout: layouts/post.njk
 title: 'Laravel Sail, Vite and SSL with a custom domain'
-description: Set up Sail and Vite to develop locally under HTTPS.
+description: Set up Sail and Vite to develop locally under HTTPS using Caddy.
 tags:
 - php
 - caddy
@@ -11,7 +11,7 @@ tags:
 - vite
 
 ---
-The Shopify apps I build are typically powered by Laravel. Version 8 introduced [Sail](https://laravel.com/docs/master/sail), "a light-weight command-line interface for interacting with Laravel's default Docker development environment". Version 9 introduced [Vite](https://vitejs.dev) "a modern frontend build tool that provides an extremely fast development environment" to replace Laravel Mix (Webpack). Recently I've preferred to use Docker over Laravel Valet as I'm regularly switching between projects with different PHP versions and database engines, as well as working locally on either Intel or Silicon hardware.
+The Shopify apps I build are typically powered by Laravel. Version 8 introduced [Sail](https://laravel.com/docs/master/sail)[^1] as an alternative to Valet and version 9 introduced [Vite](https://vitejs.dev)[^2] to replace Laravel Mix (Webpack). I ran into an issue developing my Shopify apps locally when I tried to switch to using these new features.
 
 ## Using a custom domain
 
@@ -89,3 +89,6 @@ export default defineConfig({
 ```
 
 Now when I start work on a project I can run `sail up -d && npm run dev` and have my app running locally with trusted HTTPS along with all the speed and Hot Module Reloading goodness of Vite.
+
+[^1]: "A light-weight command-line interface for interacting with Laravel's default Docker development environment". Recently I've preferred to use Docker over Laravel Valet as I'm regularly switching between projects with different PHP versions and database engines, as well as working locally on either Intel or Silicon hardware.
+[^2]: "A modern frontend build tool that provides an extremely fast development environment". I've never really been comfortable with Webpack configs. Mix was a much simpler wrapper, but with esbuild under the hood, Vite seems to be so much faster.
