@@ -82,6 +82,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('publishedPosts', publishedPosts);
 
+  // Put robots.txt in root
+  eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
+
   // Copy the `img` folder to the output
   eleventyConfig.addPassthroughCopy('img');
 
