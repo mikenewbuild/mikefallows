@@ -1,11 +1,8 @@
-# *
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /cdn-cgi/
 
-# Host
 Host: https://mikefallows.com/
 
-# Sitemaps
 Sitemap: https://mikefallows.com/sitemap.xml
