@@ -1,0 +1,26 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Archive
+  order: 2
+pagination:
+  data: collections.posts
+  reverse: true
+  size: 6
+  alias: posts
+permalink: "posts/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}"
+---
+
+{% set postslist = posts %}
+{% include "postslist.njk" %}
+
+<nav aria-labelledby="posts-pagination">
+  <h2 id="posts-pagination" class="sr-only">Navigate posts</h2>
+  <ol class="flex space-around gap-3 text-gray-300">
+    <li>{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}" class="text-gray-700">Previous</a>{% else %}Previous{% endif %}</li>
+{%- for pageEntry in pagination.pages %}
+    <li><a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %} class="text-gray-700">{{ loop.index }}</a></li>
+{%- endfor %}
+    <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}" class="text-gray-700">Next</a>{% else %}Next{% endif %}</li>
+  </ol>
+</nav>

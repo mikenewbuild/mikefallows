@@ -44,6 +44,26 @@ module.exports = function (eleventyConfig) {
     return Math.min.apply(null, numbers);
   });
 
+  const now = new Date();
+
+  const isPublished = (item) => item.date <= now && !item.data.draft;
+
+  function published(items) {
+    // Hide unpublished items in production
+    if (process.env.ELEVENTY_ENV === 'production') {
+      return items.filter(isPublished);
+    }
+    return items;
+  }
+
+  // Create an array of all posts
+  eleventyConfig.addCollection('posts', (collection) => {
+    const posts = collection.getFilteredByGlob('posts/**/*.md');
+    return published(posts);
+  });
+
+  eleventyConfig.addFilter('published', published);
+
   function filterTagList(tags) {
     return (tags || []).filter(
       (tag) => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1
@@ -55,32 +75,14 @@ module.exports = function (eleventyConfig) {
   // Create an array of all tags
   eleventyConfig.addCollection('tagList', function (collection) {
     let tagSet = new Set();
-    collection.getAll().forEach((item) => {
-      (item.data.tags || []).forEach((tag) => tagSet.add(tag));
-    });
+    collection.getAll()
+      .filter(isPublished)
+      .forEach((item) => {
+        (item.data.tags || []).forEach((tag) => tagSet.add(tag));
+      });
 
     return filterTagList([...tagSet]);
   });
-
-  const now = new Date();
-
-  const publishedPost = (post) => post.date <= now && !post.data.draft;
-
-  function publishedPosts(posts) {
-    // Hide unpublished posts in production
-    if (process.env.ELEVENTY_ENV === 'production') {
-      return posts.filter(publishedPost);
-    }
-    return posts;
-  }
-
-  // Create an array of all posts
-  eleventyConfig.addCollection('posts', (collection) => {
-    const posts = collection.getFilteredByGlob('posts/**/*.md');
-    return publishedPosts(posts);
-  });
-
-  eleventyConfig.addFilter('publishedPosts', publishedPosts);
 
   // Put robots.txt in root
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
