@@ -11,7 +11,7 @@ tags:
 ---
 Performance is a useful metric for most cases on the web. None more so than in e-commerce where performance can have a dramatic impact on conversion rates and therefore profits.
 
-One of the benefits of using a platform like Shopify is that you can leverage their margins of scale to achieve high-volume global performance for a fraction of the cost you would need to spend to do it yourself. Although the operating costs of servers have been shrinking in previous years, the complexity and pace of change have increased. As someone that would just about describe themselves as a full-stack\[^1\] developer, I feel like I offer my clients more value with my frontend expertise than backend.
+One of the benefits of using a platform like Shopify is that you can leverage their margins of scale to achieve high-volume global performance for a fraction of the cost you would need to spend to do it yourself. Although the operating costs of servers have been shrinking in previous years, the complexity and pace of change have increased. As someone that would just about describe themselves as a full-stack[^1] developer, I feel like I offer my clients more value with my frontend expertise than backend.
 
 Outside of video, images are likely to be the heaviest assets on a web page in terms of sheer file size. This can be particularly true on e-commerce sites, where high-quality images are a key factor in sales conversion. This post covers my current best practices for handling responsive images in Shopify themes when you have access to the `image` object. In some cases, you may only have the URL of the image on Shopify's CDN (typically if you're adding images into the body of the rich text editor). In those cases, images can still be optimised, but the strategy is a bit more complicated and I hope to cover that in a later post.
 
@@ -151,4 +151,4 @@ More details about the `image_tag` filter can be found [in the docs](https://sho
 
 It's one of the better feelings in development when you can revisit some code and easily remove workarounds, and it's an added bonus if you get some quick performance wins at the same time!
 
-\[^1\]: The term "full-stack" seems to have quite a fluid definition depending on who you ask, and the term has certainly expanded over the years. Originally it might mean someone that knows how to use a MySQL database and write some jQuery. These days you might be expected to understand a frontend framework like Nextjs and write your own Docker config.
+[^1]: The term "full-stack" seems to have quite a fluid definition depending on who you ask, and the term has certainly expanded over the years. Originally it might mean someone that knows how to use a MySQL database and write some jQuery. These days you might be expected to understand a frontend framework like Nextjs and write your own Docker config.
