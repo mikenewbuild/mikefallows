@@ -45,7 +45,6 @@ module.exports = {
             pre: {
               backgroundColor: colors.stone[200],
               color: colors.stone[700],
-
             },
             h1: {
               color: 'inherit',
@@ -97,6 +96,32 @@ module.exports = {
             },
           },
         },
+        lg: {
+          css: {
+            h2: {
+              fontSize: '1.25em',
+            },
+            h3: {
+              fontSize: '1em',
+            },
+            h4: {
+              fontSize: '1em',
+            }
+          }
+        },
+        xl: {
+          css: {
+            h2: {
+              fontSize: '1.25em',
+            },
+            h3: {
+              fontSize: '1em',
+            },
+            h4: {
+              fontSize: '1em',
+            }
+          }
+        }
       },
     },
   },
