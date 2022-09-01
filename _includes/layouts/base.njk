@@ -17,7 +17,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.7.0/dist/cdn.min.js"></script>
     <script>
       const osDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-      const inDarkMode = localStorage.darkModePreference === 'dark' || osDarkMode
+      const inDarkMode = localStorage.darkModePreference !== 'light' && osDarkMode
 
       toggleDarkMode = (prefersDark) => {
         document.documentElement.classList.toggle('dark', prefersDark)
