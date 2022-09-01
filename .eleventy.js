@@ -112,7 +112,10 @@ module.exports = function (eleventyConfig) {
     typographer: true,
   })
     .use(markdownItAnchor, {
-      permalink: markdownItAnchor.permalink.headerLink('direct-link')
+      permalink: markdownItAnchor.permalink.linkInsideHeader({
+        class: 'direct-link',
+        symbol: '#'
+      })
     })
     .use(markdownItFootnote);
 
