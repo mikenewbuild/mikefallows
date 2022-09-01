@@ -17,7 +17,7 @@ title: "Mike Fallows – A designer & web developer"
 
 <p class="mb-8 font-medium">Latest writing</p>
 
-{% set postslist = collections.posts | head(-4) %}
+{% set postslist = collections.posts | head(-4) | reverse %}
 {% set postslistCounter = collections.posts | length %}
 {% include "postslist.njk" %}
 
