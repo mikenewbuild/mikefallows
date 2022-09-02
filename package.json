@@ -1,14 +1,16 @@
 {
   "scripts": {
-    "build": "npm-run-all eleventy:build tailwind:build",
-    "watch": "npm-run-all --parallel eleventy:watch tailwind:watch",
-    "serve": "npm-run-all --parallel eleventy:serve tailwind:watch",
-    "start": "npm-run-all --parallel eleventy:serve tailwind:watch",
+    "build": "npm-run-all eleventy:build tailwind:build rollup:build",
+    "watch": "npm-run-all --parallel eleventy:watch tailwind:watch rollup:watch",
+    "serve": "npm-run-all --parallel eleventy:serve tailwind:watch rollup:watch",
+    "start": "rimraf _site && npm-run-all --parallel eleventy:serve tailwind:watch rollup:watch",
     "eleventy:build": "ELEVENTY_PRODUCTION=true eleventy",
     "eleventy:debug": "DEBUG=* eleventy",
     "eleventy:serve": "eleventy --serve",
     "eleventy:watch": "eleventy --watch",
     "forestry:preview": "npm-run-all eleventy:build tailwind:build --parallel eleventy:serve tailwind:watch",
+    "rollup:build": "rollup --config",
+    "rollup:watch": "rollup --config --watch",
     "tailwind:build": "NODE_ENV=production npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _site/css/styles.css --minify",
     "tailwind:watch": "npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _site/css/styles.css --watch"
   },
@@ -17,14 +19,21 @@
     "@11ty/eleventy-navigation": "^0.3.2",
     "@11ty/eleventy-plugin-rss": "^1.1.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "@tailwindcss/typography": "^0.5.0",
     "autoprefixer": "^10.4.0",
+    "cssnano": "^5.1.13",
     "luxon": "^2.3.0",
     "markdown-it": "^12.0.4",
     "markdown-it-anchor": "^8.4.0",
     "markdown-it-footnote": "^3.0.3",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.6",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.79.0",
     "tailwindcss": "^3.0.1"
+  },
+  "dependencies": {
+    "alpinejs": "^3.10.3"
   }
 }

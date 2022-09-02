@@ -96,7 +96,7 @@ module.exports = function (eleventyConfig) {
   });
 
   // Put robots.txt in root
-  eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
+  eleventyConfig.addPassthroughCopy('robots.txt');
 
   // Copy the `img` folder to the output
   eleventyConfig.addPassthroughCopy('img');
@@ -114,6 +114,7 @@ module.exports = function (eleventyConfig) {
     './_tmp/css/styles.css': './css/styles.css',
   });
   eleventyConfig.addPassthroughCopy('./css/**/*.woff2');
+  eleventyConfig.addWatchTarget('./js/');
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
