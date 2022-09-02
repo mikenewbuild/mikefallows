@@ -17,10 +17,10 @@ permalink: "posts/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
 <nav aria-labelledby="posts-pagination">
   <h2 id="posts-pagination" class="sr-only">Navigate posts</h2>
   <ol class="flex space-around gap-3">
-    <li>{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}" class="">Previous</a>{% else %}Previous{% endif %}</li>
+    <li>{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}" class="hover:underline">Previous</a>{% else %}<span class="opacity-50">Previous</span>{% endif %}</li>
 {%- for pageEntry in pagination.pages %}
-    <li><a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %} class="">{{ loop.index }}</a></li>
+    <li><a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %} class="hover:underline">{{ loop.index }}</a></li>
 {%- endfor %}
-    <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}" class="">Next</a>{% else %}Next{% endif %}</li>
+    <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}" class="hover:underline">Next</a>{% else %}<span class="opacity-50">Next</span>{% endif %}</li>
   </ol>
 </nav>

@@ -14,21 +14,66 @@
     <link rel="stylesheet" href="{{ '/css/prism.css' | url }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+    <style>
+        @font-face {
+          font-family: 'Crimson Pro';
+          src: url('/css/themes/fonts/CrimsonPro/CrimsonPro-Variable.woff2') format('woff2');
+          font-weight: 100 900;
+          font-display: swap;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: 'Crimson Pro';
+          src: url('/css/themes/fonts/CrimsonPro/CrimsonPro-VariableItalic.woff2') format('woff2');
+          font-weight: 100 900;
+          font-display: swap;
+          font-style: italic;
+        }
+
+        @font-face {
+          font-family: 'Public Sans';
+          src: url('/css/themes/fonts/PublicSans/PublicSans-Variable.woff2') format('woff2');
+          font-weight: 100 900;
+          font-display: swap;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: 'Public Sans';
+          src: url('/css/themes/fonts/PublicSans/PublicSans-VariableItalic.woff2') format('woff2');
+          font-weight: 100 900;
+          font-display: swap;
+          font-style: italic;
+        }
+
+        @font-face {
+          font-family: 'JetBrains Mono';
+          src: url('/css/themes/fonts/JetBrainsMono/JetBrainsMono-Variable.woff2') format('woff2');
+          font-weight: 100 900;
+          font-display: swap;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: 'JetBrains Mono';
+          src: url('/css/themes/fonts/JetBrainsMono/JetBrainsMono-VariableItalic.woff2') format('woff2');
+          font-weight: 100 900;
+          font-display: swap;
+          font-style: italic;
+        }
+    </style>
     <script defer src="https://unpkg.com/alpinejs@3.7.0/dist/cdn.min.js"></script>
     <script>
-      const osDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-      const inDarkMode = localStorage.darkModePreference !== 'light' && osDarkMode
+      const osDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      let inDarkMode = localStorage.darkModePreference === 'dark' || (localStorage.darkModePreference !== 'light' && osDarkMode === 'dark')
 
       toggleDarkMode = (prefersDark) => {
         document.documentElement.classList.toggle('dark', prefersDark)
       }
 
       saveDarkModePreference = (prefersDark) => {
-        if (osDarkMode === prefersDark) {
-          localStorage.removeItem('darkModePreference')
-        } else {
-          localStorage.darkModePreference = prefersDark ? 'dark' : 'light'
-        }
+        localStorage.darkModePreference = prefersDark ? 'dark' : 'light'
 
         toggleDarkMode(prefersDark)
       }
