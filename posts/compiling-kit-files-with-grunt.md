@@ -3,20 +3,20 @@ draft: false
 date: 2022-08-11
 layout: layouts/post.njk
 title: 'Compiling `.kit` files with Grunt'
-description: How to generate HTML from `.kit` files without access to Codekit.
+description: How to generate HTML from `.kit` files without access to CodeKit.
 tags:
 - email
 
 ---
 This week I needed to hand over some files to another development team. I was originally commissioned to create some email templates way back in early 2013 for [Campaign Monitor](https://www.campaignmonitor.com/) and, apart from some small tweaks and additions, the templates have hardly changed since. You can view an [archived version of one of the earliest](http://oipolloi.createsend1.com/t/ViewEmail/r/03E42A0A780B70022540EF23F30FEDED/54DE0C796051573CF351F20C80B74D5E?alternativeLink=False). But [this is a better one](http://oipolloi.cmail1.com/t/ViewEmail/r/411C187586824B302540EF23F30FEDED/C378788E19EDA1B76707B176AE29F890?alternativeLink=False). Design credit to my good friend [Eóin MacManus](https://www.eoinmac.com/).
 
-The templates made some heavy use of [`<repeater>` regions](https://www.campaignmonitor.com/create/editable-content/#repeater), a feature of Campaign Monitor's templates that I utilised to allow multiple sections with different colour backgrounds. Because this was email, it required a lot of inline CSS and a lot of code repetition to achieve the desired result. I was using Codekit a lot at the time and the app had just introduced the [`.kit` file feature](https://codekitapp.com/help/kit/). Kit files added variables and imports to HTML via CSS-style comments which reduced the amount of code I needed to write substantially.
+The templates made some heavy use of [`<repeater>` regions](https://www.campaignmonitor.com/create/editable-content/#repeater), a feature of Campaign Monitor's templates that I utilised to allow multiple sections with different colour backgrounds. Because this was email, it required a lot of inline CSS and a lot of code repetition to achieve the desired result. I was using CodeKit a lot at the time and the app had just introduced the [`.kit` file feature](https://codekitapp.com/help/kit/). Kit files added variables and imports to HTML via CSS-style comments which reduced the amount of code I needed to write substantially.
 
-This worked great for the best part of a decade as the sole developer on the project: I could easily make a small adjustment and compile the files quickly with my copy of Codekit.
+This worked great for the best part of a decade as the sole developer on the project: I could easily make a small adjustment and compile the files quickly with my copy of CodeKit.
 
-Now that I needed to pass the files on to another team, I wanted to do so without the requirement of a proprietary app to compile the templates. A quick search and I discovered there was an open source [node-based compiler](https://github.com/jeremyworboys/node-kit) for `.kit` files and a [Grunt plugin](https://github.com/fatso83/grunt-codekit) that leveraged it. I was aware of [Grunt](https://gruntjs.com/) as an alternative task runner to something like Codekit and it had a reputation for having a straightforward build pipeline so it seemed like a good solution.
+Now that I needed to pass the files on to another team, I wanted to do so without the requirement of a proprietary app to compile the templates. A quick search and I discovered there was an open source [node-based compiler](https://github.com/jeremyworboys/node-kit) for `.kit` files and a [Grunt plugin](https://github.com/fatso83/grunt-codekit) that leveraged it. I was aware of [Grunt](https://gruntjs.com/) as an alternative task runner to something like CodeKit and it had a reputation for having a straightforward build pipeline so it seemed like a good solution.
 
-First I installed Grunt and the Codekit plugin:
+First I installed Grunt and the CodeKit plugin:
 
 ```bash
 npm i -D grunt grunt-codekit
