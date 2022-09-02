@@ -25,7 +25,7 @@ Fortunately, the [esbuild-sass-plugin](https://github.com/glromeo/esbuild-sass-p
 
 First, install the necessary packages from the command line.
 
-```sh
+```bash
 npm i -D postcss autoprefixer postcss-preset-env
 ```
 
