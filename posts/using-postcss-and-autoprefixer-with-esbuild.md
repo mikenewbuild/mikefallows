@@ -13,19 +13,19 @@ In [a previous post](/posts/shopify-theme-development-with-esbuild/), I describe
 
 In this post, I want to document an additional step to use a tool called [Autoprefixer](https://github.com/postcss/autoprefixer) (a [PostCSS plugin](https://github.com/postcss/postcss)) which will automatically add browser vendor prefixes to your compiled CSS so that features are supported in older browsers.
 
-### Why add vendor prefixes?
+## Why add vendor prefixes?
 
 Even in the days of modern "evergreen" browsers, users don't always upgrade in a timely fashion or are on older versions of operating systems which are limits certain versions of browsers (👋 Safari). [Vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) were initially a way for browsers to ship their own implementations of features which developers could opt into before standards had been agreed but I think it's largely abandoned as an approach now. I don't want to keep track of which vendor prefixes I should include where but when it comes to e-commerce, a broken-looking site can reduce credibility, and ultimately sales.
 
 Wouldn't it be nice if there was a tool that keeps track of which vendor prefixes I should still be including, and like, y'know, add them for me at build time? Could it please compile my old Sass files too? Really _fast_? Oh goody.
 
-### Adding PostCSS and Autoprefixer
+## Adding PostCSS and Autoprefixer
 
 Fortunately, the [esbuild-sass-plugin](https://github.com/glromeo/esbuild-sass-plugin) package by Gianluca Romeo I was already using makes integrating PostCSS super easy and [documents a simple example](https://github.com/glromeo/esbuild-sass-plugin#--postcss) that includes Autoprefixer.
 
 First, install the necessary packages from the command line.
 
-```
+```sh
 npm i -D postcss autoprefixer postcss-preset-env
 ```
 
@@ -57,7 +57,7 @@ I ended up adding `{from: undefined}` to the options of the `process` function, 
 
 I could probably improve this, if I felt the need/pain, by defining a separate config for CSS eg. an `esbuild.css.config.js` with just the rules for the CSS compilation and with the option to run those independently or in parallel.
 
-### Defining supported browsers
+## Defining supported browsers
 
 The last part is specifying which browsers you want to support, to define which vendor prefixes are required. There is a couple of ways to handle this, but I prefer to add a `browserslist` property to my `package.json` as it's pretty universally supported, and fairly explicit.
 

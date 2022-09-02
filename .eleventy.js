@@ -56,13 +56,24 @@ module.exports = function (eleventyConfig) {
     return items;
   }
 
+  eleventyConfig.addFilter('published', published);
+
   // Create an array of all posts
   eleventyConfig.addCollection('posts', (collection) => {
     const posts = collection.getFilteredByGlob('posts/**/*.md');
     return published(posts);
   });
 
-  eleventyConfig.addFilter('published', published);
+  // Create an array of popular posts
+  eleventyConfig.addCollection('popularPosts', (collection) => {
+    const posts = collection.getFilteredByGlob([
+      'posts/using-postcss-and-autoprefixer-with-esbuild.md',
+      'posts/making-a-shopify-theme-app-extension-for-google-site-verification.md',
+      'posts/shopify-theme-development-with-esbuild.md',
+      'posts/responsive-images-in-shopify-themes.md',
+    ]);
+    return published(posts);
+  });
 
   function filterTagList(tags) {
     return (tags || []).filter(

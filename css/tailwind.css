@@ -61,6 +61,10 @@
     font-size: 0.75em;
   }
 
+  .prose li code {
+    margin: 0;
+  }
+
   .prose>pre {
     @apply rounded-sm;
   }

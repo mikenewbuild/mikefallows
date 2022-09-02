@@ -21,4 +21,11 @@ title: "Mike Fallows – A designer & web developer"
 {% set postslistCounter = collections.posts | length %}
 {% include "postslist.njk" %}
 
+<hr>
+
+<p class="my-8 font-medium">Popular posts</p>
+
+{% set postslist = collections.popularPosts  %}
+{% include "postslist.njk" %}
+
 <p>More in <a class="underline" href="{{ '/posts/' | url }}">the archive</a>.</p>

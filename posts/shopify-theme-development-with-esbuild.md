@@ -14,13 +14,9 @@ Shopify recently released a new CLI that makes it easier to develop themes local
 
 ## The old way: Theme Kit + CodeKit
 
-Previously I had developed a workflow using Bryan Jones' [CodeKit](https://codekitapp.com/) app and Shopify's old [Theme Kit](https://github.com/Shopify/themekit) tool. CodeKit provides a GUI for bundling assets with great defaults without having to resort to using a complex [Webpack](https://webpack.js.org/) config like Shopify's [Slate Theme](https://github.com/Shopify/slate). It also allowed me to set up a local server that could proxy to a specific development theme on the store.
+Previously I had developed a workflow using Bryan Jones' [CodeKit](https://codekitapp.com/) app[^1] and Shopify's old [Theme Kit](https://github.com/Shopify/themekit) tool.
 
-Using Shopify's old Theme Kit tool, I could bundle and minify assets with CodeKit, have them synced to a development theme on Shopify and then CodeKit could refresh the page for me. This gave me the closest thing to an ideal local development setup. There were some niggles though. One drawback was that the bundling and syncing weren't instant, so I would need to set a 2-3 second delay on the refresh to allow for the bundled files to be uploaded to Shopify. Kudos to CodeKit for including that functionality though.
-
-Another was that at some point CodeKit released a fix for a bug where some urls weren't being encoded. Unfortunately, I realised I had been relying on that bug to make it easier for me to quickly launch a development server.
-
-This is not a knock on CodeKit. It must have saved me hundreds of hours over the years I've been using it and it's still my go-to for lots of projects. There just has never been a great out-of-the-box developer experience for managing themes on Shopify.
+Using Shopify's old Theme Kit tool, I could bundle and minify assets with CodeKit, have them synced to a development theme on Shopify and then CodeKit could refresh the page for me. This gave me the closest thing to an ideal local development setup. There were some[^2] niggles[^3] though.
 
 ## Shopify CLI for themes
 
@@ -30,16 +26,16 @@ Another difference with the [Shopify CLI for themes](https://shopify.dev/themes/
 
 ## Bundling assets with esbuild
 
-With less need for third party tooling and increased browser support for modern CSS and JavaScript, it's easy to imagine building new themes without the need for bundlers at all (unless I adopt things like [TypeScript](https://www.typescriptlang.org/)).
+With less need for third-party tooling and increased browser support for modern CSS and JavaScript, it's easy to imagine building new themes without the need for bundlers at all (unless I adopt things like [TypeScript](https://www.typescriptlang.org/)).
 
-However, there are multiple themes I maintain that will take a lot of time to safely convert to the new store structure. In the meantime, I need a fast and simple way to bundle `.scss` and `.js` files. I could of course continue to use CodeKit for this purpose, but it feels like overkill for such a simple task. I also want to make it easier to run build steps as part of a deployment pipeline or work with other developers on a theme, so free open source command line tools have some additional benefits.
+However, there are multiple themes I maintain that will take a lot of time to safely convert to the new store structure. In the meantime, I need a fast and simple way to bundle `.scss` and `.js` files. I could of course continue to use CodeKit for this purpose, but it feels like overkill for such a simple task. I also want to make it easier to run build steps as part of a deployment pipeline or work with other developers on a theme, so free open-source command line tools have some additional benefits.
 
-Fortunately [esbuild](https://esbuild.github.io/) is perfect for the task. It's fast, and although it requires some config I only needed less than 20 lines of code to replace my CodeKit setup.
+Fortunately, [esbuild](https://esbuild.github.io/) is perfect for the task. It's fast, and although it requires some config I only needed less than 20 lines of code to replace my CodeKit setup.
 
 My esbuild setup needed to:
 
-* bundle js imports for browsers (and support some older browsers)
-* bundle scss files to a css file
+* bundle `.js` imports for browsers (and support some older browsers)
+* bundle `.scss` files to a `.css` file
 * minify the output
 * watch and bundle files on change
 
@@ -124,3 +120,9 @@ I'm still looking at ways to improve my process and I plan to introduce things l
 #### Update
 
 I have added a post on how to update your config to [automatically add vendor prefixes](/posts/using-postcss-and-autoprefixer-with-esbuild/) to the compiled CSS using PostCSS and the Autoprefixer plugin.
+
+[^1]: CodeKit provides a GUI for bundling assets with great defaults without having to resort to using a complex [Webpack](https://webpack.js.org/) config like Shopify's [Slate Theme](https://github.com/Shopify/slate). It also allowed me to set up a local server that could proxy to a specific development theme on the store.
+
+[^2]: One drawback was that the bundling and syncing weren't instant, so I would need to set a 2-3 second delay on the refresh to allow for the bundled files to be uploaded to Shopify. Kudos to CodeKit for including that functionality though.
+
+[^3]: Another was that at some point CodeKit released a fix for a bug where some URLs weren't being encoded. Unfortunately, I realised I had been relying on that bug to make it easier for me to quickly launch a development server. This is not a knock on CodeKit. It must have saved me hundreds of hours over the years I've been using it and it's still my go-to for lots of projects. There just has never been a great out-of-the-box developer experience for managing themes on Shopify.
