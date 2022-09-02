@@ -2,14 +2,10 @@
 {% for post in postslist %}
   <li class="mb-8{% if post.url == url %}{% endif %}">
     <a class="block text-lg leading-tight max-w-lg mb-1" href="{{ post.url | url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-    <time class="block text-sm leading-tight opacity-70" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-    <div class="leading-tight text-sm opacity-70">
-      {% set tagslist = post.data.tags %}
-      {% include "tagslist.njk" %}
-    </div>
+    <time class="block text-sm leading-tight opacity-50" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
     {% if post.data.description %}
     <div class="mt-4">
-      <p class="font-body text-lg max-w-sm leading-tight opacity-60">{{ post.data.description }}</p>
+      <p class="font-body text-lg max-w-sm leading-tight font-light opacity-70">{{ post.data.description }}</p>
     </div>
     {% endif %}
   </li>

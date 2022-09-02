@@ -3,35 +3,36 @@ layout: layouts/base.njk
 templateClass: tmpl-post
 ---
 <div class="mx-auto max-w-3xl mb-4">
-  <h1 class="text-4xl max-w-xl font-medium">{{ title }}</h1>
+  <h1 class="text-2xl md:text-3xl max-w-xl font-medium">{{ title }}</h1>
 </div>
 
-<div class="mx-auto max-w-3xl opacity-70">
+<div class="mx-auto max-w-3xl opacity-50">
   <time datetime="{{ page.date | htmlDateString }}" class="mr-4 font-medium">{{ page.date | readableDate }}</time>
-  <div class="leading-tight font-medium">
-    {% set tagslist = tags %}
-    {% include "tagslist.njk" %}
-  </div>
 </div>
 
 {% set content = content %}
 {% include "markdown.njk" %}
 
+<div class="leading-tight text-sm font-medium py-6">
+  {% set tagslist = tags %}
+  {% include "tagslist.njk" %}
+</div>
+
 {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
 {%- if nextPost or previousPost %}
-<hr>
-<ul class="mt-4 font-medium max-w-sm">
+<ul class="mt-4 text-sm font-medium border-t-1">
   {%- if nextPost %}
-    <li class="mb-2">
+    <li class="py-4">
       <span class="block opacity-70">Newer</span>
-      <a class="font-medium" href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a>
+      <a class="hover:underline" href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a>
     </li>
-  {% endif %}
+  {%- endif %}
   {%- if previousPost %}
-  <li>
-    <span class="block opacity-70">Older</span>
-    <a class="font-medium" href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a>
-  </li>{% endif %}
+    <li class="py-4">
+      <span class="block opacity-70">Older</span>
+      <a class="hover:underline" href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a>
+    </li>
+  {%- endif %}
 </ul>
 {%- endif %}

@@ -1,6 +1,7 @@
     {% if tagslist.length %}
-    Tagged {% for tag in tagslist | filterTagList %}
+    <span class="opacity-50">Tagged</span>
+    {% for tag in tagslist | filterTagList %}
       {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-      • <a href="{{ tagUrl | url }}">{{ tag }}</a>
+      • <a href="{{ tagUrl | url }}" class="hover:underline">{{ tag }}</a>
     {% endfor %}
     {% endif %}
