@@ -20,9 +20,9 @@ The only real downsides are the lack of tags on resources like collections or pa
 
 ## Using tags as a key-value store
 
-By defining a structure for your tags, it's possible to use them as a type of key-value store. I tend to do this by defining a separator for namespace, key and value. eg. if the separator was `:`, then a tag might follow the format: `namespace:key:value`.
+By defining a structure for your tags, it's possible to use them as a type of key-value store. I tend to do this by defining a separator for namespace, key and value. eg. `namespace:key:value`.
 
-Using that structure means that within liquid we can look for tags with the given namespace, or namespace and key, then extract the value. Let's say we want to be able to associate a related collection with a product. If our namespace were `theme`, and our `key` were `related-collection`, and the value could be the handle of the collection we wanted to identify, then a tag might look like `theme:related-collection:bestsellers`.
+Using that structure means that within liquid we can look for tags with the given namespace, or namespace and key, then extract the value. Let's say we want to be able to associate a related collection with a product. If our namespace was `theme` and our `key` was `related-collection`, and the value could be the handle of the collection we wanted to identify, then a tag might look like `theme:related-collection:bestsellers`.
 
 If that tag was assigned to an article then in a template with access to the `article` object, we could access the collection like this:
 
@@ -51,7 +51,7 @@ You can then, for example, display the products from that collection below the a
 
 ## Why the namespace?
 
-Although it's not necessary to use the namespace in the example above, in practise, the namespace has a couple of useful benefits. First, it protects you from potential clashes, in the case that another app uses tags in a similar way, or that you just have a collision with a genuine tag name a shop owner wants to apply. Second, you can use the presence of the namespace to quickly exclude those tags in the case that you want to use and expose tags for their "traditional" use, i.e. to filter for a related topic.
+Although it's not necessary to use the namespace in the example above, the namespace has a couple of useful benefits. First, it protects you from potential collisions with tags created by apps or that a shop owner wants to apply. Second, you can use the presence of the namespace to quickly exclude those tags in the case that you want to use and expose tags for their "traditional" use, i.e. to filter for a related topic.
 
 Here's a simple example of excluding tags by detecting the presence of the namespace:
 
@@ -62,8 +62,8 @@ Here's a simple example of excluding tags by detecting the presence of the names
 {%- for tag in product.tags %}
 	{%- unless tag contains 'theme:' %}
 		<li>{{ tag }}</li>
-    {%- endif %}
-{% endfor %}
+    {%- endunless %}
+{%- endfor %}
 </ul>
 ```
 
@@ -71,8 +71,6 @@ Here's a simple example of excluding tags by detecting the presence of the names
 
 ## Use cases
 
-As well as the ability to associate a group of products with an article, other use cases I've found have included storing rich content in a single blog post or page, and then associating that with several products. This could be videos, animation, or a gallery of images that can then be displayed on multiple product pages, without the need to duplicate the content or update it on each individual product.
+Along with the ability to associate a group of products with an article, other use cases I've found have included storing rich content in a single blog post or page, and then associating that with several products. This could be videos, animation, or a gallery of images that can then be displayed on multiple product pages, without the need to duplicate the content or update it on each product.
 
 The value doesn't need to be a handle either, it can be used to store meaningful strings like a colour, or a date that can be used in the layout. You could then use those to define the colour of elements on the page, or a countdown timer.
-
-While OS2 only natively supports Metafield management on products, but not articles it's still a handy trick for managing dynamic content in a layout without having to reach for a third-party app.
