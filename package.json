@@ -23,7 +23,7 @@
     "@tailwindcss/typography": "^0.5.0",
     "autoprefixer": "^10.4.0",
     "cssnano": "^5.1.13",
-    "luxon": "^2.3.0",
+    "luxon": "^2.5.2",
     "markdown-it": "^12.0.4",
     "markdown-it-anchor": "^8.4.0",
     "markdown-it-footnote": "^3.0.3",
