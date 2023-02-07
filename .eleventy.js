@@ -154,7 +154,7 @@ module.exports = function (eleventyConfig) {
 
   // Build index for pagefind search
   eleventyConfig.on('eleventy.after', () => {
-    execSync(`npx pagefind --source _site --glob \"**/*.html\" --exclude-selectors \"code\"`, { encoding: 'utf-8' })
+    execSync(`npx pagefind --source _site --glob \"**/*.html\"`, { encoding: 'utf-8' })
   })
 
   // Override Browsersync defaults (used only with --serve)
