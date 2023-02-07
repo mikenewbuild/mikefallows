@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+---
+
+<link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+
+<style>
+  .dark {
+    --pagefind-ui-primary: #e7e5e4;
+    --pagefind-ui-text: #e7e5e4;
+    --pagefind-ui-background: #44403c;
+    --pagefind-ui-border: #33302b;
+    --pagefind-ui-tag: #e7e5e4;
+  }
+</style>
+
+<h1 class="mb-12 font-medium">{{ title }}</h1>
+
+<div id="search" class="search"></div>
+
+<script src="/_pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false });"></script>
+
+{% include "markdown.njk" %}
