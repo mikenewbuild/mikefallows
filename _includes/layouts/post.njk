@@ -10,7 +10,6 @@ templateClass: tmpl-post
   <time datetime="{{ page.date | htmlDateString }}" class="mr-4 font-medium">{{ page.date | readableDate }}</time>
 </div>
 
-{% set content = content %}
 {% include "markdown.njk" %}
 
 <div class="leading-tight text-sm font-medium py-6">
