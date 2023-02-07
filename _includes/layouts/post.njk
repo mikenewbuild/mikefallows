@@ -2,20 +2,24 @@
 layout: layouts/base.njk
 templateClass: tmpl-post
 ---
-<div class="mx-auto max-w-3xl mb-4">
-  <h1 class="text-2xl md:text-3xl max-w-xl font-medium">{{ title }}</h1>
-</div>
+<article data-pagefind-body>
 
-<div class="mx-auto max-w-3xl opacity-50">
-  <time datetime="{{ page.date | htmlDateString }}" class="mr-4 font-medium">{{ page.date | readableDate }}</time>
-</div>
+  <div class="mx-auto max-w-3xl mb-4">
+    <h1 class="text-2xl md:text-3xl max-w-xl font-medium" data-pagefind-meta="title">{{ title }}</h1>
+  </div>
 
-{% include "markdown.njk" %}
+  <div class="mx-auto max-w-3xl opacity-50" data-pagefind-ignore>
+    <time datetime="{{ page.date | htmlDateString }}" class="mr-4 font-medium">{{ page.date | readableDate }}</time>
+  </div>
 
-<div class="leading-tight text-sm font-medium py-6">
-  {% set tagslist = tags %}
-  {% include "tagslist.njk" %}
-</div>
+  {% include "markdown.njk" %}
+
+  <div class="leading-tight text-sm font-medium py-6">
+    {% set tagslist = tags %}
+    {% include "tagslist.njk" %}
+  </div>
+
+</article>
 
 {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
