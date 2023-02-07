@@ -6,6 +6,7 @@ const pluginNavigation = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItFootnote = require('markdown-it-footnote');
+const { execSync } = require('child_process')
 
 module.exports = function (eleventyConfig) {
   // Add plugins
@@ -150,6 +151,11 @@ module.exports = function (eleventyConfig) {
   };
 
   eleventyConfig.setLibrary('md', markdownLibrary);
+
+  // Build index for pagefind search
+  eleventyConfig.on('eleventy.after', () => {
+    execSync(`npx pagefind --source _site --glob \"**/*.html\" --exclude-selectors "code"`, { encoding: 'utf-8' })
+  })
 
   // Override Browsersync defaults (used only with --serve)
   eleventyConfig.setBrowserSyncConfig({
