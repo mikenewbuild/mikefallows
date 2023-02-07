@@ -153,8 +153,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setLibrary('md', markdownLibrary);
 
   // Build index for pagefind search
-  eleventyConfig.on('eleventy.after', () => {
-    // execSync(`pagefind --source _site`, { encoding: 'utf-8' })
+  eleventyConfig.on('eleventy.after', async () => {
+    execSync(`pagefind --source ./_site`, { encoding: 'utf-8' })
   })
 
   // Override Browsersync defaults (used only with --serve)
