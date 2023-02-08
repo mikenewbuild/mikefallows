@@ -1,19 +1,21 @@
 ---
 draft: false
-date: 2022-09-05
+date: 2023-02-07
 layout: layouts/post.njk
 title: 'Links #4'
-description: Questions, priorities, conditions and satisfaction.
+description: Interesting bits from around the web.
 tags:
 - the web
 
 ---
-A recent reading list.
+Interesting bits from around the web.
 
-[How to ask good questions](https://jvns.ca/blog/good-questions/). A great reminder of how to seek help successfully. The focus is on getting help on technical subjects in a team environment, but it could easily be extrapolated to any subject or situation with plenty of useful lessons about good communication in general.
+[Visit for a surprise](https://ericwbailey.website/published/visit-for-a-surprise/ "An article about accessible link titles"). A great example of thinking deeply about the nuances involved in ensuring the web is accessible to as many people as possible without just ticking "accessibility" checkboxes. Context is key.
 
-[The World's Most Satisfying Checkbox](https://www.andy.works/words/the-most-satisfying-checkbox). A neat example of how small interactions can be elevated. When working on transactional sites, micro-interactions can be a great opportunity to explore identity can be expressed beyond colours, fonts and messaging. It's also a good reminder of how much attention these interactions automatically receive in the world of game design.
+[AARRR](https://baremetrics.com/blog/aarrr-metrics-framework-what-is-it-and-how-to-use-it). A nice pirate-y acronym to help you remember "acquisition, activation, retention, referral, and revenue". I find this useful when looking at a client's site and other touch-points to try and find opportunities to leverage improvements. You can be certain that there's always one point that can benefit from more attention.
 
-[Prioritize What You Do](https://blog.minethatdata.com/2022/05/prioritize-what-you-do.html). This is a fantastic list for retailers on where to prioritise efforts. It's easy to become distracted by novel techniques and forget to give precedence to the basic principles of selling online. Personalisation is the only thing I would caveat because, in my experience, it can create unneeded complexity and make customer experiences more opaque and harder to empathise with (although this largely depends on the nature of your products).
+[Before YouTube's algorithm there were "coolhunters"](https://www.theatlantic.com/technology/archive/2022/09/youtube-homepage-editor-google-algorithm-book-excerpt/671339/). An article in _The Atlantic_ about the way the YouTube homepage was curated by hand. Plenty 
 
-[Conditional Border Radius In CSS](https://ishadeed.com/article/conditional-border-radius/). A neat trick to toggle `border-radius` in CSS based purely on a container element's width. Something to tide us over until [Container Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries) are supported.
+[How YouTube killed IE6](https://www.theverge.com/2019/5/4/18529381/google-youtube-internet-explorer-6-kill-plot-engineer). I was reminded of this article in _The Verge_ about the actions of a small group of engineers at YouTube in the early days that helped accelerate the demise of Internet Explorer 6, and I don't blame them one bit. Bonus, there's a picture of a client in the screen grab of YouTube's homepage. There's also a Twitter thread somewhere that I can't find for the life of me, but was an interesting tale of Pinterest's human curated homepage in the early days. 
+
+[AI is not the problem](https://www.stilldrinking.org/ai-is-not-the-problem). Obviously, it's _the_ hot topic, and there's plenty of opinions around, but this one struck a chord. I recently listened to the [2021 Reith Lectures on the BBC](https://www.bbc.co.uk/programmes/m001216k/episodes/player) which had some interesting discussion around the ethics of AI from a time before ChatGPT and Stable Diffusion become part of the discourse.
