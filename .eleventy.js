@@ -67,13 +67,22 @@ module.exports = function (eleventyConfig) {
 
   // Create an array of popular posts
   eleventyConfig.addCollection('popularPosts', (collection) => {
-    const posts = collection.getFilteredByGlob([
-      'posts/using-postcss-and-autoprefixer-with-esbuild.md',
-      'posts/making-a-shopify-theme-app-extension-for-google-site-verification.md',
-      'posts/shopify-theme-development-with-esbuild.md',
-      'posts/responsive-images-in-shopify-themes.md',
-    ]);
-    return published(posts);
+    const popular = [];
+    const popularUrls = [
+      '/posts/laravel-sail-vite-ssl-custom-domain/',
+      '/posts/using-postcss-and-autoprefixer-with-esbuild/',
+      '/posts/making-a-shopify-theme-app-extension-for-google-site-verification/',
+      '/posts/responsive-images-in-shopify-themes/',
+    ];
+
+    popularUrls.forEach(url => {
+      collection.getAll().forEach(item => {
+        if (item.url === url) {
+          popular.push(item);
+        }
+      });
+    });
+    return published(popular);
   });
 
   function filterTagList(tags) {
