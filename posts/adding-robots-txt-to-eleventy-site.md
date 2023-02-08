@@ -5,7 +5,8 @@ layout: layouts/post.njk
 title: 'Adding a `robots.txt` file to an Eleventy site'
 description: Keep Search Console happy about your Cloudflare and Forestry URLs.
 tags:
-- the web, eleventy
+- the web
+- eleventy
 
 ---
 Having set up a fair few sites over the years, I periodically get a chunk of emails from Google's Search Console notifying me of indexing errors. Usually, these are pretty small potatoes caused by things like old products being unpublished and will resolve themselves on the next crawl.

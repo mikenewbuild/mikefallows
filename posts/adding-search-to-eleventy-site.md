@@ -5,7 +5,8 @@ layout: layouts/post.njk
 title: 'Adding search to an Eleventy site'
 description: Scratching an itch and adding search to the site.
 tags:
-- the web, eleventy
+- the web
+- eleventy
 
 ---
 TL;DR I went with [Pagefind](https://pagefind.app/) and followed [this solution by Robb Knight](https://rknight.me/using-pagefind-with-eleventy-for-search/) which I had running locally after about 10 mins. Sure, I lost an hour or so deploying it because I'd got my node versions out of sync, but that's to be expected.

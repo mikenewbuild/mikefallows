@@ -1,11 +1,12 @@
 ---
 draft: false
+date: 2021-07-11
+layout: layouts/post.njk
 title: Making this website
 description: The process and decisions behind this site.
-date: 2021-07-11
 tags:
-  - the web, eleventy
-layout: layouts/post.njk
+- the web
+- eleventy
 ---
 I have planned to have a personal site for a long time and in this (my first!) post I'm going to cover how I selected the technology used to build this site and why.
 
