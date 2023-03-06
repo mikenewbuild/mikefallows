@@ -6,6 +6,7 @@ title: 'Hello World with Lit'
 description: 'Tinkering with Lit: a web components framework.'
 tags:
 - web components
+- javascript
 
 ---
 The world of Web Components seems to be getting more attention recently so I've been exploring some of the frameworks emerging around it. Here are some notes on my initial experience with [Lit](https://lit.dev/) (specifically version 2).
@@ -170,6 +171,6 @@ hello-world {
 
 ## Thoughts
 
-So far my use case for Web Components often means creating one-off, quite simple components that need to be portable (ie. dropped into Shopify themes), where it doesn't necessarily make sense to add Lit as a dependency. However, for future projects that might need to make use of multiple Web Components, the small penalty of including Lit will surely be worth it for the reduced boilerplate, and I believe, easier to read code.
+So far my use case for Web Components often means creating one-off, quite simple components that need to be portable (ie. dropped into Shopify themes), where it doesn't necessarily make sense to add Lit as a dependency. However, for future projects that might need to make use of multiple Web Components, the small penalty of including Lit will surely be worth it for the reduced boilerplate and, I believe easier to read, code.
 
 [^1]: The JavaScript "sprinkles" approach is a largely undefined term that tends to refer to a backend-driven site or app that includes a small amount of JavaScript added to the front end for client-side activity (as opposed to a fully-fledged SPA). It usually implies using small bits of custom JS, or micro-frameworks like Stimulus, jQuery or Alpine.

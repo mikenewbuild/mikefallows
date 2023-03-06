@@ -6,6 +6,8 @@ title: Adding VAT to 31,522 Shopify prices as quickly as possible
 description: Yay! Shopify finally handles tax in a way that's useful for Europeans.
 tags:
 - shopify
+- node
+- javascript
 
 ---
 I built my first Shopify theme in 2012, and after years of custom-built PHP carts, and third-party self-hosted products, Shopify was a breath of fresh air. No servers to worry about, a pleasant templating language in Liquid, great support and an API that gave you advanced capabilities when you needed it.

@@ -7,6 +7,7 @@ description: Updating an esbuild config in a Shopify theme to utilise autoprefix
 tags:
 - shopify
 - esbuild
+- javascript
 
 ---
 In [a previous post](/posts/shopify-theme-development-with-esbuild/), I described how to use [esbuild](https://esbuild.github.io/) as a bundler for Shopify themes.

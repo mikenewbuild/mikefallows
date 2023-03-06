@@ -7,6 +7,7 @@ description: 'A strategy for safely removing jQuery as a dependency from custom 
   themes. '
 tags:
 - testing
+- javascript
 - shopify
 
 ---

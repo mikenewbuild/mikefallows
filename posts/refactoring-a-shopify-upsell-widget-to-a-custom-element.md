@@ -7,6 +7,7 @@ description: Often shop owners want the ability to offer a small upsell that can
   easily added to an order.
 tags:
 - web components
+- javascript
 - shopify
 
 ---

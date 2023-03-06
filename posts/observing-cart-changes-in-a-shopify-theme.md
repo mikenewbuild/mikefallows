@@ -6,6 +6,7 @@ title: 'Observing cart changes in a Shopify theme'
 description: Identifying and responding to changes in a customer's cart.
 tags:
 - shopify
+- javascript
 
 ---
 Recently I needed to write some code to monitor and respond to changes made to a Shopify cart. The script would need to be added to several themes and be independent of the specific theme the site used or potential apps that were (or would be) installed.

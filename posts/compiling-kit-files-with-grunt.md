@@ -5,7 +5,8 @@ layout: layouts/post.njk
 title: 'Compiling `.kit` files with Grunt'
 description: How to generate HTML from `.kit` files without access to CodeKit.
 tags:
-- email
+- node
+- javascript
 
 ---
 This week I needed to hand over some files to another development team. I was originally commissioned to create some email templates way back in early 2013 for [Campaign Monitor](https://www.campaignmonitor.com/) and, apart from some small tweaks and additions, the templates have hardly changed since. You can view an [archived version of one of the earliest](http://oipolloi.createsend1.com/t/ViewEmail/r/03E42A0A780B70022540EF23F30FEDED/54DE0C796051573CF351F20C80B74D5E?alternativeLink=False). But [this is a better one](http://oipolloi.cmail1.com/t/ViewEmail/r/411C187586824B302540EF23F30FEDED/C378788E19EDA1B76707B176AE29F890?alternativeLink=False). Design credit to my good friend [Eóin MacManus](https://www.eoinmac.com/).
