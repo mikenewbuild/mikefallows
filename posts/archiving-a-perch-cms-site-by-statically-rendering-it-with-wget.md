@@ -56,12 +56,12 @@ wget -mpckEnH -P ./public https://lsff.test
 * `-nH` won't create host directories
 * `-P` define a directory to save files to
 
-This worked a treat, and the only issue was that absolute urls would refer to the local domain `https://lsff.test` but the files would eventually be hosted at a different domain `https://archive.shortfilms.org.uk` so I realised I would need to do a find and replace on the url. There's probably some solution for this built into Wget, but I couldn't figure it out. A couple of trips to Stack Overflow (plus some more trial and error) later and I decided the best solution for me would be to use a combination of the `find` [file finding command](https://en.wikipedia.org/wiki/Find_(Unix)) and the [stream editor command](https://en.wikipedia.org/wiki/Sed), `sed`.
+This worked a treat, and the only issue was that absolute urls would refer to the local domain `https://lsff.test` but the files would eventually be hosted at a different domain `https://lsff.newbuild.studio` so I realised I would need to do a find and replace on the url. There's probably some solution for this built into Wget, but I couldn't figure it out. A couple of trips to Stack Overflow (plus some more trial and error) later and I decided the best solution for me would be to use a combination of the `find` [file finding command](https://en.wikipedia.org/wiki/Find_(Unix)) and the [stream editor command](https://en.wikipedia.org/wiki/Sed), `sed`.
 
 On Mac OS you need to create backup files when you run `sed` to preserve the integrity of the filesystem or something. Eventually, I got the following to work.
 
 ```bash
-find ./public -name "*.html" -type f -exec sed -i '.bak' 's/lsff\.test/archive\.shortfilms\.org\.uk/gI' {} \;
+find ./public -name "*.html" -type f -exec sed -i '.bak' 's/lsff\.test/lsff\.newbuild\.studio/gI' {} \;
 ```
 
 Great! I could now generate a fully working static reproduction of the site 🙌
@@ -79,6 +79,6 @@ find ./public -name "*.bak" -type f -delete
 
 ### Deploying to Netlify
 
-All that remained was setting up a new site in Netlify linked to the repo on GitHub that served the `./public` folder and pointing the domain. I can't see [this archive](https://archive.shortfilms.org.uk/) ever generating enough traffic to escape the free tier and, if necessary, there's a few useful goodies like [redirects](https://docs.netlify.com/routing/redirects/) and [snippet injection](https://docs.netlify.com/site-deploys/post-processing/snippet-injection/) I can take advantage of if I ever need to.
+All that remained was setting up a new site in Netlify linked to the repo on GitHub that served the `./public` folder and pointing the domain. I can't see [this archive](https://lsff.newbuild.studio/) ever generating enough traffic to escape the free tier and, if necessary, there's a few useful goodies like [redirects](https://docs.netlify.com/routing/redirects/) and [snippet injection](https://docs.netlify.com/site-deploys/post-processing/snippet-injection/) I can take advantage of if I ever need to.
 
 So that's it – with just a handful of commands – I can pull down both repos make a change in the dynamic one and generate and publish a new set of static files to the web. I now have a solid solution for archiving and hosting static versions of LAMP sites without losing the ability to still make changes via the CMS.
