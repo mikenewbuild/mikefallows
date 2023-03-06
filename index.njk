@@ -8,9 +8,10 @@ title: "Mike Fallows – A designer & web developer"
   <p>Assorted notes on the internet about
     {% for tag in collections.tagList -%}
       {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+      {%- if loop.first != true and loop.last !== true %}, {% endif -%}
+      {%- if loop.last == true %} and {% endif -%}
       <a href="{{ tagUrl | url }}">{{ tag }}</a>
-      {%- if loop.last !== true %}, {% endif -%}
-    {% endfor %}.
+    {%- endfor %}.
   </p>
   <hr>
 </div>
