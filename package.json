@@ -15,7 +15,7 @@
     "tailwind:watch": "npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _site/css/styles.css --watch"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy": "^2.0.0",
     "@11ty/eleventy-navigation": "^0.3.2",
     "@11ty/eleventy-plugin-rss": "^1.1.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
