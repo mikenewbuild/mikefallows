@@ -64,7 +64,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection('posts', (collection) => {
     const posts = collection.getFilteredByGlob('posts/**/*.md').map(item => {
       let raw = item.template.frontMatter.content || "";
-      let md = new markdownIt();
+      let md = new markdownIt({ html: true });
       item.data.forFeed = md.render(nunjucks.renderString(raw));
       return item;
     });
