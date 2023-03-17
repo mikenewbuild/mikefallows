@@ -6,6 +6,7 @@ const pluginNavigation = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItFootnote = require('markdown-it-footnote');
+const nunjucks = require('nunjucks');
 const { execSync } = require('child_process')
 
 module.exports = function (eleventyConfig) {
@@ -61,7 +62,12 @@ module.exports = function (eleventyConfig) {
 
   // Create an array of all posts
   eleventyConfig.addCollection('posts', (collection) => {
-    const posts = collection.getFilteredByGlob('posts/**/*.md');
+    const posts = collection.getFilteredByGlob('posts/**/*.md').map(item => {
+      let raw = item.template.frontMatter.content || "";
+      let md = new markdownIt();
+      item.data.forFeed = md.render(nunjucks.renderString(raw));
+      return item;
+    });
     return published(posts);
   });
 
