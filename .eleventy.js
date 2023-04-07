@@ -7,13 +7,15 @@ const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItFootnote = require('markdown-it-footnote');
 const nunjucks = require('nunjucks');
-const { execSync } = require('child_process')
+const { execSync } = require('child_process');
+const timeToRead = require('eleventy-plugin-time-to-read');
 
 module.exports = function (eleventyConfig) {
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
+  eleventyConfig.addPlugin(timeToRead, { speed: '180 words per minute', style: 'short' });
 
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);
