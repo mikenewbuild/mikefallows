@@ -9,8 +9,10 @@ templateClass: tmpl-post
   </div>
 
   <div class="mx-auto max-w-3xl opacity-50" data-pagefind-ignore>
-    <time datetime="{{ page.date | htmlDateString }}" class="mr-4 font-medium">{{ page.date | readableDate }}</time>
+    <time datetime="{{ page.date | htmlDateString }}" class="font-medium">{{ page.date | readableDate }}</time>
+    • {{ content | timeToRead }}
   </div>
+
 
   {% include "markdown.njk" %}
 

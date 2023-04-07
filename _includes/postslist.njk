@@ -2,7 +2,9 @@
 {% for post in postslist %}
   <li class="mb-8{% if post.url == url %}{% endif %}">
     <a class="block text-lg leading-tight max-w-lg mb-1" href="{{ post.url | url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-    <time class="block text-sm leading-tight opacity-50" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+    <div class="text-sm leading-tight opacity-50">
+      <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> • {{ post.content | timeToRead }}
+    </div>
     {% if post.data.description %}
     <div class="mt-4">
       <p class="font-body text-lg max-w-sm leading-tight font-light opacity-70">{{ post.data.description }}</p>
