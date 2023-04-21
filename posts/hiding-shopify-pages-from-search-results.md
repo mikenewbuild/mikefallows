@@ -1,14 +1,17 @@
 ---
 draft: false
-date: 2021-12-20
+date: 2021-12-20T00:00:00.000Z
 layout: layouts/post.njk
 title: 'Hiding Shopify pages from search results '
-description: Sometimes you don't want certain resource types to be indexed by search
+description: >-
+  Sometimes you don't want certain resource types to be indexed by search
   engines.
 tags:
-- shopify
-
+  - shopify
+_template: blog_post
 ---
+
+
 ## Url structure
 
 Shopify has a defined URL structure, for example, all product URLs include `/products/`. If you're used to having complete control over your URL structure, this can feel quite restrictive at first. I tend to quite like working within constraints and the consistent and immutable nature of the URL structure can be a benefit.

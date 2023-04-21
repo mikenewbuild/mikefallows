@@ -1,14 +1,16 @@
 ---
 draft: false
-date: 2021-12-22
+date: 2021-12-22T00:00:00.000Z
 layout: layouts/post.njk
 title: Responsive images in Shopify themes
 description: Current solutions to handling responsive image formats in Shopify.
 tags:
-- responsive
-- shopify
-
+  - responsive
+  - shopify
+_template: blog_post
 ---
+
+
 Performance is a useful metric for most cases on the web. None more so than in e-commerce where performance can have a dramatic impact on conversion rates and therefore profits.
 
 One of the benefits of using a platform like Shopify is that you can leverage their margins of scale to achieve high-volume global performance for a fraction of the cost you would need to spend to do it yourself. Although the operating costs of servers have been shrinking in previous years, the complexity and pace of change have increased. As someone that would just about describe themselves as a full-stack[^1] developer, I feel like I offer my clients more value with my front-end expertise than back-end.

@@ -1,16 +1,19 @@
 ---
 draft: false
-date: 2021-10-26
+date: 2021-10-26T00:00:00.000Z
 layout: layouts/post.njk
 title: Refactoring a Shopify upsell widget to a Custom Element
-description: Often shop owners want the ability to offer a small upsell that can be
-  easily added to an order.
+description: >-
+  Often shop owners want the ability to offer a small upsell that can be easily
+  added to an order.
 tags:
-- web components
-- javascript
-- shopify
-
+  - web components
+  - javascript
+  - shopify
+_template: blog_post
 ---
+
+
 Clients often ask me for a good way to upsell a product at the point of purchase. A good example might be a florist wanting to sell a vase with a bouquet. The main product they're selling is the bouquet, but it's probable that the customer may also like to add a vase to their order at the same time.
 
 One solution would be to add a "fake" variant to the product that acts as a combo of the bouquet + vase, but this quickly falls down with stock, reporting, etc as the upsell vase is its own product with inventory that should really exist separately. It's also then necessary to create all the extra "fake" variants on each product. What if there's a requirement for more than just the vase, or different styles of vase?

@@ -1,13 +1,15 @@
 ---
 draft: false
-date: 2021-12-21
+date: 2021-12-21T00:00:00.000Z
 layout: layouts/post.njk
 title: Using tags to render related content in Shopify themes
 description: The trick I use to leverage tags to identify and display related content.
 tags:
-- shopify
-
+  - shopify
+_template: blog_post
 ---
+
+
 With the recent launch of Shopify's OS2 themes, I wanted to reflect on a technique that has been extremely useful as a way to add richer layouts to themes. OS2 introduced a way to add Metafields natively and easily generate new templates via the theme editor, including fields that can also pull in data based on those Metafields.
 
 This latest combination has opened up a native way to build rich templates without the need to edit code directly or resort to third-party apps. The ability to add features via third-party apps is one of the killer features of Shopify. That said, I've always had huge reservations about adding apps that change, or require changes to the theme code. As well as introducing a potential maintenance burden when updating or switching themes, it also seems to carry a high risk in terms of breaking the website in a very consumer-facing and hard-to-debug way. It's not unusual for store owners to contact me to resolve issues caused by the (un)installation of apps that may not even necessarily be the fault of the app developers.

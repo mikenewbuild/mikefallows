@@ -1,16 +1,19 @@
 ---
 draft: false
-date: 2021-07-26
+date: 2021-07-26T00:00:00.000Z
 layout: layouts/post.njk
 title: Using Jest tests to replace jQuery in a Shopify theme
-description: 'A strategy for safely removing jQuery as a dependency from custom Shopify
-  themes. '
+description: >-
+  A strategy for safely removing jQuery as a dependency from custom Shopify
+  themes. 
 tags:
-- testing
-- javascript
-- shopify
-
+  - testing
+  - javascript
+  - shopify
+_template: blog_post
 ---
+
+
 I started building custom Shopify themes in 2015 when it was still quite painful dealing with different browsers and lots of elements of Shopify relied on jQuery by default. In 2020, the browser landscape is much less problematic and so I decided to stop supporting IE and only target modern browsers instead. Although most sites still get a tiny percentage of traffic from older browsers, the number is dwindling and actual sales are non-existent so the cost of extra development is no longer justified.
 
 This has given me the opportunity to do all my new feature development with modern JavaScript techniques using newer frameworks like [Alpine.js](https://alpinejs.dev/). Still, there is a lot of previous code knocking around that relies on jQuery and a lot of it is fundamental to the way the theme works. I'm generally fine with leaving working code alone, but jQuery is quite a heavy dependency, so there are definite performance gains from removing it.

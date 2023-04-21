@@ -116,8 +116,8 @@ module.exports = function (eleventyConfig) {
   // Put robots.txt in root
   eleventyConfig.addPassthroughCopy('robots.txt');
 
-  // Copy the `img` folder to the output
-  eleventyConfig.addPassthroughCopy('img');
+  // Copy the `public` folder to the output
+  eleventyConfig.addPassthroughCopy('public');
 
   // Copy the root css file to the output
   eleventyConfig.addPassthroughCopy('css/index.css');
