@@ -1,14 +1,16 @@
 ---
 draft: false
-date: 2021-07-12
+date: 2021-07-12T00:00:00.000Z
 layout: layouts/post.njk
 title: Quickly export Shopify data to a CSV
 description: 'A lightweight and configurable node script to export Shopify data. '
 tags:
-- node
-- shopify
-
+  - node
+  - shopify
+_template: blog_post
 ---
+
+
 Shopify provides some simple tools to export your data from the admin. There are also plenty of apps available that enable you to manage complex data exports.
 
 But sometimes I just want to export some data into a CSV file, either from a resource that Shopify doesn't expose in the admin or that includes a field like the resource ID, that's not present in the standard exports. It would be nice to be able to do it without the cost or hassle of installing an app.

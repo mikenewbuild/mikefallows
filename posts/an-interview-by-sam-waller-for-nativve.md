@@ -1,14 +1,17 @@
 ---
 draft: false
-date: 2021-07-15
+date: 2021-07-15T00:00:00.000Z
 layout: layouts/post.njk
 title: An interview by Sam Waller for Nativve
-description: Long-time collaborators, Nativve, interviewed me about websites for their
+description: >-
+  Long-time collaborators, Nativve, interviewed me about websites for their
   blog.
 tags:
-- the web
-
+  - the web
+_template: blog_post
 ---
+
+
 ## Building the information super-highway
 
 > The internet… it’s pretty big these days, isn’t it? The so-called information superhighway has gone from being a quiet country lane to a fully-fledged six-lane autobahn, and is showing no signs of slowing down.

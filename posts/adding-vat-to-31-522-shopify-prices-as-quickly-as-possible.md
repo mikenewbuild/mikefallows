@@ -1,15 +1,17 @@
 ---
 draft: false
-date: 2021-10-20
+date: 2021-10-20T00:00:00.000Z
 layout: layouts/post.njk
-title: Adding VAT to 31,522 Shopify prices as quickly as possible
+title: 'Adding VAT to 31,522 Shopify prices as quickly as possible'
 description: Yay! Shopify finally handles tax in a way that's useful for Europeans.
 tags:
-- shopify
-- node
-- javascript
-
+  - shopify
+  - node
+  - javascript
+_template: blog_post
 ---
+
+
 I built my first Shopify theme in 2012, and after years of custom-built PHP carts, and third-party self-hosted products, Shopify was a breath of fresh air. No servers to worry about, a pleasant templating language in Liquid, great support and an API that gave you advanced capabilities when you needed it.
 
 ## Shopify and the VAT problem

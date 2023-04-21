@@ -1,15 +1,18 @@
 ---
 draft: false
-date: 2021-07-21
+date: 2021-07-21T00:00:00.000Z
 layout: layouts/post.njk
 title: Shopify theme development with esbuild
-description: Leverage sass and bundle js imports with esbuild when using the new Shopify
+description: >-
+  Leverage sass and bundle js imports with esbuild when using the new Shopify
   themes CLI.
 tags:
-- esbuild
-- shopify
-
+  - esbuild
+  - shopify
+_template: blog_post
 ---
+
+
 Shopify recently released a new CLI that makes it easier to develop themes locally.
 
 ## The old way: Theme Kit + CodeKit

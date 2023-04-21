@@ -1,14 +1,16 @@
 ---
 draft: false
-date: 2022-07-16
+date: 2022-07-16T00:00:00.000Z
 layout: layouts/post.njk
 title: Handling dark mode in HTML emails
 description: A simple method to quickly handle switching colours and images in emails.
 tags:
-- css
-- email
-
+  - css
+  - email
+_template: blog_post
 ---
+
+
 Recently I needed to customise an HTML email template written in [Pug](https://pugjs.org/). This was my first time using Pug and I was pleasantly surprised to find it intuitive and with a few useful features to help organise some reusable components. Its terse syntax is also handy for email templates, as supporting current email clients (even in 2022!) means that you still need to work with deeply nested tables to achieve even the simplest of layouts.
 
 Although CSS support in email is improving, there's still a range of mail clients that are hard to test, so resources like [Can I email...](https://www.caniemail.com/) are invaluable in helping identify which features are widely supported. For example, my first thought was to use SVG and then define the colours in CSS. Unfortunately, the support at this point is still lacking, so it does require creating multiple versions of images that you need inverting for your design.

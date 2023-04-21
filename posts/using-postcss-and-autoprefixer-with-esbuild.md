@@ -1,15 +1,17 @@
 ---
 draft: false
-date: 2022-02-15
+date: 2022-02-15T00:00:00.000Z
 layout: layouts/post.njk
 title: Using PostCSS and Autoprefixer with esbuild
 description: Updating an esbuild config in a Shopify theme to utilise autoprefixer.
 tags:
-- shopify
-- esbuild
-- javascript
-
+  - shopify
+  - esbuild
+  - javascript
+_template: blog_post
 ---
+
+
 In [a previous post](/posts/shopify-theme-development-with-esbuild/), I described how to use [esbuild](https://esbuild.github.io/) as a bundler for Shopify themes.
 
 In this post, I want to document an additional step to use a tool called [Autoprefixer](https://github.com/postcss/autoprefixer) (a [PostCSS plugin](https://github.com/postcss/postcss)) which will automatically add browser vendor prefixes to your compiled CSS so that features are supported in older browsers.

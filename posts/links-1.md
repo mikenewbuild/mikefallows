@@ -1,13 +1,15 @@
 ---
 draft: false
-date: 2022-02-06
+date: 2022-02-06T00:00:00.000Z
 layout: layouts/post.njk
 title: 'Links #1'
 description: Things I've recently enjoyed around the web.
 tags:
-- the web
-
+  - the web
+_template: blog_post
 ---
+
+
 I've never really been good at keeping bookmarks, so I'm going to try tracking interesting things I've found on the web in posts for future me. I'm hoping this also provides some lower-effort content that I can publish more easily, and get less hung up about writing "proper" posts. Not entirely uninspired by [Bruce Lawson's Reading Lists](https://brucelawson.co.uk/category/accessibility-web-standards/reading-list/).
 
 [NFTs weren't supposed to end like this](https://www.theatlantic.com/ideas/archive/2021/04/nfts-werent-supposed-end-like/618488/). Anil Dash on the unfulfilled promise of technology benefitting artists foremost.

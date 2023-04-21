@@ -1,14 +1,16 @@
 ---
 draft: false
-date: 2021-09-08
+date: 2021-09-08T00:00:00.000Z
 layout: layouts/post.njk
 title: Uploading Source Maps to Honeybadger with GitHub Actions
 description: Using GitHub Actions for more useful error reporting.
 tags:
-- ci
-- github actions
-
+  - ci
+  - github actions
+_template: blog_post
 ---
+
+
 I've been a happy user of [Honeybadger](https://www.honeybadger.io/) for well over a year now. For the small apps I've built it has often been enough to rely on users reporting bugs, as I usually have a direct line of contact with the user (AKA the client).
 
 ## Error Tracking Shopify apps

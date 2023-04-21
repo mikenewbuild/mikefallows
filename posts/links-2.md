@@ -1,13 +1,15 @@
 ---
 draft: false
-date: 2022-05-12
+date: 2022-05-12T00:00:00.000Z
 layout: layouts/post.njk
 title: 'Links #2'
 description: Happy reading!
 tags:
-- the web
-
+  - the web
+_template: blog_post
 ---
+
+
 A list of articles which have recently grabbed my attention.
 
 [Optimising Largest Contentful Paint](https://csswizardry.com/2022/03/optimising-largest-contentful-paint/). The really interesting part of this for me is that pop-ups (aka [Facehuggers](https://en.wikipedia.org/wiki/Alien_(creature_in_Alien_franchise)#Facehugger)) which typically prompt you for your email, if big enough, will be considered the LCP. A lot of these are delayed on purpose, but the speed test won't distinguish that so you are artificially signalling to Google that your page is slow.

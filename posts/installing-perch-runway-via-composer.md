@@ -1,14 +1,16 @@
 ---
 draft: false
-date: 2021-08-16
+date: 2021-08-16T00:00:00.000Z
 layout: layouts/post.njk
 title: Installing Perch Runway via Composer
 description: How to manage Perch CMS as a Composer dependency.
 tags:
-- php
-- composer
-
+  - php
+  - composer
+_template: blog_post
 ---
+
+
 When I've needed to provide a CMS for brochure sites, my first port of call has been [Perch CMS](https://grabaperch.com/). I've been using it since 2010 (when it was still v1.2!) as a great solution to adapt static sites to be updated by a client (eg. adding a news section), or building out highly customised views. Perch uses PHP and MySQL so it was familiar and easy to set up locally and host on a budget.
 
 ### The Problem
