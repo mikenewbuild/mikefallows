@@ -114,13 +114,17 @@ module.exports = function (eleventyConfig) {
   });
 
   // Put robots.txt in root
-  eleventyConfig.addPassthroughCopy('robots.txt');
+  eleventyConfig.addPassthroughCopy('./robots.txt');
 
   // Copy the `public` folder to the output
-  eleventyConfig.addPassthroughCopy('public');
+  eleventyConfig.addPassthroughCopy('./public');
+
+  // Copy the `admin` folder to the output for Tina CMS
+  eleventyConfig.addPassthroughCopy('./admin');
+  eleventyConfig.addPassthroughCopy('./tina');
 
   // Copy the root css file to the output
-  eleventyConfig.addPassthroughCopy('css/index.css');
+  eleventyConfig.addPassthroughCopy('./css/index.css');
   eleventyConfig.addPassthroughCopy({
     './node_modules/prismjs/themes/prism-tomorrow.css': './css/prism.css',
   });
