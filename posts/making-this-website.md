@@ -1,13 +1,14 @@
 ---
 draft: false
-date: 2021-07-11
+date: 2021-07-11T00:00:00.000Z
 layout: layouts/post.njk
 title: Making this website
 description: The process and decisions behind this site.
 tags:
-- the web
-- eleventy
+  - the web
+  - eleventy
 ---
+
 I have planned to have a personal site for a long time and in this (my first!) post I'm going to cover how I selected the technology used to build this site and why.
 
 The main roadblock to having my own site over the years has been a mixture of "analysis paralysis", the commitment to maintaining it (cobbler's shoes) and for a large part the fear of it being - well - a bit rubbish.
@@ -16,13 +17,13 @@ I'm not a great writer, nor prolific, but I do document a lot of thoughts in ema
 
 Left to my own devices, I'm pretty sure I would have put it off indefinitely. But as is so often the way, a casual conversation with [a friend](https://kierankelly.net/) turned out to be the motivation I needed.
 
-Thinking about what would be the best solution for him, helped me better consider what _I_ would want. I wanted something that would be:
+Thinking about what would be the best solution for him, helped me better consider what *I* would want. I wanted something that would be:
 
-- [low friction to update](#low-friction-to-update)
-- [low cost](#low-cost)
-- [portable](#portable)
-- [easy to maintain](#easy-to-maintain)
-- [fun to tinker with](#fun-to-tinker-with)
+* [low friction to update](#low-friction-to-update)
+* [low cost](#low-cost)
+* [portable](#portable)
+* [easy to maintain](#easy-to-maintain)
+* [fun to tinker with](#fun-to-tinker-with)
 
 ### Low friction to update
 
@@ -54,8 +55,9 @@ So this steered me towards static site generators. I already had some experience
 
 I had been aware of Eleventy being a relative newcomer and had read some glowing reviews but still wasn't sure I "got it". Then I watched the creator, [Zach Leatherman](https://www.zachleat.com/), demo it and its simplicity frankly blew me away. It felt easy to grasp, very flexible and lightweight and I was excited to try it out. You could literally start your site from a single file with zero config. It also supported Liquid syntax which I use regularly on Shopify themes so the learning curve was much less steep.
 
-I could see that it was simple to deploy to Netlify (and others) via Git, and had support for Netlify CMS (which I'd used) as well as Forestry which I was interested to try out.[^1]
+I could see that it was simple to deploy to Netlify (and others) via Git, and had support for Netlify CMS (which I'd used) as well as Forestry which I was interested to try out.\[^1]\[^2]
 
 So [Eleventy](https://www.11ty.dev/) it is, with [GitHub](https://github.com/) and [Netlify](https://www.netlify.com/).
 
-[^1]: Update: I went with [Forestry](https://forestry.io/) and I can recommend it.
+\[^1]: Update: I went with [Forestry](https://forestry.io/) and I can recommend it.
+\[^2]: Further update: Forestry is now [TinaCMS](https://tina.io/) and still recommending it.
