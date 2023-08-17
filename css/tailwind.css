@@ -33,7 +33,7 @@
   }
 
   .prose .footnote-ref a {
-    @apply no-underline font-medium font-sans opacity-70;
+    @apply no-underline font-medium font-sans tabular-nums opacity-70;
   }
 
   .prose .footnote-ref a:hover {
