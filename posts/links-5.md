@@ -3,6 +3,8 @@ draft: false
 title: 'Links #5'
 description: Interesting stuff I've run into since last time.
 date: 2023-08-16T23:00:00.000Z
+tags:
+  - the web
 layout: post
 ---
 
