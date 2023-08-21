@@ -68,6 +68,7 @@ function report(subject, message, error = false) {
 
 With that in place, you will need to add some code to format your data and send the request to the API endpoint that Val Town provides. Here I'm storing the strings for the subject and message data I want to store (Shopify's liquid syntax will replace the `{{ shop.url }}` and `{{ order_id }}` dynamically). I append any error that is thrown in the script that I want to test and finally, use the `fetch` method to send this data to Val Town. Anything you include in the `args` parameter will be passed as arguments to the Val.
 
+{% raw %}
 ```js
 let report = [
   `Order on {{ shop.url }}`,
@@ -82,6 +83,7 @@ try {
 
 fetch("https://api.val.town/v1/run/<username>.report?args=" + JSON.stringify(report));
 ```
+{% endraw %}
 
 With this tool you can have a simple mechanism for reporting how and when a script runs and an email notification for errors. I can see plenty of ways this could be augmented to capture more information or to create additional Vals to inspect the store, like looking for duplicate order IDs being logged. As Val Town has a built-in 'Interval' system you could even periodically run Vals to clear your log, or aggregate the data and email yourself a summary.
 
