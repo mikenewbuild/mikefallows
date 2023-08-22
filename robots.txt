@@ -3,6 +3,9 @@ Allow: /
 Disallow: /admin/
 Disallow: /cdn-cgi/
 
+User-agent: GPTBot
+Disallow: /
+
 Host: https://mikefallows.com/
 
 Sitemap: https://mikefallows.com/sitemap.xml
