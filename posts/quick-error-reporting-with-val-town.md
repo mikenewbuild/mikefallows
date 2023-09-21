@@ -66,7 +66,7 @@ function report(subject, message, error = false) {
 
 ## Sending data to Val Town
 
-With that in place, you will need to add some code to format your data and send the request to the API endpoint that Val Town provides. Here I'm storing the strings for the subject and message data I want to store (Shopify's liquid syntax will replace the `{{ shop.url }}` and `{{ order_id }}` dynamically). I append any error that is thrown in the script that I want to test and finally, use the `fetch` method to send this data to Val Town. Anything you include in the `args` parameter will be passed as arguments to the Val.
+With that in place, you will need to add some code to format your data and send the request to the API endpoint that Val Town provides. Here I'm storing the strings for the subject and message data I want to store (Shopify's liquid syntax will replace the {% raw %}`{{ shop.url }}` and `{{ order_id }}`{% endraw %} dynamically). I append any error that is thrown in the script that I want to test and finally, use the `fetch` method to send this data to Val Town. Anything you include in the `args` parameter will be passed as arguments to the Val.
 
 {% raw %}
 ```js
