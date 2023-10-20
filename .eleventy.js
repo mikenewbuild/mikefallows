@@ -9,6 +9,7 @@ const markdownItFootnote = require('markdown-it-footnote');
 const nunjucks = require('nunjucks');
 const { execSync } = require('child_process');
 const timeToRead = require('eleventy-plugin-time-to-read');
+const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 
 module.exports = function (eleventyConfig) {
   // Add plugins
@@ -16,6 +17,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPlugin(timeToRead, { speed: '180 words per minute', style: 'short' });
+  eleventyConfig.addPlugin(pluginBundle);
 
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);
@@ -123,18 +125,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('./admin');
   eleventyConfig.addPassthroughCopy('./tina');
 
-  // Copy the root css file to the output
-  eleventyConfig.addPassthroughCopy('./css/index.css');
-  eleventyConfig.addPassthroughCopy({
-    './node_modules/prismjs/themes/prism-tomorrow.css': './css/prism.css',
-  });
-
   // Handle Tailwind files
   eleventyConfig.addWatchTarget('./tailwind.config.js');
   eleventyConfig.addWatchTarget('./css/tailwind.css');
-  eleventyConfig.addPassthroughCopy({
-    './_tmp/css/styles.css': './css/styles.css',
-  });
   eleventyConfig.addPassthroughCopy('./css/**/*.woff2');
   eleventyConfig.addWatchTarget('./js/');
 
