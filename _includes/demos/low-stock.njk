@@ -1,0 +1,48 @@
+<form id="low-stock-demo">
+  <input type="hidden" id="input" value="123">
+  <span>Choose</span>
+  <select name="id" id="quantity">
+    <option value="123">Standard</option>
+    <option value="456">Deluxe</option>
+  </select>
+</form>
+
+<style>
+  #low-stock-demo {
+    border: 1px dashed;
+    padding: 1rem;
+    line-height: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>
+
+<script>
+(() => {
+  const threshold = 5;
+  const inventory = [
+    { id: '123', quantity: 20 },
+    { id: '456', quantity: 3 },
+  ];
+  const demo = document.querySelector('#low-stock-demo');
+  const input = demo.querySelector('#input');
+  const select = demo.querySelector('#quantity')
+  select.insertAdjacentHTML('afterend', `<div id="stock-notice"></div>`);
+  const notice = demo.querySelector('#stock-notice');
+  select.addEventListener('change', (e) => {
+    input.value = e.target.value;
+    input.dispatchEvent(new Event('change'))
+  });
+  function updateMessage(id) {
+    let message = '';
+    const variant = inventory.find(i => i.id === id);
+    if (variant && (variant.quantity > 0 && variant.quantity <= threshold)) {
+      message = `${variant.quantity} in stock`;
+    }
+    notice.textContent = message;
+  }
+  updateMessage('123');
+  input.addEventListener('change', (e) => updateMessage(e.target.value));
+})();
+</script>
