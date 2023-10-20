@@ -9,12 +9,12 @@
     "tina:dev": "npx tinacms dev",
     "eleventy:build": "ELEVENTY_PRODUCTION=true eleventy",
     "eleventy:debug": "DEBUG=* eleventy",
-    "eleventy:serve": "eleventy --serve",
+    "eleventy:serve": "eleventy --serve --quiet",
     "eleventy:watch": "eleventy --watch --quiet",
     "rollup:build": "rollup --config",
     "rollup:watch": "rollup --config --watch",
-    "tailwind:build": "NODE_ENV=production npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _tmp/css/styles.css --minify",
-    "tailwind:watch": "npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _tmp/css/styles.css --watch"
+    "tailwind:build": "NODE_ENV=production npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _site/css/styles.css --minify",
+    "tailwind:watch": "npx tailwindcss -i css/tailwind.css -c tailwind.config.js -o _site/css/styles.css --watch"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.0",
@@ -38,7 +38,6 @@
     "tailwindcss": "^3.3.2"
   },
   "dependencies": {
-    "@11ty/eleventy-plugin-bundle": "^1.0.4",
     "@tinacms/cli": "^1.5.24",
     "alpinejs": "^3.10.3",
     "tinacms": "^1.4.6"
