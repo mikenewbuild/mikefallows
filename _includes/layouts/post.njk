@@ -11,6 +11,9 @@ templateClass: tmpl-post
   <div class="mx-auto max-w-3xl opacity-50" data-pagefind-ignore>
     <time datetime="{{ page.date | htmlDateString }}" class="font-medium">{{ page.date | readableDate }}</time>
     • {{ content | timeToRead }}
+    {% if draft %}
+      <span class="italic">(Draft)</span>
+    {% endif %}
   </div>
 
 
