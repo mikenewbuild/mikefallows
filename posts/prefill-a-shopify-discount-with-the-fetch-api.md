@@ -2,7 +2,7 @@
 draft: false
 title: Prefill a Shopify discount with the Fetch API
 description: Set a prefilled discount in checkout with a fetch request.
-date: 2023-10-22T23:00:00.000Z
+date: 2023-10-23T10:00:00.000Z
 layout: post
 tags:
   - javascript
