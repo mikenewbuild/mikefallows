@@ -1,7 +1,7 @@
 <ol reversed class="my-4 font-medium">
 {% for post in postslist %}
   <li class="mb-8{% if post.url == url %}{% endif %}">
-    <a class="block text-lg leading-tight max-w-lg mb-1" href="{{ post.url | url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+    <a class="block text-lg leading-tight text-balance max-w-lg mb-1" href="{{ post.url | url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
     <div class="text-sm leading-tight opacity-50">
       <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> • {{ post.content | timeToRead }}
     {% if post.data.draft %}

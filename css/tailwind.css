@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 @layer utilities {
+
+  /* Not supported in Taliwind yet */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  article h1, article h2, article h3 {
+    text-wrap: balance;
+  }
+
   a.direct-link {
     @apply opacity-50 no-underline text-lg font-medium;
   }
