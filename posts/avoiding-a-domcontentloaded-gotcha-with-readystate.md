@@ -1,10 +1,10 @@
 ---
-draft: true
+draft: false
 title: Avoiding a DOMContentLoaded gotcha with readyState
 description: >-
   I recently hit a race condition when a script was loading faster in some
   browsers.
-date: 2023-10-23T12:00:00.000Z
+date: 2023-10-23T15:00:00.000Z
 tags:
   - javascript
 layout: post
