@@ -11,6 +11,11 @@ tags:
   - testing
 layout: post
 ---
+
+<div class="note italic">
+<p>This post was updated on 24th October 2023 to reflect the changes in Val Town v3.</p>
+</div>
+
 Recently I needed to quickly inspect a script running in the 'Additional Checkout Scripts' portion of the order thank you / status page for a Shopify client. These are copy-paste scripts and there's no easy way to manage them, and it's particularly difficult to test them properly without running real orders. The client was seeing some odd data in their reporting and suspected that there might be some occasional errors with one of the scripts, but it was hard to work out when or why this might be happening.
 
 ## Welcome to Val Town
@@ -26,31 +31,39 @@ All I wanted to do was be able to log a minimal amount of data whenever the scri
 First, let's create a store:
 
 ```js
-let store = [];
+export let store = [];
 ```
 
-Yep, that's literally it. Val Town will let you add up to 100kb of data to that value (on it's very reasonable free tier), at which point it will begin to truncate the data. This is plenty for my purposes as I'm only storing an order id and at most I'm only interested in a few dozen of the latest records.
+Yep, that's literally it. Val Town will let you add up to 100kb of data to that value (on its very reasonable free tier), at which point it will begin to truncate the data. This is plenty for my purposes as I'm only storing an order id and at most I'm only interested in a few dozen of the latest records.
 
-Still, it might be useful to have a way to empty our store (let's say you potentially fill the store up with lots of dummy data while preparing to write a blog post 👀), so you can create an additional Val with the following snippet. Note the `@me` shorthand for referencing your own Vals and also that it's constructed as an IIFE to make sure that the function is invoked when you 'run' the Val. A cool feature of Val Town is that you can easily reference other people's Val's with the `@` syntax, but I think that [it will be going away](https://blog.val.town/blog/val-town-runtime-v3-my-mistakes-were-easy-the-solutions-simple) at some point in favour of standard import statements which is even cooler.
+Still, it might be useful to have a way to empty our store (let's say you potentially fill the store up with lots of dummy data while preparing to write a blog post 👀), so you can create an additional Val with the following snippet. Note that we're importing `set` from Val's standard library to update the value of one of our other Val's by reference. Also note that it's constructed as an IIFE to make sure that the function is invoked when you 'run' the Val.
 
 Just beware that when you run this Val, the results may not appear instantly (ie. your store won't be cleared out straight away so wait a few moments to see the results).
 
 ```js
-const clear = (async () => {
-  @me.store = [];
+import { set } from "https://esm.town/v/std/set";
+
+export const clear = (async () => {
+  await set("store", []);
 })();
 ```
 
 ## Creating an endpoint
 
-Finally, the cool part: a Val that serves as our web endpoint to receive the data from our script. Here, we're accepting three arguments, `subject`, `message` and an optional `error`. The subject and message will be added to the store, and if an error is present it will also use the `console.email` global to send me an email. Val will only send emails to the email address of the account. This is a totally acceptable limitation, but I guess if you needed to notify others you could set up a forwarding filter.
+Finally, the cool part: a Val that serves as our web endpoint to receive the data from our script. Here, we're accepting three arguments, `subject`, `message` and an optional `error`. The subject and message will be added to the store, and if an error is present it will also use the `email` function from the standard library to send me an email. Val will only send emails to the email address of the account. This is a totally acceptable limitation, but I guess if you needed to notify others you could set up a forwarding filter.
+
+You should also note that I'm importing my `store` Val so that I can append to it and then use the `set` function to update the Val with the new contents.
 
 ```js
-function report(subject, message, error = false) {
-  @me.store.push({ subject, message });
+import { email } from "https://esm.town/v/std/email";
+import { set } from "https://esm.town/v/std/set";
+import { store } from "https://esm.town/v/<user>/store";
 
+export async function report(subject, message, error = false) {
+  store.push({ subject, message });
+  await set("store", store);
   if (error) {
-    console.email({
+    await email({
       subject: `Error: ${subject}`,
       html: `<pre>${message}</pre><hr><pre>${error}</pre>`,
     });
@@ -58,7 +71,7 @@ function report(subject, message, error = false) {
 }
 ```
 
- Remember to click the lock icon on the Val to convert from a 'private' Val. Private Val's need an API key that you wouldn't want to leak publically.
+ Remember to click the lock icon on the Val to convert from a 'private' Val. Private Val's need an API key that you wouldn't want to leak publicly.
 
  ### A note on security
 
@@ -66,7 +79,9 @@ function report(subject, message, error = false) {
 
 ## Sending data to Val Town
 
-With that in place, you will need to add some code to format your data and send the request to the API endpoint that Val Town provides. Here I'm storing the strings for the subject and message data I want to store (Shopify's liquid syntax will replace the {% raw %}`{{ shop.url }}` and `{{ order_id }}`{% endraw %} dynamically). I append any error that is thrown in the script that I want to test and finally, use the `fetch` method to send this data to Val Town. Anything you include in the `args` parameter will be passed as arguments to the Val.
+{% raw %}
+With that in place, you will need to add some code to format your data and send the request to the API endpoint that Val Town provides. Here I'm storing the strings for the subject and message data I want to store (Shopify's Liquid syntax will replace the `{{ shop.url }}` and `{{ order_id }}` dynamically). I append any error that is thrown in the script that I want to test and finally, use the `fetch` method to send this data to Val Town. Anything you include in the `args` parameter will be passed as arguments to the Val.
+{% endraw %}
 
 {% raw %}
 ```js
