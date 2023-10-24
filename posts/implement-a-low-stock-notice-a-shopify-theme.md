@@ -121,6 +121,16 @@ Then the script would look like this:
 ```
 {% endraw %}
 
-## Customisation
+## Other considerations
 
-You could add the inventory threshold as a section setting. That would also allow you to populate the threshold through a value stored on the product as a metafield 🙌
+{% raw %}
+I ended up adding the inventory threshold as a section setting so that it could be populated through a value stored on the product as a metafield. I also added some styling to the message, and made the message customisable, ie. the message could take the format "Hurry, only {count} left in stock!", where `{count}` would be dynamically replaced by the remaining stock quantity.
+{% endraw %}
+
+What I particularly liked about this implementation was that it didn't require editing a single existing theme file. It's an approach that I try to prioritise as much as possible as it has multiple benefits for working within a codebase.
+
+In the past I might have been tempted to update the theme's JavaScript to insert this functionality where the code dynamically changes the selected variant. Or add it into the variant selector's Liquid file. Certainly that might have been a more direct approach. However, the maintenance burden is likely to be much greater whenever you want to upgrade the theme (especially if you do a lot of point upgrades) when having to diff/re-apply these types of changes every time. Worse when it's to a large file like the theme's main JavaScript file.
+
+By isolating this feature to its own file, it makes it easier to delete it completely if the theme implements its own version of the feature, or identify how that feature works or needs to be changed, fixed or improved. Even if a new version of the theme handles quantity changes differently, the only thing that is likely to change is one of the selectors, or how to observe the selected variant (maybe through a `MutationObserver` or detecting changes to parameters in the uri) which is a much smaller change to make.
+
+I've found life much easier customising themes with this approach.
