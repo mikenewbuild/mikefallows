@@ -79,8 +79,10 @@ module.exports = function (eleventyConfig) {
     const popularUrls = [
       '/posts/laravel-sail-vite-ssl-custom-domain/',
       '/posts/using-postcss-and-autoprefixer-with-esbuild/',
-      '/posts/making-a-shopify-theme-app-extension-for-google-site-verification/',
+      '/posts/observing-cart-changes-in-a-shopify-theme/',
       '/posts/responsive-images-in-shopify-themes/',
+      '/posts/making-a-shopify-theme-app-extension-for-google-site-verification/',
+      '/posts/adding-robots-txt-to-eleventy-site/',
     ];
 
     popularUrls.forEach(url => {
