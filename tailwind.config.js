@@ -1,7 +1,7 @@
 const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
-const fontSans = `"Public Sans", ${defaultTheme.fontFamily.sans.join(',')}`;
-const fontSerif = `"Crimson Pro", ${defaultTheme.fontFamily.serif.join(',')}`;
+const fontSans = `"Public Sans", "Public Sans Fallback", ${defaultTheme.fontFamily.sans.join(',')}`;
+const fontSerif = `"Crimson Pro", "Crimson Pro Fallback", ${defaultTheme.fontFamily.serif.join(',')}`;
 const fontMono = `"JetBrains Mono", ${defaultTheme.fontFamily.mono.join(',')}`;
 
 module.exports = {
