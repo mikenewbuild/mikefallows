@@ -55,9 +55,9 @@ So this steered me towards static site generators. I already had some experience
 
 I had been aware of Eleventy being a relative newcomer and had read some glowing reviews but still wasn't sure I "got it". Then I watched the creator, [Zach Leatherman](https://www.zachleat.com/), demo it and its simplicity frankly blew me away. It felt easy to grasp, very flexible and lightweight and I was excited to try it out. You could literally start your site from a single file with zero config. It also supported Liquid syntax which I use regularly on Shopify themes so the learning curve was much less steep.
 
-I could see that it was simple to deploy to Netlify (and others) via Git, and had support for Netlify CMS (which I'd used) as well as Forestry which I was interested to try out.\[^1]\[^2]
+I could see that it was simple to deploy to Netlify (and others) via Git, and had support for Netlify CMS (which I'd used) as well as ~~Forestry~~[^1] TinaCMS[^2] which I was interested to try out.
 
 So [Eleventy](https://www.11ty.dev/) it is, with [GitHub](https://github.com/) and [Netlify](https://www.netlify.com/).
 
-\[^1]: Update: I went with [Forestry](https://forestry.io/) and I can recommend it.
-\[^2]: Further update: Forestry is now [TinaCMS](https://tina.io/) and still recommending it.
+[^1]: Update: I went with [Forestry](https://forestry.io/) and I can recommend it.
+[^2]: Further update: Forestry is now [TinaCMS](https://tina.io/) and still recommending it.
