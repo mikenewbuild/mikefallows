@@ -17,7 +17,7 @@ Here's the code I used for that.
 <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%A5%B6%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
 ```
 
-That was fine until I noticed that a search result for my site in DuckDuckGo (my primary search engine at time of writing) didn't support emoji's as a shortcut icon. I think partially because it (or Bing or whichever systme it uses for it) tries to generate a small self-hosted image for the short cut icon. Drat. Time to do something about it.
+That was fine until I noticed that a search result for my site in [DuckDuckGo](https://duckduckgo.com/) (my primary search engine at time of writing) didn't support emojis as a shortcut icon. I think partially because it (or Bing or whichever system it uses for it) tries to generate a small self-hosted image for the short cut icon. Drat. Time to do something about it.
 
 I still didn't really want to have to _design_ anything. I can tackle that later if I ever get around to seriously thinking about the visual identity of this site. For now I wanted a small improvement, a _kaizen_[^1] if you will. So I thought about whether it was possible to get raw SVG versions of emoji. In my search I came across [OpenMoji](https://openmoji.org/) which I'd seen mentioned before. It provides open source versions of emoji that are available as coloured or outlined SVG files. Perfect!
 
