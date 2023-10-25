@@ -53,7 +53,7 @@ Assuming that the HTML structure of the page is something that could be boiled d
 <div class="product">
   <form>
     <input type="hidden" class="product-variant-id" value="123">
-    <select name="id" class="quantity">
+    <select name="id" class="options">
       <option value="123">Standard</option>
       <option value="456">Deluxe</option>
     </select>
@@ -71,7 +71,7 @@ Then the script would look like this:
     // Initial config
     const threshold = 5;
     const productSelector = '.product';
-    const quantitySelector = '.quantity';
+    const optionsSelector = '.options';
     const hiddenVariantIdInputSelector = '.product-variant-id';
     const initialVariantId = '{{ product.selected_or_first_available_variant.id }}';
 
@@ -86,12 +86,12 @@ Then the script would look like this:
     const productEl = document.querySelector(productSelector);
     if (!productEl) return;
 
-    // Find the quantity selector (we will append our low stock notice container to this)
-    const quantityEl = productEl.querySelector(quantitySelector);
-    if (!quantityEl) return;
+    // Find the options selector (we will append our low stock notice container to this)
+    const optionsEl = productEl.querySelector(optionsSelector);
+    if (!optionsEl) return;
 
     // Append the notice container
-    quantityEl.insertAdjacentHTML('afterend', `<div class="stock-notice"></div>`);
+    optionsEl.insertAdjacentHTML('afterend', `<div class="stock-notice"></div>`);
 
     // Method to update the content of the notice container
     // if the stock is not above the threshold
@@ -126,6 +126,8 @@ Then the script would look like this:
 {% raw %}
 I ended up adding the inventory threshold as a section setting so that it could be populated through a value stored on the product as a metafield. I also added some styling to the message, and made the message customisable, ie. the message could take the format "Hurry, only {count} left in stock!", where `{count}` would be dynamically replaced by the remaining stock quantity.
 {% endraw %}
+
+## This is the way
 
 What I particularly liked about this implementation was that it didn't require editing a single existing theme file. It's an approach that I try to prioritise as much as possible as it has multiple benefits for working within a codebase.
 

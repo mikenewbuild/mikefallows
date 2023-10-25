@@ -1,7 +1,7 @@
 <form id="low-stock-demo">
   <input type="hidden" id="input" value="123">
   <span>Choose</span>
-  <select name="id" id="quantity">
+  <select name="id" id="options">
     <option value="123">Standard</option>
     <option value="456">Deluxe</option>
   </select>
@@ -35,7 +35,7 @@
   ];
   const demo = document.querySelector('#low-stock-demo');
   const input = demo.querySelector('#input');
-  const select = demo.querySelector('#quantity')
+  const select = demo.querySelector('#options')
   select.insertAdjacentHTML('afterend', `<div id="stock-notice"></div>`);
   const notice = demo.querySelector('#stock-notice');
   select.addEventListener('change', (e) => {
