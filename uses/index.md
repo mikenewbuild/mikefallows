@@ -2,9 +2,6 @@
 layout: layouts/page.njk
 title: Uses
 templateClass: tmpl-page
-eleventyNavigation:
-  key: Uses
-  order: 4
 
 ---
 A rundown of my setup and the current apps that I use in 2023. ([2022 version](/uses/2022/)).
