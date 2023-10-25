@@ -75,12 +75,12 @@ I noticed a couple of oversights, like needing to empty the `/public` directory 
 ```bash
 rm -rf ./public
 wget -mpckEnH -P ./public https://lsff.test
-find ./public -name "*.html" -type f -exec sed -i '.bak' 's/lsff\.test/archive\.shortfilms\.org\.uk/gI' {} \;
+find ./public -name "*.html" -type f -exec sed -i '.bak' 's/lsff\.test/lsff\.newbuild\.studio/gI' {} \;
 find ./public -name "*.bak" -type f -delete
 ```
 
 ### Deploying to Netlify
 
-All that remained was setting up a new site in Netlify linked to the repo on GitHub that served the `./public` folder and pointing the domain. I can't see [this archive](https://lsff.newbuild.studio/) ever generating enough traffic to escape the free tier and, if necessary, there's a few useful goodies like [redirects](https://docs.netlify.com/routing/redirects/) and [snippet injection](https://docs.netlify.com/site-deploys/post-processing/snippet-injection/) I can take advantage of if I ever need to.
+All that remained was setting up a new site in Netlify linked to the repo on GitHub that served the `./public` folder and pointing the domain. I can't see [this archive of the London Short Film Festival](https://lsff.newbuild.studio/) ever generating enough traffic to escape the free tier and, if necessary, there's a few useful goodies like [redirects](https://docs.netlify.com/routing/redirects/) and [snippet injection](https://docs.netlify.com/site-deploys/post-processing/snippet-injection/) I can take advantage of if I ever need to.
 
 So that's it – with just a handful of commands – I can pull down both repos make a change in the dynamic one and generate and publish a new set of static files to the web. I now have a solid solution for archiving and hosting static versions of LAMP sites without losing the ability to still make changes via the CMS.

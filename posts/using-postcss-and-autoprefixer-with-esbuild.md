@@ -18,7 +18,7 @@ In this post, I want to document an additional step to use a tool called [Autopr
 
 ## Why add vendor prefixes?
 
-Even in the days of modern "evergreen" browsers, users don't always upgrade in a timely fashion or are on older versions of operating systems which are limits certain versions of browsers (👋 Safari). [Vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) were initially a way for browsers to ship their own implementations of features which developers could opt into before standards had been agreed but I think it's largely abandoned as an approach now. I don't want to keep track of which vendor prefixes I should include where but when it comes to e-commerce, a broken-looking site can reduce credibility, and ultimately sales.
+Even in the days of modern "evergreen" browsers, users don't always upgrade in a timely fashion or are on older versions of operating systems which are limited to certain versions of browsers (👋 Safari). [Vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) were initially a way for browsers to ship their own implementations of features which developers could opt into before standards had been agreed but I think it's largely abandoned as an approach now. I don't want to keep track of which vendor prefixes I should include where but when it comes to e-commerce, a broken-looking site can reduce credibility, and ultimately sales.
 
 Wouldn't it be nice if there was a tool that keeps track of which vendor prefixes I should still be including, and like, y'know, add them for me at build time? Could it please compile my old Sass files too? Really _fast_? Oh goody.
 
