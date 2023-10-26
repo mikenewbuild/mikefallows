@@ -72,4 +72,26 @@
   .prose .footnote-item a.footnote-backref {
     @apply font-body no-underline inline-block ml-2;
   }
+
+  .prose pre code .token.deleted {
+    background-color: hsl(350deg 100% 22% / 45%);
+  }
+  .prose pre code .token.inserted {
+    background-color: hsl(120deg 90% 22% / 40%);
+  }
+
+  /* Make the + and - characters unselectable for copy/paste */
+  .prose pre code .token.prefix.unchanged,
+  .prose pre code .token.prefix.inserted,
+  .prose pre code .token.prefix.deleted {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Optional: full-width background color */
+  .prose pre code[class*="language-diff"],
+  .prose pre code .token.inserted:not(.prefix),
+  .prose pre code .token.deleted:not(.prefix) {
+    display: block;
+  }
 }
