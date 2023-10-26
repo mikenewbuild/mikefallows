@@ -27,7 +27,7 @@ I decided to switch from 🥶 (cold face) to 👾 (space invader/alien monster) 
 
 Adding dark mode support was pretty simple. First I replaced all hardcoded colour references to `currentColor` so I could control the colour more reliably through CSS. eg.
 
-```svg
+```diff-svg
 - <rect ... stroke="#000000" ... />
 + <rect ... stroke="currentColor" ... />
 ```
