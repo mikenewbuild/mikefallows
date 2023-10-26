@@ -24,6 +24,12 @@
     text-wrap: balance;
   }
 
+  article .prose p {
+    text-wrap: pretty;
+    hyphens: auto;
+    hyphenate-limit-chars: 10;
+  }
+
   a.direct-link {
     @apply opacity-50 no-underline text-lg font-medium;
   }
