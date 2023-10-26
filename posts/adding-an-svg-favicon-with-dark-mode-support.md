@@ -72,5 +72,5 @@ And here's the code I needed to add to the head. As I was switching to using an 
 All in all, a neat little way to get a dark mode supporting favicon!
 
 
-[^1]: To _'change for better'_. A business concept that referes to small incremental improvements. [Wiki article](https://en.wikipedia.org/wiki/Kaizen).
+[^1]: To _'change for better'_. A business concept that refers to small incremental improvements. [Wiki article](https://en.wikipedia.org/wiki/Kaizen).
 [^2]: Note: this only responds to the system dark mode, not the personal setting for the site because the colour scheme depends on the browser's chrome not the site's design.

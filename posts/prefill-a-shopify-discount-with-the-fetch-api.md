@@ -55,6 +55,6 @@ Here's the code with section settings that allow it to be added to your OS2 temp
 
 ## Caveats
 
-Shopify will only store and apply one prefilled discount at checkout, so keep in mind that if a visitor already has another discount stored in a Cookie, that will then be overridden if they visit a page with the section prefilling the discount. So be careful not to leave expired or unwanted versions of these sections live on the site as you may unintentially overwrite another code!
+Shopify will only store and apply one prefilled discount at checkout, so keep in mind that if a visitor already has another discount stored in a Cookie, that will then be overridden if they visit a page with the section prefilling the discount. So be careful not to leave expired or unwanted versions of these sections live on the site as you may unintentionally overwrite another code!
 
 [^1]: Actually, it's even better, you can add additional parameters to the link to redirect to another part of your site besides the homepage, as you can see [in the docs](https://help.shopify.com/en/manual/discounts/managing-discount-codes#promote-a-discount-using-a-shareable-link).
