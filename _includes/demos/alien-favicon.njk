@@ -1,16 +1,21 @@
 <style>
-  #alien-demo {
-    width: 72px;
-    height: 72px;
-    margin-inline: auto;
-    background: white;
-    color-scheme: light dark;
+  @keyframes cycle-background {
+    0% { background-color: hsl(0deg 100% 30% / 50%); }
+    20% { background-color: hsl(72deg 100% 30% / 50%); }
+    40% { background-color: hsl(144deg 100% 30% / 50%); }
+    60% { background-color: hsl(216deg 100% 30% / 50%); }
+    80% { background-color: hsl(288deg 100% 30% / 50%); }
+    100% { background-color: hsl(360deg 100% 30% / 50%); }
   }
 
-  @media (prefers-color-scheme: dark) {
-    #alien-demo {
-      background: black;
-    }
+  #alien-demo {
+    padding: 18px;
+    width: calc(72px + (18px * 2));
+    aspect-ratio: 1;
+    border-radius: 100%;
+    margin-inline: auto;
+    color-scheme: light dark;
+    animation: cycle-background 12s infinite;
   }
 </style>
 
