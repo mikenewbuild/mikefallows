@@ -35,13 +35,13 @@ Because this theme had the option to display variants as a `select` dropdown, or
 
 ## The code
 
-As I wanted to enable this as a section (so that it could be used conditionally on different templates), I could use Liquid to store the variant stock quantities in a JavaScript variable.
+As I wanted to enable this as a section (so that it could be used conditionally on different templates), I could use Liquid to store the variant stock quantities in a JavaScript variable[^1].
 
 {% raw %}
 ```js
 const inventory = [
   {%- for v in product.variants %}
-    { id: '{{ v.id }}', quantity: '{{ v.inventory_quantity }}' },
+    { id: '{{ v.id }}', quantity: {{ v.inventory_quantity | json }} },
   {%- endfor %}
 ];
 ```
@@ -78,7 +78,7 @@ Then the script would look like this:
     // Store stock quantities
     const inventory = [
       {%- for v in product.variants %}
-        { id: {{ v.id | json }}, quantity: {{ v.inventory_quantity | json }} },
+        { id: '{{ v.id }}', quantity: {{ v.inventory_quantity | json }} },
       {%- endfor %}
     ];
 
@@ -136,3 +136,5 @@ In the past I might have been tempted to update the theme's JavaScript to insert
 By isolating this feature to its own file, it makes it easier to delete it completely if the theme implements its own version of the feature, or identify how that feature works or needs to be changed, fixed or improved. Even if a new version of the theme handles quantity changes differently, the only thing that is likely to change is one of the selectors, or how to observe the selected variant (maybe through a `MutationObserver` or detecting changes to parameters in the uri) which is a much smaller change to make.
 
 I've found life much easier customising themes with this approach.
+
+[^1]: Note that I store the id as a string for comparison later (thanks to [@ThomasAndrewMacLean](https://github.com/ThomasAndrewMacLean)). I've also used the `json` filter to help make sure that a value suitable for a JavaScript object should always be output (probably overkill as it's unlikely that Shopify will ever change this API, but I try to do this as a best practise).
