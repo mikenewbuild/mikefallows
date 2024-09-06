@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "dev": "npm run serve",
     "build": "npm-run-all tina:build eleventy:build tailwind:build rollup:build",
     "watch": "npm-run-all --parallel eleventy:watch tailwind:watch rollup:watch tina:dev",
     "serve": "npm-run-all --parallel eleventy:serve tailwind:watch rollup:watch tina:dev",
@@ -40,6 +41,6 @@
   "dependencies": {
     "@tinacms/cli": "^1.6.2",
     "alpinejs": "^3.10.3",
-    "tinacms": "^1.4.6"
+    "tinacms": "^2.2.2"
   }
 }
