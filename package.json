@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "npm run serve",
-    "build": "npm-run-all tina:build eleventy:build tailwind:build rollup:build",
+    "build": "npm-run-all eleventy:build tailwind:build rollup:build",
     "watch": "npm-run-all --parallel eleventy:watch tailwind:watch rollup:watch tina:dev",
     "serve": "npm-run-all --parallel eleventy:serve tailwind:watch rollup:watch tina:dev",
     "start": "rimraf _site && npm-run-all --parallel eleventy:serve tailwind:watch rollup:watch",
