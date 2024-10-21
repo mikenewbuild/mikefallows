@@ -39,8 +39,8 @@
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
-    "@tinacms/cli": "^1.6.2",
+    "@tinacms/cli": "^1.6.10",
     "alpinejs": "^3.10.3",
-    "tinacms": "^2.2.2"
+    "tinacms": "^2.3.0"
   }
 }
