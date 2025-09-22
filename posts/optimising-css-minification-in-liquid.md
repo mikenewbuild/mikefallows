@@ -12,6 +12,13 @@ tags:
 layout: post
 ---
 
+<div class="note">
+
+  2025-09-22 Update: [David Warrington](https://ellodave.dev/blog/article/inline-critical-css-in-liquid/) posted about using the recently released `inline_asset_content` filter to liquid ([see docs](https://shopify.dev/docs/api/liquid/filters/inline_asset_content)) to minify assets. This filter will automatically minify CCS (and JavaScript) files when they are inlined so I'm updating to use that technique instead.
+
+</div>
+
+
 One of the mailing lists I subscribe to is _I Only Speak Liquid_, where they regularly publish emails from their stable of developers with some great insights into working on Shopify themes and more generally working as a freelancer/consultant in the Shopify ecosystem. If you're looking for good content on those subjects, I definitely recommend [subscribing](https://ionlyspeakliquid.beehiiv.com/subscribe).
 
 One tip mentioned in [an email by Billy Noyes](https://ionlyspeakliquid.beehiiv.com/p/speak-liquid-33-minify-css-liquid) was a way to use Liquid to minify CSS. The technique was provided by a community member in [this forum post](https://community.shopify.com/c/technical-q-a/tool-to-minify-css-liquid/m-p/1123337). It's a great way to remove unnecessary characters (like whitespace and comments) from a CSS file without the need for an additional build tool, so it's a low effort way to increase a site's performance by reducing its page weight.
