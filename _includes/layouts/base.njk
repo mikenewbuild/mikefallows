@@ -17,6 +17,10 @@
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
     <script async src="{{ '/js/main.js' | url }}"></script>
     <style>
+        @view-transition {
+          navigation: auto;
+        }
+
         @font-face {
           font-family: 'Crimson Pro';
           src: url('/css/themes/fonts/CrimsonPro/CrimsonPro-Variable.woff2') format('woff2');
