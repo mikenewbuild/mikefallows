@@ -64,13 +64,14 @@ module.exports = function (eleventyConfig) {
 
   // Create an array of all posts
   eleventyConfig.addCollection('posts', (collection) => {
-    const posts = collection.getFilteredByGlob('posts/**/*.md').map(async item => {
+    let posts = Promise.all(collection.getFilteredByGlob('posts/**/*.md').map(async item => {
       let frontMatter = await item.template.read();
       let raw = frontMatter.content || "";
       let md = new markdownIt({ html: true });
-      item.data.forFeed = md.render(nunjucks.renderString(raw));
+      item.data.forFeed = await md.render(nunjucks.renderString(raw));
       return item;
-    });
+    }));
+
     return published(posts);
   });
 
