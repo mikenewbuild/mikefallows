@@ -12,7 +12,7 @@ Every year I use Adobe less and less and less.
 
 ## Hardware
 
-My main work machine is a 2020 Mac Mini with an M1 chip which I use with a 5K LG display. I have a 15" M2 MacBook Air I can use away from the desk. The Mini's M1 chip is still going strong and the Air is plenty quick enough and both run silent. I use [Mackup](https://github.com/lra/mackup) and a dotfiles repo to keep my dev setup in sync between the two machines.
+My main work machine is a 2020 Mac Mini with an M1 chip which I use with a 5K LG display. I have a 2022 15" M2 MacBook Air I can use away from the desk. The Mini's M1 chip is still going strong and the Air is plenty quick enough and both run silent. I use [Mackup](https://github.com/lra/mackup) and a dotfiles repo to keep my dev setup in sync between the two machines.
 
 My main phone is a Pixel (a 5 at time of writing). I have some wireless AKG N Series headphones for work (very comfortable, but can fall off I'm agreeing _too_ enthusiastically on a call), and Sennheiser CX300s for out and about.
 
