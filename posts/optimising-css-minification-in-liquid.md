@@ -14,7 +14,7 @@ layout: post
 
 <div class="note">
 
-  2025-09-22 Update: [David Warrington](https://ellodave.dev/blog/article/inline-critical-css-in-liquid/) posted about using the recently released `inline_asset_content` filter to liquid ([see docs](https://shopify.dev/docs/api/liquid/filters/inline_asset_content)) to minify assets. This filter will automatically minify CCS (and JavaScript) files when they are inlined so I'm updating to use that technique instead.
+  2025-09-22 Update: [David Warrington posted about](https://ellodave.dev/blog/article/inline-critical-css-in-liquid/) using the recently released `inline_asset_content` filter to liquid ([see docs](https://shopify.dev/docs/api/liquid/filters/inline_asset_content)) to minify assets. This filter will automatically minify CSS (and JavaScript) files when they are inlined so I'm updating to use that technique instead.
 
 </div>
 
