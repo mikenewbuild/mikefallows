@@ -29,7 +29,7 @@ templateClass: tmpl-post
 {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
 {%- if nextPost or previousPost %}
-<ul class="mt-4 text-sm font-medium border-t-1">
+<ul class="mt-4 text-sm font-medium border-t">
   {%- if nextPost %}
     <li class="py-4">
       <span class="block opacity-70">Newer</span>

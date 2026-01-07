@@ -1,6 +1,249 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../tailwind.config.js';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility text-balance {
+  /* Not supported in Tailwind yet */
+  text-wrap: balance;
+}
+
+@utility note {
+  padding-inline: 1em;
+  background-color: rgba(240, 240, 80, 0.3);
+  border: 1px solid rgba(240, 240, 80, 0.5);
+}
+
+@utility prose {
+  article & p {
+    text-wrap: pretty;
+    hyphens: auto;
+    hyphenate-limit-chars: 10;
+  }
+
+  & code {
+    font-size: 0.75em;
+  }
+
+  & li code {
+    margin: 0;
+  }
+
+  & > pre {
+    @apply rounded-xs;
+  }
+
+  & pre > code {
+    font-size: 13px !important;
+    text-shadow: none !important;
+  }
+
+  & pre code .token {
+    background: none;
+  }
+
+  & > figcaption {
+    @apply text-sm;
+  }
+
+  & .footnote-ref a {
+    @apply no-underline font-medium font-sans tabular-nums opacity-70;
+  }
+
+  & .footnote-ref a:hover {
+    @apply opacity-100;
+  }
+
+  & .footnote-item {
+    @apply font-sans text-sm opacity-70;
+  }
+
+  & .footnote-item:target {
+    @apply opacity-100;
+  }
+
+  & .footnote-item a.footnote-backref {
+    @apply font-body no-underline inline-block ml-2;
+  }
+
+  & pre code .token.deleted {
+    background-color: hsl(350deg 100% 22% / 45%);
+  }
+  & pre code .token.inserted {
+    background-color: hsl(120deg 90% 22% / 40%);
+  }
+
+  /* Make the + and - characters unselectable for copy/paste */
+  & pre code .token.prefix.unchanged {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  & pre code .token.prefix.inserted {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  & pre code .token.prefix.deleted {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Optional: full-width background color */
+  & pre code[class*='language-diff'] {
+    display: block;
+  }
+  & pre code .token.inserted:not(.prefix) {
+    display: block;
+  }
+  & pre code .token.deleted:not(.prefix) {
+    display: block;
+  }
+}
+
+@utility direct-link {
+  &a {
+    @apply opacity-50 no-underline text-lg font-medium;
+  }
+}
+
+@utility token {
+  .prose pre code & {
+    background: none;
+  }
+
+  .prose pre code &.deleted {
+    background-color: hsl(350deg 100% 22% / 45%);
+  }
+  .prose pre code &.inserted {
+    background-color: hsl(120deg 90% 22% / 40%);
+  }
+
+  /* Make the + and - characters unselectable for copy/paste */
+  .prose pre code &.prefix.unchanged {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .prose pre code &.prefix.inserted {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .prose pre code &.prefix.deleted {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .prose pre code &.inserted:not(.prefix) {
+    display: block;
+  }
+
+  .prose pre code &.deleted:not(.prefix) {
+    display: block;
+  }
+}
+
+@utility footnote-ref {
+  .prose & a {
+    @apply no-underline font-medium font-sans tabular-nums opacity-70;
+  }
+
+  .prose & a:hover {
+    @apply opacity-100;
+  }
+}
+
+@utility footnote-item {
+  .prose & {
+    @apply font-sans text-sm opacity-70;
+  }
+
+  .prose &:target {
+    @apply opacity-100;
+  }
+
+  .prose & a.footnote-backref {
+    @apply font-body no-underline inline-block ml-2;
+  }
+}
+
+@utility footnote-backref {
+  .prose .footnote-item &a {
+    @apply font-body no-underline inline-block ml-2;
+  }
+}
+
+@utility deleted {
+  .prose pre code &.token {
+    background-color: hsl(350deg 100% 22% / 45%);
+  }
+
+  .prose pre code &.token.prefix {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .prose pre code &.token:not(.prefix) {
+    display: block;
+  }
+}
+
+@utility inserted {
+  .prose pre code &.token {
+    background-color: hsl(120deg 90% 22% / 40%);
+  }
+
+  .prose pre code &.token.prefix {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .prose pre code &.token:not(.prefix) {
+    display: block;
+  }
+}
+
+@utility prefix {
+  /* Make the + and - characters unselectable for copy/paste */
+  .prose pre code &.token.unchanged {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .prose pre code &.token.inserted {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .prose pre code &.token.deleted {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+@utility unchanged {
+  /* Make the + and - characters unselectable for copy/paste */
+  .prose pre code &.token.prefix {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
 
 @layer utilities {
 
@@ -9,95 +252,7 @@
     scroll-margin-top: 2rem;
   }
 
-  /* Not supported in Tailwind yet */
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .note {
-    padding-inline: 1em;
-    background-color: rgba(240,240,80,0.3);
-    border: 1px solid rgba(240,240,80,0.5);
-  }
-
   article h1, article h2, article h3 {
     text-wrap: balance;
-  }
-
-  article .prose p {
-    text-wrap: pretty;
-    hyphens: auto;
-    hyphenate-limit-chars: 10;
-  }
-
-  a.direct-link {
-    @apply opacity-50 no-underline text-lg font-medium;
-  }
-
-  .prose code {
-    font-size: 0.75em;
-  }
-
-  .prose li code {
-    margin: 0;
-  }
-
-  .prose>pre {
-    @apply rounded-sm;
-  }
-
-  .prose>pre code {
-    font-size: 13px;
-    text-shadow: none;
-  }
-
-  .prose pre code .token {
-    background: none;
-  }
-
-  .prose>figcaption {
-    @apply text-sm;
-  }
-
-  .prose .footnote-ref a {
-    @apply no-underline font-medium font-sans tabular-nums opacity-70;
-  }
-
-  .prose .footnote-ref a:hover {
-    @apply opacity-100;
-  }
-
-  .prose .footnote-item {
-    @apply font-sans text-sm opacity-70;
-  }
-
-  .prose .footnote-item:target {
-    @apply opacity-100;
-  }
-
-  .prose .footnote-item a.footnote-backref {
-    @apply font-body no-underline inline-block ml-2;
-  }
-
-  .prose pre code .token.deleted {
-    background-color: hsl(350deg 100% 22% / 45%);
-  }
-  .prose pre code .token.inserted {
-    background-color: hsl(120deg 90% 22% / 40%);
-  }
-
-  /* Make the + and - characters unselectable for copy/paste */
-  .prose pre code .token.prefix.unchanged,
-  .prose pre code .token.prefix.inserted,
-  .prose pre code .token.prefix.deleted {
-    -webkit-user-select: none;
-    user-select: none;
-  }
-
-  /* Optional: full-width background color */
-  .prose pre code[class*="language-diff"],
-  .prose pre code .token.inserted:not(.prefix),
-  .prose pre code .token.deleted:not(.prefix) {
-    display: block;
   }
 }
