@@ -6,7 +6,7 @@
     "tina": "npm-run-all --parallel tina:dev dev",
     "tina:build": "npx tinacms build",
     "tina:dev": "npx tinacms dev",
-    "eleventy:build": "ELEVENTY_PRODUCTION=true eleventy",
+    "eleventy:build": "ELEVENTY_ENV=production eleventy",
     "eleventy:debug": "DEBUG=* eleventy",
     "eleventy:serve": "eleventy --serve --quiet",
     "eleventy:watch": "eleventy --watch --quiet",
