@@ -55,7 +55,11 @@ module.exports = function (eleventyConfig) {
   function published(items) {
     // Hide unpublished items in production
     if (process.env.ELEVENTY_ENV === 'production') {
-      return items.filter(isPublished);
+      if (items instanceof Promise) {
+        return items.then(resolvedItems => {
+          return resolvedItems.filter(isPublished);
+        });
+      }
     }
     return items;
   }
@@ -94,7 +98,7 @@ module.exports = function (eleventyConfig) {
         }
       });
     });
-    return published(popular);
+    return published(Promise.all(popular));
   });
 
   function filterTagList(tags) {
