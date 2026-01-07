@@ -4,6 +4,7 @@ const fontSans = `"Public Sans", "Public Sans Fallback", ${defaultTheme.fontFami
 const fontSerif = `"Crimson Pro", "Crimson Pro Fallback", ${defaultTheme.fontFamily.serif.join(',')}`;
 const fontMono = `"JetBrains Mono", ${defaultTheme.fontFamily.mono.join(',')}`;
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['_site/**/*.html'],
   darkMode: 'class',
