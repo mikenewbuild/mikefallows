@@ -33,7 +33,7 @@
     "pagefind": "^1.1.1",
     "postcss": "^8.4.31",
     "rimraf": "^6.0.1",
-    "rollup": "^4.35.0",
+    "rollup": "^4.59.0",
     "tailwindcss": "^4.1.18"
   },
   "dependencies": {
