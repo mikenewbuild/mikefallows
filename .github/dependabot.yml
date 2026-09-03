@@ -1,0 +1,22 @@
+# alpinejs and tinacms are runtime dependencies: alpinejs ships to visitors'
+# browsers and tinacms/tinacms-cli drive the editing UI, so an update to
+# either needs a look before merging. Everything else here is Eleventy build
+# tooling that never leaves this repository, and is mergeable on a green
+# build check alone. Grouping them together meant a runtime bump could hold
+# up several harmless tooling updates, so they are split.
+
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      runtime:
+        dependency-type: production
+      build-toolchain:
+        dependency-type: development
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore"
