@@ -1,3 +1,4 @@
 .env
-_site/
+dist/
+.astro/
 node_modules/

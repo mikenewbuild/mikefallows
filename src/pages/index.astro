@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import PostsList from '../components/PostsList.astro';
+import Prose from '../components/Prose.astro';
+import { getPosts, newestFirst, tagList, tagSlug } from '../lib/posts';
+import { site } from '../site';
+
+const posts = await getPosts();
+const tags = tagList(posts);
+const latest = newestFirst(posts).slice(0, 5);
+const popular = site.popularPosts.flatMap((slug) => posts.find((post) => post.id === slug) ?? []);
+---
+
+<Base title="Mike Fallows – A designer & web developer" templateClass="tmpl-home">
+  <Prose>
+    <h2>Well, you’re here now</h2>
+    <p>
+      Assorted notes on the internet about{' '}
+      {
+        tags.map((tag, index) => (
+          <>
+            {index > 0 && index < tags.length - 1 && ', '}
+            {index > 0 && index === tags.length - 1 && ' and '}
+            <a href={`/tags/${tagSlug(tag)}/`}>{tag}</a>
+          </>
+        ))
+      }.
+    </p>
+    <hr />
+  </Prose>
+
+  <p class="mb-8 font-medium">Latest writing</p>
+
+  <PostsList posts={latest} />
+
+  <hr />
+
+  <p class="my-8 font-medium">Popular posts</p>
+
+  <PostsList posts={popular} />
+
+  <p>More in <a class="underline" href="/posts/">the archive</a>.</p>
+</Base>

@@ -1,0 +1,56 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import Base from '../../layouts/Base.astro';
+import PostsList from '../../components/PostsList.astro';
+import { getPosts, newestFirst, POSTS_PER_PAGE, type Post } from '../../lib/posts';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  return paginate(newestFirst(await getPosts()), { pageSize: POSTS_PER_PAGE });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  page: Page<Post>;
+}
+
+const { page } = Astro.props;
+const pageUrl = (n: number) => (n === 1 ? '/posts/' : `/posts/${n}/`);
+---
+
+<Base title="Archive" templateClass="tmpl-home">
+  <PostsList posts={page.data} />
+
+  <hr />
+
+  <nav aria-labelledby="posts-pagination" class="mt-6">
+    <h2 id="posts-pagination" class="sr-only">Navigate posts</h2>
+    <ol class="flex space-between gap-3">
+      <li class="flex-1">
+        {
+          page.url.prev ? (
+            <a href={pageUrl(page.currentPage - 1)} class="hover:underline">Previous</a>
+          ) : (
+            <span class="opacity-50">Previous</span>
+          )
+        }
+      </li>
+      {
+        Array.from({ length: page.lastPage }, (_, i) => i + 1).map((n) => (
+          <li>
+            <a href={pageUrl(n)} aria-current={n === page.currentPage ? 'page' : undefined} class="hover:underline">
+              {n}
+            </a>
+          </li>
+        ))
+      }
+      <li class="flex-1 text-right">
+        {
+          page.url.next ? (
+            <a href={pageUrl(page.currentPage + 1)} class="hover:underline">Next</a>
+          ) : (
+            <span class="opacity-50">Next</span>
+          )
+        }
+      </li>
+    </ol>
+  </nav>
+</Base>

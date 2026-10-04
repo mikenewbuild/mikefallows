@@ -1,0 +1,23 @@
+---
+import { tagSlug } from '../lib/posts';
+
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+{
+  tags.length > 0 && (
+    <>
+      <span class="opacity-50">Tagged</span>
+      {tags.map((tag) => (
+        <>
+          {' • '}
+          <a href={`/tags/${tagSlug(tag)}/`} class="hover:underline">{tag}</a>
+        </>
+      ))}
+    </>
+  )
+}
