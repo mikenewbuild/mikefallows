@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Search is built by [Pagefind](https://pagefind.app/) after a production build, so it only works with `npm run build && npm run preview`.
+Search is built by [Pagefind](https://pagefind.app/) after a production build, so the dev server shows a notice in its place. Use `npm run build && npm run preview` to try it.
 
 ## Writing
 
