@@ -14,6 +14,8 @@ export default defineConfig({
     processor: unified({
       remarkPlugins: [remarkBreaks],
       rehypePlugins: [rehypeLegacyMarkup],
+      // Text presentation selector, so the arrow is never drawn as an emoji.
+      remarkRehype: { footnoteBackContent: '↩\uFE0E' },
     }),
     shikiConfig: {
       themes: { light: 'github-light', dark: 'github-dark' },

@@ -176,7 +176,7 @@
   }
 
   & .footnote-item a.footnote-backref {
-    @apply font-body no-underline inline-block ml-2;
+    @apply no-underline ml-2;
   }
 }
 
