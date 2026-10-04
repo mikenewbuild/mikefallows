@@ -181,6 +181,12 @@ test('Atom and JSON feeds contain every published post', () => {
 
 test('search index is built', () => {
   assert.ok(exists('pagefind/pagefind.js'));
-  assert.ok(exists('pagefind/pagefind-ui.js'));
-  assert.match(read('search/index.html'), /pagefind-ui\.js/);
+  const html = read('search/index.html');
+  for (const asset of [...html.matchAll(/(?:href|src)="(\/pagefind\/[^"]+)"/g)].map((m) => m[1])) {
+    assert.ok(exists(asset), `${asset} missing`);
+  }
+  assert.match(html, /pagefind-component-ui\.js/);
+  assert.match(html, /<pagefind-input[\s>]/);
+  assert.match(html, /<pagefind-results[\s>]/);
+  assert.doesNotMatch(html, /pagefind-ui\.(js|css)|PagefindUI/, 'the Default UI is gone');
 });

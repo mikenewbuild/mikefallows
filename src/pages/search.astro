@@ -3,17 +3,7 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="Search">
-  <link slot="head" href="/pagefind/pagefind-ui.css" rel="stylesheet" />
-
-  <style is:global>
-    .dark {
-      --pagefind-ui-primary: #e7e5e4;
-      --pagefind-ui-text: #e7e5e4;
-      --pagefind-ui-background: #44403c;
-      --pagefind-ui-border: #33302b;
-      --pagefind-ui-tag: #e7e5e4;
-    }
-  </style>
+  <link slot="head" href="/pagefind/pagefind-component-ui.css" rel="stylesheet" />
 
   <h1 class="mb-12 font-medium">Search</h1>
 
@@ -21,10 +11,26 @@ import Base from '../layouts/Base.astro';
     import.meta.env.DEV ? (
       <p>The search index is built by Pagefind after a production build. Run <code>npm run build && npm run preview</code> to try it.</p>
     ) : (
-      <>
-        <div id="search" class="search"></div>
-        <script is:inline src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false });"></script>
-      </>
+      <div class="search">
+        <pagefind-input autofocus placeholder="Search posts" />
+        <pagefind-summary />
+        <pagefind-results hide-sub-results />
+        <script is:inline type="module" src="/pagefind/pagefind-component-ui.js"></script>
+        <script is:inline type="module">
+          // Keeps the search term in ?q= so searches can be linked and bookmarked.
+          const instance = window.PagefindComponents.getInstanceManager().getInstance('default');
+
+          const query = new URLSearchParams(location.search).get('q');
+          if (query) instance.triggerSearch(query);
+
+          instance.on('search', (term) => {
+            const url = new URL(location.href);
+            term ? url.searchParams.set('q', term) : url.searchParams.delete('q');
+            history.replaceState(null, '', url);
+          });
+        </script>
+      </div>
     )
   }
 </Base>
+

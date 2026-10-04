@@ -310,6 +310,69 @@
   }
 }
 
+/* The components reset inherited styles, so these variables are the only way to theme them. */
+.search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+
+  --pf-font: var(--font-sans);
+  --pf-text: var(--color-gray-900);
+  --pf-text-secondary: var(--color-gray-700);
+  --pf-text-muted: var(--color-gray-500);
+  --pf-background: var(--color-white);
+  --pf-border: var(--color-gray-200);
+  --pf-border-focus: var(--color-gray-400);
+  --pf-hover: var(--color-gray-100);
+  --pf-skeleton: var(--color-gray-100);
+  --pf-skeleton-shine: var(--color-gray-50);
+  --pf-mark: var(--color-gray-900);
+  --pf-outline-focus: var(--color-gray-500);
+  --pf-input-height: 44px;
+  --pf-summary-font-size: var(--text-sm);
+  --pf-result-title-font-size: var(--text-lg);
+  --pf-result-excerpt-font-size: var(--text-base);
+}
+
+.search pagefind-results {
+  --pf-background: transparent;
+  --pf-border: transparent;
+  --pf-border-focus: transparent;
+  --pf-shadow-sm: none;
+  --pf-results-gap: 0;
+}
+
+/*
+  Pagefind resets its own elements with ID-weight selectors, so these need
+  !important. The negative margin cancels the card's 12px padding and 1px
+  border, lining the text up with the summary.
+*/
+.search .pf-result + .pf-result {
+  border-top: 1px solid var(--color-gray-200) !important;
+}
+
+.search .pf-result-card {
+  margin-inline: -13px !important;
+}
+
+.dark .search {
+  --pf-text: var(--color-gray-100);
+  --pf-text-secondary: var(--color-gray-300);
+  --pf-text-muted: var(--color-gray-400);
+  --pf-background: var(--color-gray-800);
+  --pf-border: var(--color-gray-700);
+  --pf-border-focus: var(--color-gray-500);
+  --pf-hover: var(--color-gray-700);
+  --pf-skeleton: var(--color-gray-700);
+  --pf-skeleton-shine: var(--color-gray-600);
+  --pf-mark: var(--color-gray-100);
+  --pf-outline-focus: var(--color-gray-400);
+  --pf-scroll-shadow: rgb(255 255 255 / 0.1);
+  --pf-shadow-sm: 0 2px 8px rgb(0 0 0 / 0.3);
+  --pf-shadow-md: 0 4px 12px rgb(0 0 0 / 0.4);
+  --pf-shadow-lg: 0 16px 48px rgb(0 0 0 / 0.5);
+}
+
 /* Shiki emits both themes; follow the class based dark mode toggle. */
 .dark .astro-code {
   background-color: var(--shiki-dark-bg) !important;
