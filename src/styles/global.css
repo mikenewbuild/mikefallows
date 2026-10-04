@@ -187,7 +187,7 @@
   }
 
   & .footnote-item a.footnote-backref {
-    @apply no-underline ml-2;
+    @apply no-underline ml-0.5 relative top-[0.15em];
   }
 }
 
