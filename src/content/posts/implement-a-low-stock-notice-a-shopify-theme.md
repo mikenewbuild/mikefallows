@@ -4,7 +4,7 @@ title: Implement a low stock notice in a Shopify theme
 description: >-
   A simple way to display a notice when the selected variant has a stock
   quantity below a specified value.
-date: 2023-10-19T23:00:00.000Z
+date: 2023-10-20T00:00:00.000Z
 tags:
   - shopify
   - javascript
