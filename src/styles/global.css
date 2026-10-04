@@ -149,6 +149,17 @@
   }
 }
 
+@layer components {
+  .prose .direct-link {
+    @apply opacity-0 no-underline font-medium transition-opacity;
+  }
+
+  .prose :is(h1, h2, h3, h4, h5, h6):hover .direct-link,
+  .prose .direct-link:focus-visible {
+    @apply opacity-50;
+  }
+}
+
 @layer utilities {
 
   /* Add some headspace to anchor links */

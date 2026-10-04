@@ -32,7 +32,7 @@ export default function rehypeLegacyMarkup() {
           {
             type: 'element',
             tagName: 'a',
-            properties: { className: ['direct-link'], href: `#${properties.id}` },
+            properties: { className: ['direct-link'], href: `#${properties.id}`, ariaLabel: 'Link to this section' },
             children: [{ type: 'text', value: '#' }],
           },
         );
