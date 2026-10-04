@@ -171,14 +171,13 @@
   }
 
   /*
-    Smaller than a plain sup and lowered so the digits' tops meet the body
-    text's cap height: Crimson Pro caps are 0.573em, Public Sans digits
-    0.733 of their size, so at 0.6em the baseline rises 0.133em, which is
-    0.222em in the sup's own units.
+    Smaller than a plain sup. Measured cap height alignment would be
+    -0.222em (Crimson Pro caps 0.573em, Public Sans digits 0.733 of their
+    size); twice that reads better optically.
   */
   & .footnote-ref {
     font-size: 0.6em;
-    top: -0.222em;
+    top: -0.444em;
   }
 
   & .footnote-ref a {
