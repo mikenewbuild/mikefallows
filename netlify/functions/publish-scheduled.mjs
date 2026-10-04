@@ -3,6 +3,10 @@
 
 const site = process.env.URL ?? 'https://mikefallows.com';
 
+// A failed build leaves scheduled.json unchanged, so without a limit every
+// hourly run would start another one. This allows three attempts per post.
+const RETRY_WINDOW_MS = 3 * 60 * 60 * 1000;
+
 export default async () => {
   const hook = process.env.BUILD_HOOK_URL;
   if (!hook) {
@@ -17,7 +21,8 @@ export default async () => {
   }
 
   const { next } = await response.json();
-  if (next && new Date(next) <= new Date()) {
+  const overdue = next ? Date.now() - new Date(next).valueOf() : -1;
+  if (overdue >= 0 && overdue < RETRY_WINDOW_MS) {
     await fetch(hook, { method: 'POST' });
     console.log(`Triggered a build for the post due at ${next}`);
   }

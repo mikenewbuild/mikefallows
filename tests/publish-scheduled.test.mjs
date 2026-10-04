@@ -37,6 +37,12 @@ test('does nothing when the next post is still in the future', async () => {
   assert.equal(hookCalls().length, 0);
 });
 
+test('stops retrying once a post has been due for three hours', async () => {
+  stubSchedule(new Date(Date.now() - 3 * 60 * 60 * 1000 - 60_000).toISOString());
+  await publishScheduled();
+  assert.equal(hookCalls().length, 0);
+});
+
 test('does nothing when nothing is scheduled', async () => {
   stubSchedule(null);
   await publishScheduled();
@@ -45,7 +51,7 @@ test('does nothing when nothing is scheduled', async () => {
 
 test('does nothing without a build hook', async () => {
   delete process.env.BUILD_HOOK_URL;
-  stubSchedule(new Date(0).toISOString());
+  stubSchedule(new Date(Date.now() - 60_000).toISOString());
   await publishScheduled();
   assert.equal(calls.length, 0);
 });
