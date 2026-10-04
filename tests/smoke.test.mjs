@@ -82,6 +82,13 @@ test('inline separators keep their surrounding spaces', () => {
   assert.match(post, /Tagged<\/span> • <a/);
 });
 
+test('every page has one h1 and the main nav marks the current page', () => {
+  for (const route of routes()) {
+    assert.equal(read(routeFile(route)).match(/<h1[\s>]/g)?.length, 1, `${route} h1 count`);
+  }
+  assert.match(read('about/index.html'), /<nav aria-label="Main">[\s\S]*href="\/about\/" aria-current="page"/);
+});
+
 test('every page has a title, description and canonical URL', () => {
   for (const route of pageRoutes) {
     const html = read(routeFile(route));
