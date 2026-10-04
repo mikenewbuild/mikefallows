@@ -27,11 +27,17 @@ tags:
   - shopify
 ```
 
-A post marked `draft: true`, or dated in the future, appears with a (Draft) label in the dev server and is left out of production builds entirely (pages, archive, tags, feeds, sitemap and search). A future post goes live on the first build after its date.
+A post marked `draft: true`, or dated in the future, appears with a (Draft) label in the dev server and is left out of production builds entirely (pages, archive, tags, feeds, sitemap and search). A future post goes live within the hour after its date (see below).
 
 Posts with `featured: true` are listed under Popular posts on the home page.
 
 Standalone pages (About, Uses) live in `src/content/pages`.
+
+## Scheduled posts
+
+Each build writes `/scheduled.json` with the date of the next future post. The `publish-scheduled` Netlify function runs hourly, reads it, and calls a build hook once that date has passed, so most runs do nothing.
+
+It needs a build hook (Netlify: Project configuration, Build and deploy, Build hooks) with its URL stored as the `BUILD_HOOK_URL` environment variable, scoped to Functions. Without it the function logs a warning and does nothing.
 
 ## Tests
 

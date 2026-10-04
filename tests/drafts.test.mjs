@@ -17,7 +17,7 @@ function files(dir) {
     .map((entry) => join(entry.parentPath, entry.name));
 }
 
-test('drafts and future posts are left out of a production build', () => {
+test('drafts and future posts are left out of a production build, future posts are scheduled', () => {
   const outDir = mkdtempSync(join(tmpdir(), 'drafts-'));
   const paths = Object.entries(fixtures).map(([slug, meta]) => {
     const path = join(root, 'src/content/posts', `${slug}.md`);
@@ -29,6 +29,9 @@ test('drafts and future posts are left out of a production build', () => {
     execFileSync('npx', ['astro', 'build', '--outDir', outDir], { cwd: root, stdio: 'pipe' });
     const leaks = files(outDir).filter((file) => /zz-(draft|future)-fixture|fixture-tag/.test(readFileSync(file, 'utf-8')));
     assert.deepEqual(leaks, []);
+
+    const { next } = JSON.parse(readFileSync(join(outDir, 'scheduled.json'), 'utf-8'));
+    assert.equal(next, '2999-01-01T00:00:00.000Z', 'the future post is scheduled, the draft is not');
   } finally {
     paths.forEach((path) => rmSync(path));
     rmSync(outDir, { recursive: true, force: true });
