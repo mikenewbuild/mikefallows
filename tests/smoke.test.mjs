@@ -89,12 +89,14 @@ test('every page has one h1 and the main nav marks the current page', () => {
   assert.match(read('about/index.html'), /<nav aria-label="Main">[\s\S]*href="\/about\/" aria-current="page"/);
 });
 
-test('every page has a title, description and canonical URL', () => {
+test('every page has a title, description, canonical URL and Open Graph tags', () => {
   for (const route of pageRoutes) {
     const html = read(routeFile(route));
     assert.match(html, /<title>[^<]+<\/title>/, `${route} title`);
     assert.match(html, /<meta name="description" content="[^"]+"/, `${route} description`);
     assert.ok(html.includes(`rel="canonical" href="${siteUrl}${route}"`), `${route} canonical`);
+    assert.ok(html.includes(`property="og:url" content="${siteUrl}${route}"`), `${route} og:url`);
+    assert.match(html, /<meta property="og:title" content="[^"]+"/, `${route} og:title`);
   }
 });
 
