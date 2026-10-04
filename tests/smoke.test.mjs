@@ -63,6 +63,11 @@ test('markdown features render: heading anchors, footnotes, highlighting, inline
   assert.match(read('posts/implement-a-low-stock-notice-a-shopify-theme/index.html'), /id="low-stock-demo"/);
 });
 
+test('headings have clean ids and keep their Eleventy ids as aliases', () => {
+  const html = read('posts/responsive-images-in-shopify-themes/index.html');
+  assert.match(html, /<h2 id="tldr"[^>]*><span id="tl%3Bdr"><\/span>/);
+});
+
 test('inline separators keep their surrounding spaces', () => {
   const home = read('index.html');
   assert.match(home, /Search<\/a> • <a/);
