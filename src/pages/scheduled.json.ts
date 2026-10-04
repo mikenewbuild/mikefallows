@@ -9,7 +9,10 @@ export const GET: APIRoute = async () => {
     .map((post) => post.data.date)
     .sort((a, b) => a.valueOf() - b.valueOf());
 
-  return new Response(JSON.stringify({ next: upcoming[0]?.toISOString() ?? null }), {
-    headers: { 'Content-Type': 'application/json' },
-  });
+  return new Response(
+    JSON.stringify({ next: upcoming[0]?.toISOString() ?? null }),
+    {
+      headers: { 'Content-Type': 'application/json' },
+    },
+  );
 };

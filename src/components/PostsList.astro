@@ -1,23 +1,25 @@
 ---
 import { htmlDateString, isPublished, postUrl, readableDate, timeToRead, type Post } from '../lib/posts';
+import { postHtml } from '../lib/render';
 
 interface Props {
   posts: Post[];
 }
 
 const { posts } = Astro.props;
+const readingTimes = await Promise.all(posts.map(async (post) => timeToRead(await postHtml(post))));
 ---
 
 <ol reversed class="my-4 font-medium">
   {
-    posts.map((post) => (
+    posts.map((post, index) => (
       <li class="mb-8">
         <a class="block text-lg leading-tight text-balance max-w-lg mb-1" href={postUrl(post)}>
           {post.data.title}
         </a>
         <div class="text-sm leading-tight opacity-50">
           <time datetime={htmlDateString(post.data.date)}>{readableDate(post.data.date)}</time> •{' '}
-          {timeToRead(post.rendered?.html ?? '')}
+          {readingTimes[index]}
           {!isPublished(post) && <> <span class="italic">(Draft)</span></>}
         </div>
         <div class="mt-4">

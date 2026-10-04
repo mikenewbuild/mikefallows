@@ -46,10 +46,8 @@ export function htmlDateString(date: Date) {
 }
 
 export function timeToRead(html: string) {
-  const words = html.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
+  const words = html
+    .replace(/<(style|script)\b[\s\S]*?<\/\1>/g, '')
+    .replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
   return `${Math.max(1, Math.round(words / 180))} min`;
-}
-
-export function absoluteUrls(html: string, base: string) {
-  return html.replace(/(href|src)="(?!#)([^"]+)"/g, (_, attr, url) => `${attr}="${new URL(url, base)}"`);
 }

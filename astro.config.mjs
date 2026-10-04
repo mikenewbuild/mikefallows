@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import { unified } from '@astrojs/markdown-remark';
+import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
 import remarkBreaks from 'remark-breaks';
 import rehypeLegacyMarkup from './src/plugins/rehype-legacy-markup.mjs';
@@ -7,6 +8,7 @@ import rehypeLegacyMarkup from './src/plugins/rehype-legacy-markup.mjs';
 export default defineConfig({
   site: 'https://mikefallows.com',
   trailingSlash: 'ignore',
+  integrations: [mdx()],
   markdown: {
     // Sätteri, the default processor, has no hard line break option.
     processor: unified({

@@ -5,6 +5,7 @@ import Base from '../../layouts/Base.astro';
 import Prose from '../../components/Prose.astro';
 import TagsList from '../../components/TagsList.astro';
 import { getPosts, htmlDateString, isPublished, postUrl, readableDate, timeToRead, type Post } from '../../lib/posts';
+import { postHtml } from '../../lib/render';
 
 export const getStaticPaths = (async () => {
   const posts = await getPosts();
@@ -22,6 +23,7 @@ interface Props {
 
 const { post, older, newer } = Astro.props;
 const { Content } = await render(post);
+const readingTime = timeToRead(await postHtml(post));
 ---
 
 <Base title={post.data.title} description={post.data.description} published={post.data.date} templateClass="tmpl-post">
@@ -32,7 +34,7 @@ const { Content } = await render(post);
 
     <div class="mx-auto max-w-3xl opacity-50" data-pagefind-ignore>
       <time datetime={htmlDateString(post.data.date)} class="font-medium">{readableDate(post.data.date)}</time>
-      {' • '}{timeToRead(post.rendered?.html ?? '')}
+      {' • '}{readingTime}
       {!isPublished(post) && <> <span class="italic">(Draft)</span></>}
     </div>
 
