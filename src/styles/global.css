@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-/* Matches the selector the class based dark mode has always compiled to. */
+/* :is() rather than :where(), so dark: utilities outrank the typography overrides. */
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -125,7 +125,6 @@
   }
 }
 
-/* Every border matches the rule the prose draws for <hr>. */
 @layer base {
   *,
   ::after,
@@ -174,11 +173,6 @@
     @apply text-sm;
   }
 
-  /*
-    Smaller than a plain sup. Measured cap height alignment would be
-    -0.222em (Crimson Pro caps 0.573em, Public Sans digits 0.733 of their
-    size); twice that reads better optically.
-  */
   & .footnote-ref {
     font-size: 0.6em;
     top: -0.444em;
@@ -188,7 +182,7 @@
     @apply no-underline font-medium font-sans tabular-nums opacity-70 relative;
   }
 
-  /* Keeps a 24px target around the small number without affecting layout. */
+  /* Enlarges the click target to the WCAG minimum without affecting layout. */
   & .footnote-ref a::after {
     content: '';
     position: absolute;

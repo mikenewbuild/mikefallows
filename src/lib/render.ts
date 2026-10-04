@@ -7,7 +7,7 @@ import type { Post } from './posts';
 let container: AstroContainer | undefined;
 const cache = new Map<string, string>();
 
-/** A post's body as HTML. MDX entries are not pre-rendered, so they go through the container API. */
+/** MDX entries are not pre-rendered, so they go through the container API. */
 export async function postHtml(post: Post) {
   if (post.rendered?.html) return post.rendered.html;
 
@@ -21,7 +21,7 @@ export async function postHtml(post: Post) {
   return cache.get(post.id)!;
 }
 
-/** Post HTML for feeds: absolute URLs, and no demo styles or scripts, which readers strip or mangle. */
+/** Feed readers strip or mangle styles and scripts, so demos lose theirs. */
 export async function feedHtml(post: Post, base: string) {
   const html = (await postHtml(post))
     .replace(/<(style|script)\b[\s\S]*?<\/\1>/g, '')

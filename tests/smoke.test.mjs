@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readdirSync } from 'node:fs';
 import { decode, exists, publishedPosts, read, routeFile, routes, siteUrl } from './helpers.mjs';
 
 const pageRoutes = routes().filter((route) => route !== '/404.html');
@@ -75,6 +76,28 @@ test('every code block language is recognised and diff notation renders', () => 
   assert.match(html, /class="line diff remove"/);
   assert.match(html, /class="line diff add"/);
   assert.doesNotMatch(html, /\[!code/);
+
+  const plainText = '#24292E';
+  const selectors = [...html.matchAll(/style="color:(#[0-9A-F]{6})[^"]*">([^<]*polyline[^<]*)</gi)];
+  assert.ok(selectors.length > 0, 'the SVG listings contain CSS');
+  for (const [, colour, text] of selectors) {
+    assert.notEqual(colour.toUpperCase(), plainText, `CSS inside an SVG listing is highlighted: ${text.trim()}`);
+  }
+});
+
+test('footnote back arrows use the text presentation of the glyph', () => {
+  assert.match(read('posts/making-this-website/index.html'), /class="[^"]*footnote-backref[^"]*">\u21A9\uFE0E<\/a>/);
+});
+
+test('borders default to the colour the prose uses for its rules', () => {
+  const css = readdirSync(`${process.env.SITE_DIR ?? 'dist'}/_astro`)
+    .filter((file) => file.endsWith('.css'))
+    .map((file) => read(`_astro/${file}`))
+    .join('');
+  const variable = (name) => css.match(new RegExp(`${name}:([^;}]+)`))?.[1];
+  const border = css.match(/\*,:after,:before,::backdrop\{border-color:var\((--[\w-]+)\)\}/)?.[1];
+  assert.ok(border, 'a default border colour is set');
+  assert.equal(variable(border), css.match(/\.prose-stone\{[^}]*--tw-prose-hr:([^;}]+)/)?.[1]);
 });
 
 test('headings have clean ids and keep their Eleventy ids as aliases', () => {
@@ -132,7 +155,11 @@ test('Atom and JSON feeds contain every published post', () => {
 
   const json = JSON.parse(read('feed/feed.json'));
   assert.equal(json.items.length, count);
-  for (const item of json.items) assert.ok(item.content_html.length > 0, `${item.url} has content`);
+  for (const item of json.items) {
+    assert.ok(item.content_html.length > 0, `${item.url} has content`);
+    assert.doesNotMatch(item.content_html, /<style|<script|data-astro-cid/, `${item.url} carries demo styles or scripts`);
+  }
+  assert.doesNotMatch(atom, /&lt;style|&lt;script|data-astro-cid/);
 });
 
 test('search index is built', () => {

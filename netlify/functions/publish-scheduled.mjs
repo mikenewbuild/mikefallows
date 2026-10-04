@@ -1,11 +1,7 @@
-// Rebuilds the site once a future dated post has come due. The live
-// /scheduled.json holds the next due date, so most runs do nothing.
-
 const site = process.env.URL ?? 'https://mikefallows.com';
 
 // A failed build leaves scheduled.json unchanged, so without a limit every
-// hourly run would start another one. Two hourly runs fall inside this
-// window, so a post gets one attempt and one retry.
+// hourly run would start another one.
 const RETRY_WINDOW_MS = 2 * 60 * 60 * 1000;
 
 export default async () => {
