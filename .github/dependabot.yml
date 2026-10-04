@@ -17,6 +17,11 @@ updates:
       build-toolchain:
         patterns:
           - "*"
+    ignore:
+      # @astrojs/check does not accept TypeScript 7 yet, so the install fails.
+      # Remove this once it does.
+      - dependency-name: "typescript"
+        versions: [">=7"]
     open-pull-requests-limit: 5
     commit-message:
       prefix: "chore"
