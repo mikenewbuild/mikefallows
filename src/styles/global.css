@@ -1,6 +1,40 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
-@config '../../tailwind.config.js';
+/* Matches the selector the class based dark mode has always compiled to. */
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-*: initial;
+  --color-white: #fff;
+  --color-gray-50: oklch(98.5% 0.001 106.423);
+  --color-gray-100: oklch(97% 0.001 106.424);
+  --color-gray-200: oklch(92.3% 0.003 48.717);
+  --color-gray-300: oklch(86.9% 0.005 56.366);
+  --color-gray-400: oklch(70.9% 0.01 56.259);
+  --color-gray-500: oklch(55.3% 0.013 58.071);
+  --color-gray-600: oklch(44.4% 0.011 73.639);
+  --color-gray-700: oklch(37.4% 0.01 67.558);
+  --color-gray-800: oklch(26.8% 0.007 34.298);
+  --color-gray-900: oklch(21.6% 0.006 56.043);
+  --color-gray-950: oklch(14.7% 0.004 49.25);
+  --color-accent-50: oklch(97.1% 0.013 17.38);
+  --color-accent-100: oklch(93.6% 0.032 17.717);
+  --color-accent-200: oklch(88.5% 0.062 18.334);
+  --color-accent-300: oklch(80.8% 0.114 19.571);
+  --color-accent-400: oklch(70.4% 0.191 22.216);
+  --color-accent-500: oklch(63.7% 0.237 25.331);
+  --color-accent-600: oklch(57.7% 0.245 27.325);
+  --color-accent-700: oklch(50.5% 0.213 27.518);
+  --color-accent-800: oklch(44.4% 0.177 26.899);
+  --color-accent-900: oklch(39.6% 0.141 25.723);
+  --color-accent-950: oklch(25.8% 0.092 26.042);
+
+  --font-*: initial;
+  --font-sans: 'Public Sans', 'Public Sans Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-body: 'Crimson Pro', 'Crimson Pro Fallback', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
 
 @view-transition {
   navigation: auto;
@@ -72,21 +106,18 @@
   font-style: italic;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+@utility prose-dark {
+  color: var(--color-gray-200);
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+  & :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::before,
+  & :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+    content: "";
+  }
+
+  & :where(code, pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    background-color: var(--color-gray-800);
+    color: var(--color-gray-200);
+    font-family: var(--font-mono);
   }
 }
 
@@ -169,6 +200,64 @@
 
   article h1, article h2, article h3 {
     text-wrap: balance;
+  }
+}
+
+/*
+  Typography plugin overrides. They sit after the generated utilities with
+  the plugin's own specificity, so they replace its defaults while the
+  dark:prose-dark utility, which is more specific, still wins.
+*/
+@layer utilities {
+  .prose {
+    color: var(--color-gray-700);
+  }
+  .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)), .prose :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    color: inherit;
+  }
+  .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::before {
+    content: "";
+  }
+  .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+    content: "";
+  }
+  .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    display: inline-block;
+    padding: 0 0.25em;
+    font-weight: 400;
+    background-color: var(--color-gray-100);
+    font-family: var(--font-mono);
+  }
+  .prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-700);
+  }
+  .prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)), .prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)), .prose :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    color: inherit;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+  .prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)), .prose :where(h5):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    color: inherit;
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+  .prose :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)), .prose :where(h5):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    font-size: 1.125em;
+  }
+  .prose-lg :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    font-size: 1.25em;
+  }
+  .prose-lg :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)), .prose-lg :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    font-size: 1em;
+  }
+  @media (width >= 64rem) {
+    .lg\:prose-xl :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+      font-size: 1.25em;
+    }
+    .lg\:prose-xl :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)), .lg\:prose-xl :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+      font-size: 1em;
+    }
   }
 }
 
