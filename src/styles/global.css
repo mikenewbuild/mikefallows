@@ -121,6 +121,17 @@
   }
 }
 
+/* Every border matches the rule the prose draws for <hr>. */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200);
+  }
+}
+
 @utility text-balance {
   /* Not supported in Tailwind yet */
   text-wrap: balance;
