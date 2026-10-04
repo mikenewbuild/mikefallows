@@ -82,9 +82,9 @@ test('every page has a title, description and canonical URL', () => {
   }
 });
 
-test('stylesheets and scripts referenced by the home page exist', () => {
+test('stylesheets, scripts and preloaded fonts referenced by the home page exist', () => {
   const html = read('index.html');
-  const assets = [...html.matchAll(/(?:href|src)="(\/[^"]+\.(?:css|js))"/g)].map((m) => m[1]);
+  const assets = [...html.matchAll(/(?:href|src)="(\/[^"]+\.(?:css|js|woff2))"/g)].map((m) => m[1]);
   assert.ok(assets.some((asset) => asset.endsWith('.css')), 'a stylesheet is linked');
   for (const asset of assets) assert.ok(exists(asset), `${asset} missing`);
 });

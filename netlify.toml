@@ -1,3 +1,15 @@
 [build]
   publish = "dist"
   command = "npm run build"
+
+# Content hashed by the Astro build, so a changed file gets a new URL.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Not hashed, so cached for a shorter period in case a file is replaced.
+[[headers]]
+  for = "/css/themes/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"

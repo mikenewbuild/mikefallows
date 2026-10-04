@@ -23,6 +23,8 @@ const isCurrent = (href: string) => Astro.url.pathname === href;
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="preload" href="/css/themes/fonts/PublicSans/PublicSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/css/themes/fonts/CrimsonPro/CrimsonPro-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/alien.svg" type="image/svg+xml" sizes="any" />
     <link rel="alternate" href={site.feed.path} type="application/atom+xml" title={site.title} />
     <link rel="alternate" href={site.jsonFeed.path} type="application/json" title={site.title} />
