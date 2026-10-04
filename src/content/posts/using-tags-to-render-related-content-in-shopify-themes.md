@@ -6,6 +6,18 @@ description: The trick I use to leverage tags to identify and display related co
 tags:
   - shopify
 _template: blog_post
+updates:
+  - date: 2026-10-04
+    note: >-
+      Since February 2023 Shopify has had native [reference
+      metafields](https://shopify.dev/docs/apps/build/custom-data/metafields/list-of-data-types)
+      for collections, products and metaobjects, which can be connected to
+      theme settings as [dynamic
+      sources](https://shopify.dev/docs/storefronts/themes/architecture/settings/dynamic-sources).
+      Linking a related collection or shared content to a product no longer
+      needs tags, so I'd now reach for a metafield or a
+      [metaobject](https://help.shopify.com/en/manual/custom-data/metaobjects)
+      first. The tag technique below still works.
 ---
 
 
@@ -25,7 +37,7 @@ By defining a structure for your tags, it's possible to use them as a type of ke
 
 Using that structure means that within liquid we can look for tags with the given namespace, or namespace and key, then extract the value. Let's say we want to be able to associate a related collection with a product. If our namespace was `theme` and our `key` was `related-collection`, and the value could be the handle of the collection we wanted to identify, then a tag might look like `theme:related-collection:bestsellers`.
 
-If that tag was assigned to an article then in a template with access to the `article` object, we could access the collection like this:
+If that tag was assigned to a product then in a template with access to the `product` object, we could access the collection like this:
 
 
 ```liquid
@@ -46,7 +58,7 @@ assign related_collection = collections[handle]
 ```
 
 
-You can then, for example, display the products from that collection below the article.
+You can then, for example, display the products from that collection below the product.
 
 ## Why the namespace?
 

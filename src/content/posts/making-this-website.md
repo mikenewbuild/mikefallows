@@ -6,6 +6,12 @@ description: The process and decisions behind this site.
 tags:
   - the web
   - eleventy
+updates:
+  - date: 2026-10-04
+    note: >-
+      This site has since moved from Eleventy to
+      [Astro](https://astro.build/), and it no longer uses a CMS: I write
+      posts straight to Markdown.
 ---
 
 I have planned to have a personal site for a long time and in this (my first!) post I'm going to cover how I selected the technology used to build this site and why.

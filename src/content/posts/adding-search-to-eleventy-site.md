@@ -7,6 +7,12 @@ tags:
 - the web
 - eleventy
 
+updates:
+  - date: 2026-10-04
+    note: >-
+      This site now runs on [Astro](https://astro.build/) rather than
+      Eleventy. Search still uses Pagefind, which now indexes the site after
+      the Astro build.
 ---
 TL;DR I went with [Pagefind](https://pagefind.app/) and followed [this solution by Robb Knight](https://rknight.me/using-pagefind-with-eleventy-for-search/) which I had running locally after about 10 mins. Sure, I lost an hour or so deploying it because I'd got my node versions out of sync, but that's to be expected.
 

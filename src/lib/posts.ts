@@ -37,8 +37,12 @@ export function tagList(posts: Post[]) {
 const weekday = new Intl.DateTimeFormat('en-GB', { weekday: 'long', timeZone: 'UTC' });
 const month = new Intl.DateTimeFormat('en-GB', { month: 'long', timeZone: 'UTC' });
 
+export function longDate(date: Date) {
+  return `${date.getUTCDate()} ${month.format(date)} ${date.getUTCFullYear()}`;
+}
+
 export function readableDate(date: Date) {
-  return `${weekday.format(date)}, ${date.getUTCDate()} ${month.format(date)} ${date.getUTCFullYear()}`;
+  return `${weekday.format(date)}, ${longDate(date)}`;
 }
 
 export function htmlDateString(date: Date) {

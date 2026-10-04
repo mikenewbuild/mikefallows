@@ -8,6 +8,17 @@ tags:
 - shopify
 - javascript
 
+updates:
+  - date: 2026-10-04
+    note: >-
+      Shopify introduced [standard storefront
+      events](https://shopify.dev/docs/storefronts/themes/best-practices/standard-events-and-actions)
+      in June 2026. Themes that implement them, including Shopify's Horizon
+      and Dawn, dispatch a
+      [`shopify:cart:lines-update`](https://shopify.dev/docs/api/storefront-events-and-actions/events/cart-lines-update)
+      event whenever the cart changes, so where a theme supports them I'd
+      listen for that instead. The approach below is still useful for themes
+      that don't.
 ---
 Recently I needed to write some code to monitor and respond to changes made to a Shopify cart. The script would need to be added to several themes and be independent of the specific theme the site used or potential apps that were (or would be) installed.
 
@@ -67,7 +78,7 @@ Here's a quick example of fetching the current cart, as well as storing and then
 
 ```js
 const response = await fetch('/cart.js');
-const cart = response.json();
+const cart = await response.json();
 localStorage.setItem('cart', JSON.stringify(cart));
 const storedCart = JSON.parse(localStorage.getItem('cart'));
 ```

@@ -100,6 +100,23 @@ test('borders default to the colour the prose uses for its rules', () => {
   assert.equal(variable(border), css.match(/\.prose-stone\{[^}]*--tw-prose-hr:([^;}]+)/)?.[1]);
 });
 
+test('update notes render above posts, link within the page and reach the feeds', () => {
+  const css = read('posts/optimising-css-minification-in-liquid/index.html');
+  assert.match(css, /<div class="note"><p><strong>Update, 22 September 2025:<\/strong> <a href="https:\/\/ellodave\.dev\//);
+
+  for (const post of publishedPosts()) {
+    const html = read(`posts/${post.slug}/index.html`);
+    const notes = [...html.matchAll(/<div class="note">([\s\S]*?)<\/div>/g)].map((m) => m[1]).join('');
+    for (const [, id] of notes.matchAll(/href="#([^"]+)"/g)) {
+      assert.ok(html.includes(`id="${id}"`), `${post.slug} note links to missing #${id}`);
+    }
+  }
+
+  const item = JSON.parse(read('feed/feed.json')).items.find((i) => i.url.endsWith('/optimising-css-minification-in-liquid/'));
+  assert.match(item.content_html, /^<div class="note"><p><strong>Update, 22 September 2025:/);
+  assert.match(read('feed/feed.xml'), /&lt;strong&gt;Update, 22 September 2025:/);
+});
+
 test('headings have clean ids and keep their Eleventy ids as aliases', () => {
   const html = read('posts/responsive-images-in-shopify-themes/index.html');
   assert.match(html, /<h2 id="tldr"[^>]*><span id="tl%3Bdr"><\/span>/);

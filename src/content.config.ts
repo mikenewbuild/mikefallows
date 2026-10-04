@@ -10,6 +10,9 @@ const posts = defineCollection({
     date: z.coerce.date(),
     draft: z.boolean().default(false),
     featured: z.boolean().default(false),
+    updates: z
+      .array(z.object({ date: z.coerce.date(), note: z.string() }))
+      .default([]),
     tags: z.array(z.string()).default([]),
   }),
 });

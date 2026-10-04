@@ -9,6 +9,17 @@ description: >-
 tags:
   - shopify
 _template: blog_post
+updates:
+  - date: 2026-10-04
+    note: >-
+      The commands in this post are from Shopify CLI 2, which is no longer
+      supported. Extensions are now [generated with `shopify app generate
+      extension`](https://shopify.dev/docs/apps/build/online-store/theme-app-extensions/build),
+      configured in a [`shopify.extension.toml`
+      file](https://shopify.dev/docs/apps/build/online-store/theme-app-extensions/configuration)
+      and released with `shopify app deploy` as part of an [app
+      version](https://shopify.dev/docs/apps/launch/deployment/app-versions).
+      App embed blocks that target the `head` still work as described.
 ---
 
 
