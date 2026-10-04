@@ -119,6 +119,10 @@
     color: var(--color-gray-200);
     font-family: var(--font-mono);
   }
+
+  & :where(pre code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    background-color: transparent;
+  }
 }
 
 /* Every border matches the rule the prose draws for <hr>. */
@@ -277,6 +281,11 @@
   .prose :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)), .prose :where(h5):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
     font-size: 1.125em;
   }
+  .prose :where(pre code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    display: block;
+    padding: 0;
+    background-color: transparent;
+  }
   .prose-lg :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
     font-size: 1.25em;
   }
@@ -294,8 +303,38 @@
 }
 
 /* Shiki emits both themes; follow the class based dark mode toggle. */
+.dark .astro-code {
+  background-color: var(--shiki-dark-bg) !important;
+}
+
 .dark .astro-code,
 .dark .astro-code span {
   color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
+}
+
+/* Lines marked with [!code ++] or [!code --]. */
+.astro-code .line.diff {
+  display: inline-block;
+  width: 100%;
+}
+
+.astro-code .line.diff::before {
+  user-select: none;
+  margin-inline-end: 1ch;
+}
+
+.astro-code .line.diff.add {
+  background-color: rgb(46 160 67 / 0.2);
+}
+
+.astro-code .line.diff.add::before {
+  content: '+';
+}
+
+.astro-code .line.diff.remove {
+  background-color: rgb(248 81 73 / 0.2);
+}
+
+.astro-code .line.diff.remove::before {
+  content: '-';
 }

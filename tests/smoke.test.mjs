@@ -67,6 +67,16 @@ test('markdown features render: heading anchors, footnotes, highlighting, inline
   assert.match(read('posts/implement-a-low-stock-notice-a-shopify-theme/index.html'), /id="low-stock-demo"/);
 });
 
+test('every code block language is recognised and diff notation renders', () => {
+  for (const route of routes()) {
+    assert.doesNotMatch(read(routeFile(route)), /data-language="plaintext"/, `${route} has an unrecognised language`);
+  }
+  const html = read('posts/adding-an-svg-favicon-with-dark-mode-support/index.html');
+  assert.match(html, /class="line diff remove"/);
+  assert.match(html, /class="line diff add"/);
+  assert.doesNotMatch(html, /\[!code/);
+});
+
 test('headings have clean ids and keep their Eleventy ids as aliases', () => {
   const html = read('posts/responsive-images-in-shopify-themes/index.html');
   assert.match(html, /<h2 id="tldr"[^>]*><span id="tl%3Bdr"><\/span>/);
