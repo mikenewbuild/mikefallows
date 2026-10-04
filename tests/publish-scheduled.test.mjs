@@ -37,8 +37,14 @@ test('does nothing when the next post is still in the future', async () => {
   assert.equal(hookCalls().length, 0);
 });
 
-test('stops retrying once a post has been due for three hours', async () => {
-  stubSchedule(new Date(Date.now() - 3 * 60 * 60 * 1000 - 60_000).toISOString());
+test('retries once, an hour after the first attempt', async () => {
+  stubSchedule(new Date(Date.now() - 60 * 60 * 1000 - 60_000).toISOString());
+  await publishScheduled();
+  assert.equal(hookCalls().length, 1);
+});
+
+test('stops retrying once a post has been due for two hours', async () => {
+  stubSchedule(new Date(Date.now() - 2 * 60 * 60 * 1000 - 60_000).toISOString());
   await publishScheduled();
   assert.equal(hookCalls().length, 0);
 });

@@ -4,8 +4,9 @@
 const site = process.env.URL ?? 'https://mikefallows.com';
 
 // A failed build leaves scheduled.json unchanged, so without a limit every
-// hourly run would start another one. This allows three attempts per post.
-const RETRY_WINDOW_MS = 3 * 60 * 60 * 1000;
+// hourly run would start another one. Two hourly runs fall inside this
+// window, so a post gets one attempt and one retry.
+const RETRY_WINDOW_MS = 2 * 60 * 60 * 1000;
 
 export default async () => {
   const hook = process.env.BUILD_HOOK_URL;

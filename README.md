@@ -39,7 +39,7 @@ Each build writes `/scheduled.json` with the date of the next future post. The `
 
 It needs a build hook (Netlify: Project configuration, Build and deploy, Build hooks) with its URL stored as the `BUILD_HOOK_URL` environment variable, scoped to Functions. Without it the function logs a warning and does nothing.
 
-If the triggered build fails, the function tries again on the next two hourly runs and then stops, so a broken build cannot keep using build minutes. The post then waits for the next deploy. Turn on Netlify's failed deploy notifications to hear about it.
+If the triggered build fails, the function tries once more on the next hourly run and then stops, so a broken build cannot keep using build minutes. The post then waits for the next deploy. Turn on Netlify's failed deploy notifications to hear about it.
 
 ## Tests
 
