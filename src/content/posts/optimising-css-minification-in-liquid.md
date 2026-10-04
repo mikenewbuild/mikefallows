@@ -4,7 +4,7 @@ title: Optimising CSS minification in Liquid
 description: >-
   Optimising a technique to use Liquid to minify CSS code for performance in
   Shopify themes.
-date: 2023-10-24T23:00:00.000Z
+date: 2023-10-25T00:00:00.000Z
 tags:
   - shopify
   - css

@@ -4,11 +4,13 @@ title: Implement a low stock notice in a Shopify theme
 description: >-
   A simple way to display a notice when the selected variant has a stock
   quantity below a specified value.
-date: 2023-10-19T23:00:00.000Z
+date: 2023-10-20T00:00:00.000Z
 tags:
   - shopify
   - javascript
 ---
+
+import LowStock from '../../components/demos/LowStock.astro';
 
 I recently needed to implement a small feature on a Shopify theme to display a low stock notice.
 
@@ -26,59 +28,7 @@ The notice should only show when the _Deluxe_ item is selected and it should inc
 
 Here's a demo (try selecting _Deluxe_):
 
-<form id="low-stock-demo">
-  <input type="hidden" id="input" value="123">
-  <span>Choose</span>
-  <select name="id" id="options">
-    <option value="123">Standard</option>
-    <option value="456">Deluxe</option>
-  </select>
-</form>
-<style>
-  #low-stock-demo {
-    border: 1px dashed;
-    padding: 1rem;
-    line-height: 2;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  #low-stock-demo select {
-    color: #333;
-    background: #fff;
-    outline: 0.25em solid #fff;
-    font-family: sans-serif;
-    font-size: 1rem;
-  }
-</style>
-<script>
-(() => {
-  const threshold = 5;
-  const inventory = [
-    { id: '123', quantity: 20 },
-    { id: '456', quantity: 3 },
-  ];
-  const demo = document.querySelector('#low-stock-demo');
-  const input = demo.querySelector('#input');
-  const select = demo.querySelector('#options')
-  select.insertAdjacentHTML('afterend', `<div id="stock-notice"></div>`);
-  const notice = demo.querySelector('#stock-notice');
-  select.addEventListener('change', (e) => {
-    input.value = e.target.value;
-    input.dispatchEvent(new Event('change'))
-  });
-  function updateMessage(id) {
-    let message = '';
-    const variant = inventory.find(i => i.id === id);
-    if (variant && (variant.quantity > 0 && variant.quantity <= threshold)) {
-      message = `${variant.quantity} in stock`;
-    }
-    notice.textContent = message;
-  }
-  updateMessage('123');
-  input.addEventListener('change', (e) => updateMessage(e.target.value));
-})();
-</script>
+<LowStock />
 
 ## Considerations
 
@@ -170,7 +120,7 @@ Then the script would look like this:
 
 ## Other considerations
 
-I ended up adding the inventory threshold as a section setting so that it could be populated through a value stored on the product as a metafield. I also added some styling to the message, and made the message customisable, ie. the message could take the format "Hurry, only {count} left in stock!", where `{count}` would be dynamically replaced by the remaining stock quantity.
+I ended up adding the inventory threshold as a section setting so that it could be populated through a value stored on the product as a metafield. I also added some styling to the message, and made the message customisable, ie. the message could take the format "Hurry, only \{count} left in stock!", where `{count}` would be dynamically replaced by the remaining stock quantity.
 
 ## This is the way
 

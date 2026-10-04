@@ -32,7 +32,12 @@ function frontmatter(source) {
   const block = source.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? '';
   const field = (name) =>
     block.match(new RegExp(`^${name}:\\s*(.*)$`, 'm'))?.[1].trim().replace(/^(['"])(.*)\1$/, '$2');
-  return { title: field('title'), date: new Date(field('date')), draft: field('draft') === 'true' };
+  return {
+    title: field('title'),
+    date: new Date(field('date')),
+    draft: field('draft') === 'true',
+    featured: field('featured') === 'true',
+  };
 }
 
 export function posts() {

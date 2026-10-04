@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
-import { absoluteUrls, getPosts, newestFirst, postUrl } from '../../lib/posts';
+import { getPosts, newestFirst, postUrl } from '../../lib/posts';
+import { feedHtml } from '../../lib/render';
 import { site } from '../../site';
 
 export const GET: APIRoute = async () => {
@@ -13,18 +14,20 @@ export const GET: APIRoute = async () => {
     feed_url: new URL(site.jsonFeed.path, site.url).href,
     description: site.description,
     authors: [site.author],
-    items: posts.map((post) => {
-      const url = new URL(postUrl(post), site.url).href;
-      return {
-        id: url,
-        url,
-        title: post.data.title,
-        summary: post.data.description,
-        content_html: absoluteUrls(post.rendered?.html ?? '', url),
-        date_published: post.data.date.toISOString(),
-        tags: post.data.tags,
-      };
-    }),
+    items: await Promise.all(
+      posts.map(async (post) => {
+        const url = new URL(postUrl(post), site.url).href;
+        return {
+          id: url,
+          url,
+          title: post.data.title,
+          summary: post.data.description,
+          content_html: await feedHtml(post, url),
+          date_published: post.data.date.toISOString(),
+          tags: post.data.tags,
+        };
+      }),
+    ),
   };
 
   return new Response(JSON.stringify(feed, null, 2), {

@@ -17,8 +17,14 @@ import Base from '../layouts/Base.astro';
 
   <h1 class="mb-12 font-medium">Search</h1>
 
-  <div id="search" class="search"></div>
-
-  <script is:inline src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false });"
-  ></script>
+  {
+    import.meta.env.DEV ? (
+      <p>The search index is built by Pagefind after a production build. Run <code>npm run build && npm run preview</code> to try it.</p>
+    ) : (
+      <>
+        <div id="search" class="search"></div>
+        <script is:inline src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false });"></script>
+      </>
+    )
+  }
 </Base>

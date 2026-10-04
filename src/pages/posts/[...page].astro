@@ -17,6 +17,7 @@ const pageUrl = (n: number) => (n === 1 ? '/posts/' : `/posts/${n}/`);
 ---
 
 <Base title="Archive" templateClass="tmpl-home">
+  <h1 class="sr-only">Archive{page.currentPage > 1 && `, page ${page.currentPage}`}</h1>
   <PostsList posts={page.data} />
 
   <hr />

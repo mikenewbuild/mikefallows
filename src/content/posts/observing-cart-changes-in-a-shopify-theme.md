@@ -1,4 +1,5 @@
 ---
+featured: true
 draft: false
 date: 2023-03-06
 title: 'Observing cart changes in a Shopify theme'

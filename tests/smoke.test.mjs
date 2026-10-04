@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readdirSync } from 'node:fs';
 import { decode, exists, publishedPosts, read, routeFile, routes, siteUrl } from './helpers.mjs';
 
 const pageRoutes = routes().filter((route) => route !== '/404.html');
@@ -33,6 +34,10 @@ test('home page lists latest and popular posts', () => {
   assert.match(html, /Popular posts/);
   const newest = publishedPosts().sort((a, b) => b.date - a.date)[0];
   assert.ok(html.includes(`/posts/${newest.slug}/`), 'newest post is linked');
+  const popular = html.slice(html.indexOf('Popular posts'));
+  const featured = publishedPosts().filter((post) => post.featured);
+  assert.ok(featured.length > 0, 'some posts are featured');
+  for (const post of featured) assert.ok(popular.includes(`/posts/${post.slug}/`), `${post.slug} is in popular posts`);
 });
 
 test('archive is paginated six to a page', () => {
@@ -63,6 +68,43 @@ test('markdown features render: heading anchors, footnotes, highlighting, inline
   assert.match(read('posts/implement-a-low-stock-notice-a-shopify-theme/index.html'), /id="low-stock-demo"/);
 });
 
+test('every code block language is recognised and diff notation renders', () => {
+  for (const route of routes()) {
+    assert.doesNotMatch(read(routeFile(route)), /data-language="plaintext"/, `${route} has an unrecognised language`);
+  }
+  const html = read('posts/adding-an-svg-favicon-with-dark-mode-support/index.html');
+  assert.match(html, /class="line diff remove"/);
+  assert.match(html, /class="line diff add"/);
+  assert.doesNotMatch(html, /\[!code/);
+
+  const plainText = '#24292E';
+  const selectors = [...html.matchAll(/style="color:(#[0-9A-F]{6})[^"]*">([^<]*polyline[^<]*)</gi)];
+  assert.ok(selectors.length > 0, 'the SVG listings contain CSS');
+  for (const [, colour, text] of selectors) {
+    assert.notEqual(colour.toUpperCase(), plainText, `CSS inside an SVG listing is highlighted: ${text.trim()}`);
+  }
+});
+
+test('footnote back arrows use the text presentation of the glyph', () => {
+  assert.match(read('posts/making-this-website/index.html'), /class="[^"]*footnote-backref[^"]*">\u21A9\uFE0E<\/a>/);
+});
+
+test('borders default to the colour the prose uses for its rules', () => {
+  const css = readdirSync(`${process.env.SITE_DIR ?? 'dist'}/_astro`)
+    .filter((file) => file.endsWith('.css'))
+    .map((file) => read(`_astro/${file}`))
+    .join('');
+  const variable = (name) => css.match(new RegExp(`${name}:([^;}]+)`))?.[1];
+  const border = css.match(/\*,:after,:before,::backdrop\{border-color:var\((--[\w-]+)\)\}/)?.[1];
+  assert.ok(border, 'a default border colour is set');
+  assert.equal(variable(border), css.match(/\.prose-stone\{[^}]*--tw-prose-hr:([^;}]+)/)?.[1]);
+});
+
+test('headings have clean ids and keep their Eleventy ids as aliases', () => {
+  const html = read('posts/responsive-images-in-shopify-themes/index.html');
+  assert.match(html, /<h2 id="tldr"[^>]*><span id="tl%3Bdr"><\/span>/);
+});
+
 test('inline separators keep their surrounding spaces', () => {
   const home = read('index.html');
   assert.match(home, /Search<\/a> • <a/);
@@ -73,18 +115,27 @@ test('inline separators keep their surrounding spaces', () => {
   assert.match(post, /Tagged<\/span> • <a/);
 });
 
-test('every page has a title, description and canonical URL', () => {
+test('every page has one h1 and the main nav marks the current page', () => {
+  for (const route of routes()) {
+    assert.equal(read(routeFile(route)).match(/<h1[\s>]/g)?.length, 1, `${route} h1 count`);
+  }
+  assert.match(read('about/index.html'), /<nav aria-label="Main">[\s\S]*href="\/about\/" aria-current="page"/);
+});
+
+test('every page has a title, description, canonical URL and Open Graph tags', () => {
   for (const route of pageRoutes) {
     const html = read(routeFile(route));
     assert.match(html, /<title>[^<]+<\/title>/, `${route} title`);
     assert.match(html, /<meta name="description" content="[^"]+"/, `${route} description`);
     assert.ok(html.includes(`rel="canonical" href="${siteUrl}${route}"`), `${route} canonical`);
+    assert.ok(html.includes(`property="og:url" content="${siteUrl}${route}"`), `${route} og:url`);
+    assert.match(html, /<meta property="og:title" content="[^"]+"/, `${route} og:title`);
   }
 });
 
-test('stylesheets and scripts referenced by the home page exist', () => {
+test('stylesheets, scripts and preloaded fonts referenced by the home page exist', () => {
   const html = read('index.html');
-  const assets = [...html.matchAll(/(?:href|src)="(\/[^"]+\.(?:css|js))"/g)].map((m) => m[1]);
+  const assets = [...html.matchAll(/(?:href|src)="(\/[^"]+\.(?:css|js|woff2))"/g)].map((m) => m[1]);
   assert.ok(assets.some((asset) => asset.endsWith('.css')), 'a stylesheet is linked');
   for (const asset of assets) assert.ok(exists(asset), `${asset} missing`);
 });
@@ -104,7 +155,11 @@ test('Atom and JSON feeds contain every published post', () => {
 
   const json = JSON.parse(read('feed/feed.json'));
   assert.equal(json.items.length, count);
-  for (const item of json.items) assert.ok(item.content_html.length > 0, `${item.url} has content`);
+  for (const item of json.items) {
+    assert.ok(item.content_html.length > 0, `${item.url} has content`);
+    assert.doesNotMatch(item.content_html, /<style|<script|data-astro-cid/, `${item.url} carries demo styles or scripts`);
+  }
+  assert.doesNotMatch(atom, /&lt;style|&lt;script|data-astro-cid/);
 });
 
 test('search index is built', () => {

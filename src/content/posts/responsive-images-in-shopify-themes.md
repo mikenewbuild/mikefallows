@@ -1,4 +1,5 @@
 ---
+featured: true
 draft: false
 date: 2021-12-22T00:00:00.000Z
 title: Responsive images in Shopify themes
