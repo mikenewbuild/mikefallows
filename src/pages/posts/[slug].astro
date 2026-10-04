@@ -32,8 +32,8 @@ const { Content } = await render(post);
 
     <div class="mx-auto max-w-3xl opacity-50" data-pagefind-ignore>
       <time datetime={htmlDateString(post.data.date)} class="font-medium">{readableDate(post.data.date)}</time>
-      • {timeToRead(post.rendered?.html ?? '')}
-      {!isPublished(post) && <span class="italic">(Draft)</span>}
+      {' • '}{timeToRead(post.rendered?.html ?? '')}
+      {!isPublished(post) && <> <span class="italic">(Draft)</span></>}
     </div>
 
     <Prose>

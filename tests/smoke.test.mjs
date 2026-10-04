@@ -63,6 +63,16 @@ test('markdown features render: heading anchors, footnotes, highlighting, inline
   assert.match(read('posts/implement-a-low-stock-notice-a-shopify-theme/index.html'), /id="low-stock-demo"/);
 });
 
+test('inline separators keep their surrounding spaces', () => {
+  const home = read('index.html');
+  assert.match(home, /Search<\/a> • <a/);
+  assert.match(home, /about <a href="\/tags\/[^"]+\/">/);
+
+  const post = read('posts/making-this-website/index.html');
+  assert.match(post, /<\/time> • \d+ min/);
+  assert.match(post, /Tagged<\/span> • <a/);
+});
+
 test('every page has a title, description and canonical URL', () => {
   for (const route of pageRoutes) {
     const html = read(routeFile(route));

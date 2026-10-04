@@ -97,12 +97,9 @@ const isCurrent = (href: string) => Astro.url.pathname === href;
           © 2021—{new Date().getFullYear()}. Built with <a href="https://astro.build/">Astro</a>.
         </p>
         <p class="pb-4 text-xs">
-          <a href="/search/" title="Search this site">Search</a>
-          •
-          <a href="/uses/" title="My /uses page">Uses</a>
-          •
-          <a href={site.feed.path} title="Mike Fallows's RSS Feed">RSS</a>
-          •
+          <a href="/search/" title="Search this site">Search</a>{' • '}
+          <a href="/uses/" title="My /uses page">Uses</a>{' • '}
+          <a href={site.feed.path} title="Mike Fallows's RSS Feed">RSS</a>{' • '}
           <a href="https://github.com/mikenewbuild" title="@mikenewbuild on GitHub">GitHub</a>
         </p>
       </div>

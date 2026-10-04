@@ -14,7 +14,8 @@ const { tags } = Astro.props;
       <span class="opacity-50">Tagged</span>
       {tags.map((tag) => (
         <>
-          • <a href={`/tags/${tagSlug(tag)}/`} class="hover:underline">{tag}</a>
+          {' • '}
+          <a href={`/tags/${tagSlug(tag)}/`} class="hover:underline">{tag}</a>
         </>
       ))}
     </>
