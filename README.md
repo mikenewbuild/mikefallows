@@ -22,11 +22,14 @@ title: Post title
 description: One line summary.
 date: 2025-01-31T09:00:00.000Z
 draft: false
+featured: false
 tags:
   - shopify
 ```
 
 A post marked `draft: true`, or dated in the future, appears with a (Draft) label in the dev server and is left out of production builds entirely (pages, archive, tags, feeds, sitemap and search). A future post goes live on the first build after its date.
+
+Posts with `featured: true` are listed under Popular posts on the home page.
 
 Standalone pages (About, Uses) live in `src/content/pages`.
 

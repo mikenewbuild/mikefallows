@@ -33,6 +33,10 @@ test('home page lists latest and popular posts', () => {
   assert.match(html, /Popular posts/);
   const newest = publishedPosts().sort((a, b) => b.date - a.date)[0];
   assert.ok(html.includes(`/posts/${newest.slug}/`), 'newest post is linked');
+  const popular = html.slice(html.indexOf('Popular posts'));
+  const featured = publishedPosts().filter((post) => post.featured);
+  assert.ok(featured.length > 0, 'some posts are featured');
+  for (const post of featured) assert.ok(popular.includes(`/posts/${post.slug}/`), `${post.slug} is in popular posts`);
 });
 
 test('archive is paginated six to a page', () => {

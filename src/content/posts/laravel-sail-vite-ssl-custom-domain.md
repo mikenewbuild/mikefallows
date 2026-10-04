@@ -1,4 +1,5 @@
 ---
+featured: true
 draft: false
 date: 2022-07-29
 title: 'Laravel Sail, Vite and SSL with a custom domain'

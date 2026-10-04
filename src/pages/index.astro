@@ -3,12 +3,11 @@ import Base from '../layouts/Base.astro';
 import PostsList from '../components/PostsList.astro';
 import Prose from '../components/Prose.astro';
 import { getPosts, newestFirst, tagList, tagSlug } from '../lib/posts';
-import { site } from '../site';
 
 const posts = await getPosts();
 const tags = tagList(posts);
 const latest = newestFirst(posts).slice(0, 5);
-const popular = site.popularPosts.flatMap((slug) => posts.find((post) => post.id === slug) ?? []);
+const popular = newestFirst(posts.filter((post) => post.data.featured));
 ---
 
 <Base title="Mike Fallows – A designer & web developer" templateClass="tmpl-home">
