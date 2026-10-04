@@ -8,6 +8,19 @@ description: >-
 tags:
   - shopify
 _template: blog_post
+updates:
+  - date: 2026-10-04
+    note: >-
+      Shopify now [documents the `seo.hidden`
+      metafield](https://help.shopify.com/en/manual/promoting-marketing/seo/hide-a-page-from-search-engines)
+      for products, pages and blog posts, and you can add it in the admin, so
+      it's no longer the undocumented trick described below. Collections
+      aren't on that list, so I wouldn't rely on the collection example. For
+      products there's also the [Unlisted
+      status](https://shopify.dev/changelog/new-unlisted-product-status),
+      added in October 2025, which hides a product from search, collections,
+      recommendations and search engines while keeping it reachable by direct
+      link.
 ---
 
 

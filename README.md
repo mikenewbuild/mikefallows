@@ -31,6 +31,15 @@ A post marked `draft: true`, or dated in the future, appears with a (Draft) labe
 
 Posts with `featured: true` are listed under Popular posts on the home page.
 
+When a post goes out of date, add a dated note to its frontmatter rather than editing the original text. Notes accept Markdown and appear above the post and in the feeds:
+
+```yaml
+updates:
+  - date: 2026-10-04
+    note: >-
+      This approach no longer works; see [the replacement](https://example.com/).
+```
+
 Standalone pages (About, Uses) live in `src/content/pages`.
 
 ## Scheduled posts

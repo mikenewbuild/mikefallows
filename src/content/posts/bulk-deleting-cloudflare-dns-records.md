@@ -7,6 +7,15 @@ tags:
 - dns
 - php
 
+updates:
+  - date: 2026-10-04
+    note: >-
+      Since September 2024 the Cloudflare dashboard lets you [select multiple
+      DNS records and delete them
+      together](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/),
+      up to 200 at a time on the Free plan, and the API has a [batch
+      endpoint](https://blog.cloudflare.com/batched-dns-changes/) for making
+      many changes in one request. You probably won't need the script below.
 ---
 I've recently been trying to consolidate some of the services that I use, a sort of technical spring clean if you will. In summer.
 

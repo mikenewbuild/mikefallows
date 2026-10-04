@@ -8,6 +8,11 @@ tags:
 - the web
 - eleventy
 
+updates:
+  - date: 2026-10-04
+    note: >-
+      This site now runs on [Astro](https://astro.build/) rather than
+      Eleventy, but the approach here still works for Eleventy sites.
 ---
 Having set up a fair few sites over the years, I periodically get a chunk of emails from Google's Search Console notifying me of indexing errors. Usually, these are pretty small potatoes caused by things like old products being unpublished and will resolve themselves on the next crawl.
 

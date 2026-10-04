@@ -6,6 +6,14 @@ description: How to determine whether a Shopify order includes a subscription.
 tags:
 - shopify
 
+updates:
+  - date: 2026-10-04
+    note: >-
+      Shopify has retired additional scripts on the Thank you and Order status
+      pages ([Plus stores in August 2025, all other stores in August
+      2026](https://shopify.dev/docs/apps/build/online-store/script-tag-deprecation/order-status)), so the approach below no longer works. The
+      [Checkout Completed customer event](#why-not-use-customer-events)
+      mentioned at the end of this post is the way to do this now.
 ---
 This week I needed to help a client distinguish which orders contained subscriptions so they can measure the results of their PPC[^1] advertising. As their business model is heavily geared towards subscriptions and subscriptions will typically indicate a much higher LTV[^2], measuring which adverts are more likely to generate subscription purchases is a key metric.
 
