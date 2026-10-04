@@ -1,9 +1,6 @@
-# alpinejs and tinacms are runtime dependencies: alpinejs ships to visitors'
-# browsers and tinacms/tinacms-cli drive the editing UI, so an update to
-# either needs a look before merging. Everything else here is Eleventy build
-# tooling that never leaves this repository, and is mergeable on a green
-# build check alone. Grouping them together meant a runtime bump could hold
-# up several harmless tooling updates, so they are split.
+# Every npm dependency is build tooling: the site ships no runtime JavaScript
+# from npm, so one group is enough. Astro gets its own group because its
+# majors change content and markdown APIs and deserve a deliberate look.
 
 version: 2
 
@@ -13,10 +10,13 @@ updates:
     schedule:
       interval: monthly
     groups:
-      runtime:
-        dependency-type: production
+      astro:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
       build-toolchain:
-        dependency-type: development
+        patterns:
+          - "*"
     open-pull-requests-limit: 5
     commit-message:
       prefix: "chore"

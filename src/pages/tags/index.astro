@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, tagList, tagSlug } from '../../lib/posts';
+
+const tags = tagList(await getPosts());
+---
+
+<Base title="Tags" templateClass="tmpl-home">
+  <h1 class="mb-12 font-medium">Tags</h1>
+
+  <div class="prose dark:prose-dark font-body">
+    <ul>
+      {
+        tags.map((tag) => (
+          <li>
+            <a href={`/tags/${tagSlug(tag)}/`} class="post-tag">
+              {tag}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Base>

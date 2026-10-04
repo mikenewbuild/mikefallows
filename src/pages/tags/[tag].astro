@@ -1,0 +1,29 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import PostsList from '../../components/PostsList.astro';
+import { getPosts, newestFirst, tagList, tagSlug, type Post } from '../../lib/posts';
+
+export const getStaticPaths = (async () => {
+  const posts = await getPosts();
+  return tagList(posts).map((tag) => ({
+    params: { tag: tagSlug(tag) },
+    props: { tag, posts: newestFirst(posts.filter((post) => post.data.tags.includes(tag))) },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  tag: string;
+  posts: Post[];
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<Base title={`Tagged “${tag}”`} templateClass="tmpl-home">
+  <h1 class="mb-12 font-medium">Tagged “{tag}”</h1>
+
+  <PostsList posts={posts} />
+
+  <p>See <a class="underline" href="/tags/">all tags</a>.</p>
+</Base>

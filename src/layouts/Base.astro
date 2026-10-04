@@ -1,0 +1,126 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { site } from '../site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  templateClass?: string;
+}
+
+const { title = site.title, description = site.description, templateClass } = Astro.props;
+const pageTitle = title.includes(site.title) ? title : `${title} | ${site.title}`;
+const canonical = new URL(Astro.url.pathname, site.url);
+const isCurrent = (href: string) => Astro.url.pathname === href;
+---
+
+<!doctype html>
+<html lang={site.language}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/alien.svg" type="image/svg+xml" sizes="any" />
+    <link rel="alternate" href={site.feed.path} type="application/atom+xml" title={site.title} />
+    <link rel="alternate" href={site.jsonFeed.path} type="application/json" title={site.title} />
+    <script is:inline>
+      // Runs before first paint so dark mode users never see the light theme.
+      (() => {
+        let saved;
+        try {
+          saved = localStorage.darkModePreference;
+        } catch {}
+        const dark = saved === 'dark' || (saved !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
+    <slot name="head" />
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
+    <header class="flex justify-between mx-3 my-3 md:my-6 text-sm font-medium">
+      <div class="-translate-y-4 md:-translate-y-8">
+        <h2 class="sr-only"><a href="/">{site.title}</a></h2>
+        <p class="leading-tight font-body italic bg-accent-500 rounded-full text-lg transition-colors hover:bg-accent-600">
+          <a class="w-16 h-16 md:w-24 md:h-24 text-white flex justify-center items-center" href="/">
+            <Logo class="block w-1/3" />
+          </a>
+        </p>
+      </div>
+
+      <ul class="flex">
+        {
+          site.nav.map((entry) => (
+            <li class="mr-3">
+              <a
+                class:list={[
+                  'inline-block p-1 transition-colors border-transparent border-b-2 hover:border-accent-500',
+                  { 'border-accent-300': isCurrent(entry.href) },
+                ]}
+                href={entry.href}
+              >
+                {entry.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div>
+        <button
+          id="dark-mode-toggle"
+          type="button"
+          class="bg-gray-200 dark:bg-gray-800 relative inline-flex shrink-0 h-4 w-7 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          role="switch"
+          aria-checked="false"
+        >
+          <span class="sr-only">Dark mode</span>
+          <span
+            aria-hidden="true"
+            class="translate-x-0 dark:translate-x-3 pointer-events-none inline-block h-3 w-3 rounded-full bg-white shadow-sm transform ring-0 transition ease-in-out duration-200"
+          ></span>
+        </button>
+      </div>
+    </header>
+
+    <main class={templateClass}>
+      <div class="p-3 max-w-3xl mx-auto mt-12 min-h-screen">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="px-3 mt-24">
+      <div class="sm:flex gap-2">
+        <p class="pb-4 text-xs">
+          © 2021—{new Date().getFullYear()}. Built with <a href="https://astro.build/">Astro</a>.
+        </p>
+        <p class="pb-4 text-xs">
+          <a href="/search/" title="Search this site">Search</a>
+          •
+          <a href="/uses/" title="My /uses page">Uses</a>
+          •
+          <a href={site.feed.path} title="Mike Fallows's RSS Feed">RSS</a>
+          •
+          <a href="https://github.com/mikenewbuild" title="@mikenewbuild on GitHub">GitHub</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('#dark-mode-toggle')!;
+      const root = document.documentElement;
+      const sync = () => toggle.setAttribute('aria-checked', String(root.classList.contains('dark')));
+
+      sync();
+      toggle.addEventListener('click', () => {
+        const dark = root.classList.toggle('dark');
+        try {
+          localStorage.darkModePreference = dark ? 'dark' : 'light';
+        } catch {}
+        sync();
+      });
+    </script>
+  </body>
+</html>

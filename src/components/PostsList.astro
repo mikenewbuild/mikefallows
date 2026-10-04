@@ -1,0 +1,29 @@
+---
+import { htmlDateString, isPublished, postUrl, readableDate, timeToRead, type Post } from '../lib/posts';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ol reversed class="my-4 font-medium">
+  {
+    posts.map((post) => (
+      <li class="mb-8">
+        <a class="block text-lg leading-tight text-balance max-w-lg mb-1" href={postUrl(post)}>
+          {post.data.title}
+        </a>
+        <div class="text-sm leading-tight opacity-50">
+          <time datetime={htmlDateString(post.data.date)}>{readableDate(post.data.date)}</time> •{' '}
+          {timeToRead(post.rendered?.html ?? '')}
+          {!isPublished(post) && <span class="italic">(Draft)</span>}
+        </div>
+        <div class="mt-4">
+          <p class="font-body text-lg max-w-sm leading-tight font-light opacity-70">{post.data.description}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>

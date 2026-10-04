@@ -1,12 +1,13 @@
-const colors = require('tailwindcss/colors');
-const defaultTheme = require('tailwindcss/defaultTheme');
+import colors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
+import typography from '@tailwindcss/typography';
 const fontSans = `"Public Sans", "Public Sans Fallback", ${defaultTheme.fontFamily.sans.join(',')}`;
 const fontSerif = `"Crimson Pro", "Crimson Pro Fallback", ${defaultTheme.fontFamily.serif.join(',')}`;
 const fontMono = `"JetBrains Mono", ${defaultTheme.fontFamily.mono.join(',')}`;
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['_site/**/*.html'],
+export default {
+  content: ['./src/**/*.{astro,md,ts}'],
   darkMode: 'class',
   theme: {
     colors: {
@@ -132,5 +133,5 @@ module.exports = {
       typography: ['dark'],
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [typography],
 };
