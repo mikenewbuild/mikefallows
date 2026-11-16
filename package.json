@@ -20,7 +20,7 @@
     "@shikijs/transformers": "^4.5.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.4.4",
+    "astro": "^7.4.12",
     "github-slugger": "^2.0.0",
     "pagefind": "^1.5.2",
     "remark-breaks": "^4.0.0",
